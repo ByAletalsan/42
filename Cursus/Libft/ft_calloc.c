@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alumno <alumno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 09:44:15 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/20 11:36:13 by alumno           ###   ########.fr       */
+/*   Created: 2022/09/20 12:11:42 by alumno            #+#    #+#             */
+/*   Updated: 2022/09/20 12:17:51 by alumno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t			i;
-	char			*string_dst;
-	const char		*string_src;
+	void	*matriz;
+	size_t	i;
 
+	matriz = (void *)malloc(size * nmemb);
 	i = 0;
-	string_dst = dest;
-	string_src = src;
-	if (dest == 0 || src == 0)
-		return (NULL);
-	while (i < n)
+	while (i < nmemb)
 	{
-		*string_dst = *string_src;
-		string_dst += 1;
-		string_src += 1;
+		((char *)matriz)[i] = 0;
 		i++;
 	}
-	return (dest);
+	return matriz;
 }

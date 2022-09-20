@@ -6,7 +6,7 @@
 /*   By: alumno <alumno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:05:17 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/20 11:07:36 by alumno           ###   ########.fr       */
+/*   Updated: 2022/09/20 11:29:24 by alumno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	i;
-	int				res;
+	size_t	i;
+	int		res;
 
 	i = 0;
 	res = 0;
