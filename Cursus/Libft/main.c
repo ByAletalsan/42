@@ -1,30 +1,33 @@
 #include <string.h>
 #include <stdio.h>
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	char	*string_dst;
-	const 	char	*string_src;
+	unsigned int	i;
+	int				res;
 
 	i = 0;
-	string_dst = dst;
-	string_src = src;
-	if (dst == 0)
-		return (NULL);
-	while (i < n)
+	res = 0;
+	if (n == 0)
+		return (0);
+	while (!res && (s1[i] != '\0' || s2[i] != '\0') && i < n)
 	{
-		*string_dst = *string_src;
-		string_dst += 1;
-		string_src += 1;
-		i++;
+		res = s1[i] - s2[i];
+		if (!res)
+			i++;
 	}
-	*string_dst = '\0';
-	return (dst);
+	if (i < n)
+	{
+		res = s1[i] - s2[i];
+	}
+	return (res);
 }
+
 int main()
 {
-	char n = 'a';
-	char p = 'b';
-	ft_memcpy(&p, &n, 1);
-	printf("%c", p);
+	char s[] = "hola mundo que tal estamos";
+	char p[] = "hola gente";
+	int n = 0;
+    printf("FT: %d\nORI: %d\n", ft_strncmp(s, p, n), strncmp(s, p ,n));
+
+    return(0);
 }
