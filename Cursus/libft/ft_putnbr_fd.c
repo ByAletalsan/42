@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alumno <alumno@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 10:50:04 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/20 10:55:28 by alumno           ###   ########.fr       */
+/*   Created: 2022/09/22 10:09:34 by atalaver          #+#    #+#             */
+/*   Updated: 2022/09/22 10:10:27 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	char	*p;
 
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	return (NULL);
+	p = ft_itoa(n);
+	write(fd, p, ft_strlen(p));
+	return ;
 }

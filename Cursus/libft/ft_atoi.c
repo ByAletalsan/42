@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 14:26:54 by atalaver          #+#    #+#             */
-/*   Updated: 2022/09/19 14:29:01 by atalaver         ###   ########.fr       */
+/*   Created: 2022/09/22 10:03:03 by atalaver          #+#    #+#             */
+/*   Updated: 2022/09/22 10:03:04 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	char	*p;
+	int	i;
+	int	number;
+	int	signo;
 
 	i = 0;
-	p = s;
-	while (*p != '\0' && i < n)
-	{
-		*p = 0;
+	number = 0;
+	signo = 1;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
 		i++;
-		p += 1;
+	if (str[i] == '-' || str[i] == '+')
+	{	
+		if (str[i] == '-')
+			signo *= -1;
+		i++;
 	}
-	return ;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		number *= 10;
+		number += str[i] - '0';
+		i++;
+	}
+	return (number * signo);
 }

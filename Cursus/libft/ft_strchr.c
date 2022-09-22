@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alumno <alumno@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 12:11:42 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/20 12:17:51 by alumno           ###   ########.fr       */
+/*   Created: 2022/09/20 10:50:04 by alumno            #+#    #+#             */
+/*   Updated: 2022/09/22 11:28:18 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strchr(const char *s, int c)
 {
-	void	*matriz;
 	size_t	i;
 
-	matriz = (void *)malloc(size * nmemb);
 	i = 0;
-	while (i < nmemb)
+	while (s[i] != '\0')
 	{
-		((char *)matriz)[i] = 0;
+		if (s[i] == c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	return matriz;
+	if (c == '\0')
+		return ((char *)&s[i]);
+	else
+		return (NULL);
 }

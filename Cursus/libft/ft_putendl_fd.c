@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 13:21:28 by atalaver          #+#    #+#             */
-/*   Updated: 2022/09/19 14:05:40 by atalaver         ###   ########.fr       */
+/*   Created: 2022/09/22 10:05:57 by atalaver          #+#    #+#             */
+/*   Updated: 2022/09/22 10:06:43 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (c < 65 || c > 122)
-		return (0);
-	if (c > 90 && c < 97)
-		return (0);
-	return (1);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+	return ;
 }
