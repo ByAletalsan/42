@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:38:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/09/19 18:32:50 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/09/23 17:08:23 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	i = 0;
 	string_dst = dst;
 	string_src = src;
-	if (dst == 0)
+	if (dst == 0 && src == 0)
 		return (NULL);
 	while (i < n)
 	{

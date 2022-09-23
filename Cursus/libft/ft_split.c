@@ -6,13 +6,13 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 19:50:53 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/22 12:02:22 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/09/23 19:57:48 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_words(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	size_t	i;
 	size_t	n;
@@ -38,56 +38,65 @@ static size_t	ft_count_words(char const *s, char c)
 		return (n);
 }
 
-static size_t	ft_strlenc(const char *s, char c)
+static int	ft_strlenc(char const *s2, char c, int i)
 {
-	size_t	i;
+	int	len;
 
-	i = 0;
-	while (s[i] != '\0' && s[i] != c)
-		i++;
-	return (i);
-}
-
-static char	*ft_crtwrd(const char *s, size_t len)
-{
-	size_t	i;
-	char	*f;
-
-	f = (char *)malloc(len + 1);
-	if (!f)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	len = 0;
+	while (s2[i] != c && s2[i] != '\0')
 	{
-		f[i] = s[i];
+		len++;
 		i++;
 	}
-	f[i] = '\0';
-	return (f);
+	return (len);
+}
+
+static char	**ft_free_matriz(char **matriz, int i)
+{
+	while (i > 0)
+	{
+		i--;
+		free(matriz[i]);
+	}
+	free(matriz);
+	return (NULL);
+}
+
+static char	**ft_create_matriz(char const *s, char **matriz, char c, int words)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = 0;
+	while (s[i] != '\0' && j < words)
+	{
+		k = 0;
+		while (s[i] == c)
+			i++;
+		matriz[j] = (char *)malloc(ft_strlenc(s, c, i) + 1);
+		if (!matriz[j])
+			return (ft_free_matriz(matriz, j));
+		while (s[i] != '\0' && s[i] != c)
+			matriz[j][k++] = s[i++];
+		matriz[j][k] = '\0';
+		j++;
+	}
+	matriz[j] = 0;
+	return (matriz);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**m;
-	size_t	i;
-	size_t	len;
-	size_t	n_words;
+	char	**matriz;
+	int		words;
 
-	n_words = ft_count_words(s, c);
-	m = (char **)malloc((n_words + 1) * sizeof(char *));
-	if (!m)
+	if (!s)
 		return (NULL);
-	i = 0;
-	while (i < n_words)
-	{
-		while (*s == c)
-			s += 1;
-		len = ft_strlenc(s, c);
-		m[i] = ft_crtwrd(s, len);
-		if (i != (n_words - 1))
-			s += len + 1;
-		i++;
-	}
-	m[i] = NULL;
-	return (m);
+	words = ft_count_words(s, c);
+	matriz = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!matriz)
+		return (NULL);
+	return (ft_create_matriz(s, matriz, c, words));
 }

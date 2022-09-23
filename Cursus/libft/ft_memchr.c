@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alumno <alumno@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:14:20 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/20 11:23:46 by alumno           ###   ########.fr       */
+/*   Updated: 2022/09/23 18:57:24 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	p = s;
 	while (i < n)
 	{
-		if (p[i] == c)
+		if (p[i] == (char)c)
 			return ((void *)&p[i]);
 		i++;
 	}

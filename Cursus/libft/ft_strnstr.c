@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:47:44 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/22 11:41:35 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:46:40 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 	if (s2[0] == '\0')
 		return ((char *)s1);
 	if (s1[0] == '\0')
-		return ((char *)s2);
+		return (NULL);
 	if (ft_strlen(s1) < ft_strlen(s2) || len == 0)
 		return (NULL);
 	while (s1[i] != '\0' && i < len)

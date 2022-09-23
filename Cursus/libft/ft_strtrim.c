@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 10:12:21 by alumno            #+#    #+#             */
-/*   Updated: 2022/09/22 10:22:51 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/09/23 17:36:47 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	len;
 
 	cp_s1 = ft_strdup(s1);
+	if (!cp_s1)
+		return (NULL);
+	if (cp_s1[0] == '\0')
+		return (cp_s1);
 	if (cp_s1)
 	{
 		ft_trim(cp_s1, set, 0);
@@ -64,5 +68,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	f = ft_strdup(cp_s1);
 	free(cp_s1);
+	if (!f)
+		return (NULL);
 	return (f);
 }
