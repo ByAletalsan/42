@@ -1,0 +1,2 @@
+Importante detalle, si ocurre algún error (creo que se refiere a caracter no imprimible o algo así), se devuelve -1.
+Esto lo mira el paco --strict.
