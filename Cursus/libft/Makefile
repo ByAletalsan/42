@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 14:43:01 by atalaver          #+#    #+#              #
-#    Updated: 2022/09/24 14:43:45 by atalaver         ###   ########.fr        #
+#    Updated: 2022/09/24 17:28:59 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,4 +51,4 @@ fclean: clean
 
 re: fclean all
 
-rebonus: fclean bonus
+.PHONY:	all clean fclean re bonus
