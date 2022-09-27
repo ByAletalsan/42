@@ -6,41 +6,57 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 20:35:21 by atalaver          #+#    #+#              #
-#    Updated: 2022/09/24 21:23:25 by atalaver         ###   ########.fr        #
+#    Updated: 2022/09/26 10:59:43 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIB = ar rcs
-RM = rm -f
+TESTS	= tests/main.c
+TNAME	= test
+TOBJS	= ${TESTS:.c=.o}
+SRCS	= ${wildcard *.c}
+OBJS	= ${SRCS:.c=.o}
+LIBFT	= ${wildcard libft/*.c}
+LOBJS	= ${LIBFT:.c=.o}
+INCS	= ${wildcard *.h}
+NAME	= libftprintf.a
+CC	= gcc
+FLAGS	= -Wall -Werror -Wextra
+RM	= rm -f
+LIB	= ar rc
+RL	= ranlib
 
-CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
+all: ${NAME}
 
-NAME =  libftprintf.a
+.c.o:
+	${CC} ${FLAGS} -c $< ${<:.c.o} -I.${INCS}
 
-SOURCE = ft_printf.c
+${NAME}: runlibft ${OBJS}
+	${LIB} ${NAME} ${OBJS} ${LOBJS}
+	${RL} ${NAME}
 
-OBJ = $(SOURCE: .c=.o)
-
-INCLUDE = libftprintf.h
-
-all: $(NAME)
-
-$(NAME): $(OBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(OBJ)
-
-makelibft:
-	cd libft && make bonus
-
-%.o: %.c
-	$(CC) $(CCFLAGS) -c -o $@ $<
+runlibft:
+	make -C libft bonus
 
 clean:
-	$(RM) $(OBJ)
+	${RM} ${OBJS}
+	${MAKE} -C libft clean
 
 fclean: clean
-	$(RM) $(NAME)
+	${RM} ${NAME}
+	${RM} ${TNAME}
+	${MAKE} -C libft fclean
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+test: re ${TOBJS}
+	${CC} -g ${CFLAGS} ${TOBJS} -Llibft -lft -o ${TNAME}
+
+bonus: re ${BOBJS}
+	${LIB} ${NAME} ${OBJS} ${BOBJS}
+	${RL} ${NAME}
+
+norm :
+	norminette -R CheckForbiddenSourceHeader ${SRCS}
+	norminette -R CheckDefine *.h
+
+.PHONY: all re clean fclean

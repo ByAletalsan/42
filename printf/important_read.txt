@@ -1,2 +1,3 @@
 Importante detalle, si ocurre algún error (creo que se refiere a caracter no imprimible o algo así), se devuelve -1.
 Esto lo mira el paco --strict.
+gcc -o main main.c ft_printf.c ft_print_char_string.c libft/*.c

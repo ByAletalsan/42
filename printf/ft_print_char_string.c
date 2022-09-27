@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_print_char_string.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 20:21:55 by atalaver          #+#    #+#             */
-/*   Updated: 2022/09/27 20:44:37 by atalaver         ###   ########.fr       */
+/*   Created: 2022/09/26 10:32:21 by atalaver          #+#    #+#             */
+/*   Updated: 2022/09/26 11:01:44 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
-# include "libft/libft.h"
+#include "libftprintf.h"
 
-int	ft_printf(char const *s, ...);
-int	ft_print_char(char c);
-int	ft_print_string(char *s);
-int	ft_print_int(int n);
-int	ft_print_memory(unsigned long long n);
+int	ft_print_char(char c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}
 
-#endif
+int	ft_print_string(char *s)
+{
+	ft_putstr_fd(s, 1);
+	return (ft_strlen(s));
+}

@@ -5,40 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 20:14:11 by atalaver          #+#    #+#             */
-/*   Updated: 2022/09/24 21:56:04 by atalaver         ###   ########.fr       */
+/*   Created: 2022/09/26 10:20:47 by atalaver          #+#    #+#             */
+/*   Updated: 2022/09/27 20:49:14 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include "libft/libft.h"
+#include "libftprintf.h"
 
-static void	ft_print_special(char const c, va_list *arg)
+static int	ft_print_arg(va_list arg, char const *s)
 {
-	if (c == '%')
-		ft_putchar_fd((int) '%', 1);
-	if (c == 'c')
-		ft_putchar_fd(va_arg(*arg, int), 1);
-	if (c == 's')
-		ft_putstr_fd(va_arg(*arg, char *), 1);
-	if (c == 'i')
-		ft_putnbr_fd(va_arg(*arg, int), 1);
+	int	r;
+
+	if (*s == '%')
+		r = ft_print_char('%');
+	else if (*s == 'c')
+		r = ft_print_char(va_arg(arg, int));
+	else if (*s == 's')
+		r = ft_print_string(va_arg(arg, char *));
+	else if (*s == 'i')
+		r = ft_print_int(va_arg(arg, int));
+	else if (*s == 'p')
+		r = ft_print_memory(va_arg(arg, unsigned long long));
+	return (r);
 }
 
 int	ft_printf(char const *s, ...)
 {
 	va_list	arg;
 	int		i;
+	int		count;
+	int		dev;
 
-	i = 0;
+	i = -1;
+	count = 0;
 	va_start(arg, s);
-	while (s[i] != '\0')
+	while (s[++i] != '\0')
 	{
 		if (s[i] == '%')
-			ft_print_special(s[++i], &arg);
+		{
+			dev = ft_print_arg(arg, &s[++i]);
+			count += dev;
+		}
 		else
-			write(1, &s[i], 1);
-		i++;
+		{
+			ft_putchar_fd(s[i], 1);
+			count++;
+		}
 	}
-	return (0);
+	return (va_end(arg), count);
 }

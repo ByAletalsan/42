@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 20:21:55 by atalaver          #+#    #+#             */
-/*   Updated: 2022/09/27 20:44:37 by atalaver         ###   ########.fr       */
+/*   Created: 2022/09/26 11:12:30 by atalaver          #+#    #+#             */
+/*   Updated: 2022/09/26 11:20:38 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
-# include "libft/libft.h"
+#include "libftprintf.h"
 
-int	ft_printf(char const *s, ...);
-int	ft_print_char(char c);
-int	ft_print_string(char *s);
-int	ft_print_int(int n);
-int	ft_print_memory(unsigned long long n);
+static int	ft_count_digit(int n)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (n <= 0)
+		i++;
+	while (n != 0)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_print_int(int n)
+{
+	ft_putnbr_fd(n, 1);
+	return (ft_count_digit(n));
+}
