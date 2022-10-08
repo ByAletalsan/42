@@ -6,11 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:30 by atalaver          #+#    #+#             */
-/*   Updated: 2022/09/26 11:20:38 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:06:20 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_count_digit(int n)
 {
