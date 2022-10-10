@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:27:17 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/08 12:26:00 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:43:27 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*ft_uitoa(unsigned int n)
 	return (s);
 }
 
-int	ft_print_uint(unsigned int n)
+int	ft_print_uint(unsigned int n, t_bonus *b)
 {
 	char	*s;
 	int		r;
@@ -55,7 +55,7 @@ int	ft_print_uint(unsigned int n)
 	if (n == 0)
 		return (write(1, "0", 1));
 	s = ft_uitoa(n);
-	r = ft_print_string(s);
+	r = ft_print_string(s, b);
 	free(s);
 	return (r);
 }

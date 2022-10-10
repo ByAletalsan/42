@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 20:21:55 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/08 12:09:52 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/10 20:30:52 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,29 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-int	ft_printf(char const *s, ...);
-int	ft_print_char(char c);
-int	ft_print_string(char *s);
-int	ft_print_int(int n);
-int	ft_print_memory(unsigned long long n);
-int	ft_print_uint(unsigned int n);
-int	ft_print_hexa(unsigned int n, char format);
+typedef struct s_bonus
+{
+	int				menos;
+	int				cero;
+	int				punto;
+	int				width;
+	int				almoadilla;
+	int				espacio;
+	int				mas;
+	int				limit;
+}					t_bonus;
+
+int		ft_printf(char const *s, ...);
+int		ft_print_char(char c);
+int		ft_print_char_bonus(t_bonus *b, char c);
+int		ft_print_string(char *s, t_bonus *b);
+int		ft_print_int(int n);
+int		ft_print_memory(unsigned long long n);
+int		ft_print_uint(unsigned int n, t_bonus *b);
+int		ft_print_hexa(unsigned int n, char format);
+void	ft_startbonus(t_bonus *b);
+void	ft_add_bonus(t_bonus *b, const char *s, int *i);
+
+void	ft_print_bonus(t_bonus *b);
 
 #endif
