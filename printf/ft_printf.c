@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:20:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/12 21:19:15 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:22:06 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_printf(char const *s, ...)
 	int				i;
 	int				count;
 	int				dev;
-	t_bonus			*bonus; //Donde guardamos los bonus
+	t_bonus			*bonus;
 
 	i = -1;
 	count = 0;
@@ -98,7 +98,7 @@ int	ft_printf(char const *s, ...)
 		if (s[i] == '%')
 		{
 			i++;
-			ft_is_bonus(s, &i, bonus); //Recogemos los bonus
+			ft_is_bonus(s, &i, bonus);
 			//ft_print_bonus(bonus);
 			dev = ft_is_option(s, i);
 			if (dev < 0)

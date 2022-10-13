@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:30 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/12 21:27:29 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:55:56 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,28 @@ int	ft_putnbr(int n, int fd, t_bonus *b)
 	char	c;
 	int		r;
 
+	if (n < 0)
+		write(fd, "-", 1);
+	if (b->mas == 1 && n >= 0)
+		write(fd, "+", 1);
+	else if (b->espacio == 1 && n >= 0)
+		write(fd, " ", 1);
+	r = 0;
 	i = 0;
 	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n *= -1;
-	}
-	r = 0;
-	while (r < (b->limit - ft_count_digit(n)) && b->punto == 1)
+		i = 1;
+	while (r < (b->limit - (ft_count_digit(n) - i)) && b->punto == 1)
 		r += ft_print_char('0');
-	while (r < (b->width - ft_count_digit(n)) && b->cero == 1 && b->menos == 0)
+	while (r < (b->width - (ft_count_digit(n) - i)) && b->cero == 1 && b->menos == 0)
 		r += ft_print_char('0');
 	if (n == -2147483648)
 	{
 		r += write(fd, "2147483648", 10);
 		return (r);
 	}
+	if (n < 0)
+		n *= -1;
+	i = 0;
 	while (i < ft_count_digit(n))
 	{
 		c = ((n / ft_pow(10, ft_count_digit(n) - (i + 1))) % 10) + '0';
@@ -82,10 +88,12 @@ int	ft_print_int(int n, t_bonus *b)
 		b->limit = ft_count_digit(n);
 	if (n < 0 && (b->cero == 1 || b->punto == 1) && b->menos == 0)
 		b->width -= 1;
+	if (n >= 0 && (b->mas == 1 || b->espacio == 1) && b->menos == 0)
+		b->width -= 1;
 	r += ft_print_spaces_int(b, 0);
 	r += ft_putnbr(n, 1, b);
 	r += ft_print_spaces_int(b, 1);
-	if (n < 0)
+	if (n < 0 || b->mas == 1 || b->espacio == 1)
 		return (r + 1);
 	else
 		return (r);
