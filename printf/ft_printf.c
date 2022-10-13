@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:20:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/10 20:33:35 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/12 21:19:15 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_print_arg(va_list arg, int option, t_bonus *b)
 	else if (option == 1)
 		r = ft_print_string(va_arg(arg, char *), b);
 	else if (option == 4 || option == 3)
-		r = ft_print_int(va_arg(arg, int));
+		r = ft_print_int(va_arg(arg, int), b);
 	else if (option == 2)
-		r = ft_print_memory(va_arg(arg, unsigned long long));
+		r = ft_print_memory(va_arg(arg, unsigned long long), b);
 	else if (option == 5)
 		r = ft_print_uint(va_arg(arg, unsigned int), b);
 	else if (option == 6)
@@ -49,7 +49,7 @@ static void	ft_is_bonus(const char *s, int *i, t_bonus *r)
 	{
 		control = 0;
 		j = 0;
-		while (j < 5)
+		while (j < 6)
 		{
 			if (s[*i] == b[j] || ft_isdigit(s[*i]))
 			{

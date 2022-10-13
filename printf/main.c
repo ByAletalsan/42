@@ -3,6 +3,9 @@
 
 int main()
 {
-	ft_printf(" %.1s %.2s %.3s %.4s \n", " - ", "", "4");
-	printf(" %.1s %.2s %.3s %.4s \n", " - ", "", "4", "");
+	int x = -900;
+	char *s = " %.1i \n";
+	int r = printf(s, x);
+	int p = ft_printf(s, x);
+	printf("%i : %i\n", r, p);
 }
