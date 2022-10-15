@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:27:17 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/15 15:57:07 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/15 19:28:58 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 #include <stdio.h>
 
-static int	ft_cntchr(unsigned int n)
+static int	ft_cntchr(unsigned int n, t_bonus *b)
 {
 	int	i;
 
 	i = 0;
+	if (n == 0 && (b->limit > 0 || b->punto == 0))
+		i++;
 	while (n != 0)
 	{
 		i++;
@@ -28,13 +30,13 @@ static int	ft_cntchr(unsigned int n)
 	return (i);
 }
 
-static char	*ft_uitoa(unsigned int n)
+static char	*ft_uitoa(unsigned int n, t_bonus *b)
 {
 	char	*s;
 	int		len;
 	int		i;
 
-	len = ft_cntchr(n);
+	len = ft_cntchr(n, b);
 	i = len;
 	s = (char *)malloc(len + 1);
 	if (!s)
@@ -58,7 +60,7 @@ static int	ft_print_spaces_uint(t_bonus *b, int p)
 	{
 		while (i < (b->width - b->limit))
 		{
-			if (b->cero == 0)
+			if (b->cero == 0 || b->punto == 1)
 				ft_print_char(' ');
 			else
 				ft_print_char('0');
@@ -79,13 +81,9 @@ static int	ft_print_spaces_uint(t_bonus *b, int p)
 static int	ft_print_ceros_uint(t_bonus *b, unsigned int n)
 {
 	int	i;
-	int	l;
 
 	i = 0;
-	l = ft_cntchr(n);
-	if (n == 0)
-		l = 1;
-	while (b->punto == 1 && i < (b->limit - l))
+	while (b->punto == 1 && i < (b->limit - ft_cntchr(n, b)))
 	{
 		ft_print_char('0');
 		i++;
@@ -99,20 +97,13 @@ int	ft_print_uint(unsigned int n, t_bonus *b)
 	int		r;
 
 	r = 0;
-	if (b->limit < ft_cntchr(n) && b->punto == 0)
-		b->limit = ft_cntchr(n);
-	if (n == 0 && b->punto == 0)
-		b->limit = 1;
+	if (b->limit < ft_cntchr(n, b))
+		b->limit = ft_cntchr(n, b);
 	r += ft_print_spaces_uint(b, 0);
 	r += ft_print_ceros_uint(b, n);
-	s = ft_uitoa(n);
-	if (n == 0)
-		r += write(1, "0", 1);
-	else
-	{
-		ft_putstr_fd(s, 1);
-		r += ft_strlen(s);
-	}
+	s = ft_uitoa(n, b);
+	ft_putstr_fd(s, 1);
+	r += ft_strlen(s);
 	r += ft_print_spaces_uint(b, 1);
 	free(s);
 	return (r);

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 19:48:11 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/15 15:48:46 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/15 18:20:42 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_print_spaces_int(t_bonus *b, int p)
 	int	i;
 
 	i = 0;
-	if (b->menos == 0 && p == 0 && b->cero == 0)
+	if (b->menos == 0 && p == 0 && (b->cero == 0 || b->punto == 1))
 	{
 		while (i < (b->width - b->limit))
 		{
