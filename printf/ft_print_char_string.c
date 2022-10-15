@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:32:21 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/15 16:32:52 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:49:09 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,20 @@ int	ft_print_char_bonus(t_bonus *b, char c)
 	return (r);
 }
 
-int	ft_strlen_bonus(char *s)
+static int	ft_strlen_bonus(char *s, t_bonus *b)
 {
 	size_t	i;
 
 	i = 0;
-	if (!s)
+	if (!s && b->punto == 0)
 		return (6);
+	if (!s && b->punto == 1)
+	{
+		if (b->limit < 6)
+			return (0);
+		else
+			return (b->limit);
+	}
 	while (s[i] != '\0')
 		i++;
 	return (i);
@@ -64,25 +71,38 @@ int	ft_print_string(char *s, t_bonus *b)
 	int	i;
 	int	r;
 
-	if (b->limit < ft_strlen_bonus(s))
-		b->limit = ft_strlen_bonus(s);
 	i = 0;
 	r = 0;
+	if (b->limit > ft_strlen_bonus(s, b) && s)
+		b->limit = ft_strlen_bonus(s, b);
+	else if (!s && (b->limit >= 6 || b->punto == 0))
+		b->limit = 6;
+	else if (!s)
+		b->limit = 0;
+	else if (b->punto == 0)
+		b->limit = ft_strlen_bonus(s, b);
+	else if (b->limit < 0)
+		b->limit = 0;
 	r += ft_print_space(b, 0);
-	if (!s)
+	if (!s && b->punto == 0)
 	{
 		ft_putstr_fd("(null)", 1);
 		r += 6;
 	}
-	else if (b->punto && s[0] != '\0')
+	else if (!s && b->punto == 1 && b->limit >= 6)
 	{
-		while (i < (int)ft_strlen(s) && i < b->limit)
+		ft_putstr_fd("(null)", 1);
+		r += 6;
+	}
+	else if (b->punto == 1)
+	{
+		while (i < (int)ft_strlen_bonus(s, b) && i < b->limit)
 			r += ft_print_char(s[i++]);
 	}
 	else if (s[0] != '\0')
 	{
 		ft_putstr_fd(s, 1);
-		r += b->limit;
+		r += ft_strlen(s);
 	}
 	r += ft_print_space(b, 1);
 	return (r);
