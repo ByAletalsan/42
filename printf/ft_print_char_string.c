@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:32:21 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/12 19:50:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:32:52 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,35 @@ int	ft_print_char_bonus(t_bonus *b, char c)
 	return (r);
 }
 
+int	ft_strlen_bonus(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (6);
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+
 int	ft_print_string(char *s, t_bonus *b)
 {
 	int	i;
 	int	r;
 
-	if (!s)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
-	if (b->limit < 0)
-		b->limit = ft_strlen(s);
+	if (b->limit < ft_strlen_bonus(s))
+		b->limit = ft_strlen_bonus(s);
 	i = 0;
 	r = 0;
 	r += ft_print_space(b, 0);
-	if (b->punto && s[0] != '\0')
+	if (!s)
+	{
+		ft_putstr_fd("(null)", 1);
+		r += 6;
+	}
+	else if (b->punto && s[0] != '\0')
 	{
 		while (i < (int)ft_strlen(s) && i < b->limit)
 			r += ft_print_char(s[i++]);

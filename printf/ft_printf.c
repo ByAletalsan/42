@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:20:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/13 11:22:06 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/15 14:40:01 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int	ft_print_arg(va_list arg, int option, t_bonus *b)
 	else if (option == 5)
 		r = ft_print_uint(va_arg(arg, unsigned int), b);
 	else if (option == 6)
-		r = ft_print_hexa(va_arg(arg, unsigned int), 'x');
+		r = ft_print_hexa(va_arg(arg, unsigned int), 'x', b);
 	else if (option == 7)
-		r = ft_print_hexa(va_arg(arg, unsigned int), 'X');
+		r = ft_print_hexa(va_arg(arg, unsigned int), 'X', b);
 	return (r);
 }
 
