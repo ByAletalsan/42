@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:20:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 12:28:59 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:41:43 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,22 @@ static int	ft_is_option(const char *s, int i)
 	return (-1);
 }
 
+static int	ft_is(char const *s, int *i, t_bonus *b)
+{
+	int	dev;
+
+	ft_is_bonus(s, i, b);
+	dev = ft_is_option(s, *i);
+	if (dev < 0)
+		free(b);
+	return (dev);
+}
+
 int	ft_printf(char const *s, ...)
 {
 	va_list			arg;
 	int				i;
 	int				count;
-	int				dev;
 	t_bonus			*bonus;
 
 	i = -1;
@@ -97,20 +107,12 @@ int	ft_printf(char const *s, ...)
 		if (s[i] == '%')
 		{
 			i++;
-			ft_is_bonus(s, &i, bonus);
-			dev = ft_is_option(s, i);
-			if (dev < 0)
-			{
-				free(bonus);
-				return (dev);
-			}
-			count += ft_print_arg(arg, dev, bonus);
+			if (ft_is(s, &i, bonus) < 0)
+				return (-1);
+			count += ft_print_arg(arg, ft_is_option(s, i), bonus);
 		}
 		else
-		{
-			ft_putchar_fd(s[i], 1);
-			count++;
-		}
+			count += ft_print_char(s[i]);
 	}
 	free(bonus);
 	return (va_end(arg), count);

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 11:13:48 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 12:13:25 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:24:09 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ int	ft_print_hexa(unsigned int n, char format, t_bonus *b)
 	r = 0;
 	if (b->limit < ft_memlen(n, b))
 		b->limit = ft_memlen(n, b);
-	/*if (n == 0 && b->punto == 0)
-		b->limit = 1;*/
 	if (n != 0)
 		b->limit += b->almoadilla * 2;
 	r += ft_print_spaces_hex(b, 0);

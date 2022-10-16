@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 20:06:26 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 12:43:22 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:23:18 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,6 @@ int	ft_print_memory(unsigned long long n, t_bonus *b)
 	r = 0;
 	if (b->limit < ft_memlen_memory(n))
 		b->limit = ft_memlen_memory(n);
-	/*if (n == 0)
-		b->limit = 5;
-	else
-		b->limit = ft_memlen_memory(n) + 2;
-	if (b->mas == 1)
-		b->limit += 1;*/
 	r += ft_print_space_memory(b, n, 0);
 	if (n == 0)
 		r += write(1, "(nil)", 5);

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 20:21:55 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 12:37:55 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:15:50 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int		ft_print_ceros(t_bonus *b, int n);
 int		ft_print_spaces_int(t_bonus *b, int p);
 int		ft_print_ceros_hex(t_bonus *b, unsigned int n);
 int		ft_memlen(unsigned int n, t_bonus *b);
+int		ft_print_space(t_bonus *b, int p);
 
 #endif
