@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:30 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/15 18:49:17 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:25:03 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static int	ft_count_digit(int n, t_bonus *b)
 	int	i;
 
 	i = 0;
-	if (n <= 0 && (b->limit > 0 || b->punto == 0))
+	if (n == 0 && (b->limit > 0 || b->punto == 0))
+		i++;
+	if (n < 0)
 		i++;
 	while (n != 0)
 	{
@@ -78,7 +80,7 @@ static int	ft_putnbr(int n, t_bonus *b)
 	r += ft_print_bon(b, n);
 	if (n == -2147483648)
 	{
-		r += write(1, "2147483648", 10);	
+		r += write(1, "2147483648", 10);
 		return (r);
 	}
 	if (n < 0)

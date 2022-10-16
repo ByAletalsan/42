@@ -6,12 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:20:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/15 14:40:01 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:28:59 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
 
 static int	ft_print_arg(va_list arg, int option, t_bonus *b)
 {
@@ -99,7 +98,6 @@ int	ft_printf(char const *s, ...)
 		{
 			i++;
 			ft_is_bonus(s, &i, bonus);
-			//ft_print_bonus(bonus);
 			dev = ft_is_option(s, i);
 			if (dev < 0)
 			{

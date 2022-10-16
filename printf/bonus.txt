@@ -1,7 +1,0 @@
-# -> inserta 0x en los x y X
-
-' ' -> inserta un espacio en los números positivos como indicando que debe ir ahí un signo
-
-+ -> inserta un + delante de los números positivo para que aparezca la contraparte del -
-
--0.n -> n es el número de digitos que pretendes escribir, el resto se rellena con 0 (ej: printf("%-0.4i", 42) -> 0042)

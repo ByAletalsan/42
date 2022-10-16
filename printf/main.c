@@ -5,8 +5,8 @@
 
 int main()
 {
-	long x = 0;
-	char *s = "%u\n";
+	char x = 0;
+	char *s = "%10c\n";
 	int r = printf(s, x);
 	int p = ft_printf(s, x);
 	printf("Normal: %i ,Mio: %i\n", r, p);

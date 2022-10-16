@@ -6,19 +6,19 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 20:06:26 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/12 19:48:40 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:43:22 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#include <stdio.h>
-
-static int	ft_memlen(unsigned long long n)
+static int	ft_memlen_memory(unsigned long long n)
 {
 	int	i;
 
 	i = 0;
+	if (n == 0)
+		return (3);
 	while (n != 0)
 	{
 		i++;
@@ -48,27 +48,29 @@ static void	ft_itemem(unsigned long long n)
 
 int	ft_print_memory(unsigned long long n, t_bonus *b)
 {
-	int	print_length;
+	int	r;
 
-	print_length = 0;
-	if (n == 0)
+	r = 0;
+	if (b->limit < ft_memlen_memory(n))
+		b->limit = ft_memlen_memory(n);
+	/*if (n == 0)
 		b->limit = 5;
 	else
-		b->limit = ft_memlen(n) + 2;
+		b->limit = ft_memlen_memory(n) + 2;
 	if (b->mas == 1)
-		b->limit += 1;
-	print_length += ft_print_spaces(b, n, 0);
+		b->limit += 1;*/
+	r += ft_print_space_memory(b, n, 0);
 	if (n == 0)
-		print_length += write(1, "(nil)", 5);
+		r += write(1, "(nil)", 5);
 	else
 	{
 		if (b->mas == 1)
-			print_length += ft_print_char('+');
-		print_length += write(1, "0x", 2);
-		print_length += ft_print_ceros(b);
+			r += ft_print_char('+');
+		r += write(1, "0x", 2);
+		r += ft_print_ceros(b, ft_memlen_memory(n));
 		ft_itemem(n);
-		print_length += ft_memlen(n);
+		r += ft_memlen_memory(n);
 	}
-	print_length += ft_print_spaces(b, n, 1);
-	return (print_length);
+	r += ft_print_space_memory(b, n, 1);
+	return (r);
 }

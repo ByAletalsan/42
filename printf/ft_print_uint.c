@@ -6,14 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:27:17 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/15 19:28:58 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 11:10:27 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
-
-#include <stdio.h>
 
 static int	ft_cntchr(unsigned int n, t_bonus *b)
 {

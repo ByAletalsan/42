@@ -6,13 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 12:59:27 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/11 20:55:31 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:28:53 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-#include <stdio.h>
 
 void	ft_startbonus(t_bonus *b)
 {
@@ -24,19 +22,6 @@ void	ft_startbonus(t_bonus *b)
 	b->punto = 0;
 	b->width = 0;
 	b->limit = -1;
-	return ;
-}
-
-void	ft_print_bonus(t_bonus *b)
-{
-	printf("Almoadilla: %i\n", b->almoadilla);
-	printf("Cero: %i\n", b->cero);
-	printf("Espacio: %i\n", b->espacio);
-	printf("Mas: %i\n", b->mas);
-	printf("Menos: %i\n", b->menos);
-	printf("Punto: %i\n", b->punto);
-	printf("Witdth: %i\n", b->width);
-	printf("Limit: %i\n", b->limit);
 	return ;
 }
 

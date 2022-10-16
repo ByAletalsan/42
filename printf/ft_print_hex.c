@@ -6,25 +6,12 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 11:13:48 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/15 16:04:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/16 12:13:25 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
-
-static int	ft_memlen(unsigned int n)
-{
-	int	i;
-
-	i = 0;
-	while (n != 0)
-	{
-		i++;
-		n = n / 16;
-	}
-	return (i);
-}
 
 static void	ft_print_hex(unsigned int n, char format)
 {
@@ -59,9 +46,9 @@ static int	ft_print_spaces_hex(t_bonus *b, int p)
 	{
 		while (i < (b->width - b->limit))
 		{
-			if (b->cero == 0)
+			if (b->cero == 0 || b->punto == 1)
 				ft_print_char(' ');
-			else
+			else if (b->almoadilla == 0)
 				ft_print_char('0');
 			i++;
 		}
@@ -82,10 +69,10 @@ int	ft_print_hexa(unsigned int n, char format, t_bonus *b)
 	int	r;
 
 	r = 0;
-	if (b->limit < ft_memlen(n) && b->punto == 0)
-		b->limit = ft_memlen(n);
-	if (n == 0 && b->punto == 0)
-		b->limit = 1;
+	if (b->limit < ft_memlen(n, b))
+		b->limit = ft_memlen(n, b);
+	/*if (n == 0 && b->punto == 0)
+		b->limit = 1;*/
 	if (n != 0)
 		b->limit += b->almoadilla * 2;
 	r += ft_print_spaces_hex(b, 0);
@@ -97,12 +84,12 @@ int	ft_print_hexa(unsigned int n, char format, t_bonus *b)
 			r += write(1, "0X", 2);
 	}
 	r += ft_print_ceros_hex(b, n);
-	if (n == 0)
+	if (n == 0 && b->limit > 0)
 		r += write(1, "0", 1);
-	else
+	else if (b->limit > 0)
 	{
 		ft_itemem(n, format);
-		r += ft_memlen(n);
+		r += ft_memlen(n, b);
 	}
 	r += ft_print_spaces_hex(b, 1);
 	return (r);
