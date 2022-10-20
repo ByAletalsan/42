@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/20 20:17:38 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/20 20:16:19 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,15 @@ static char	*ft_remove_line(char *str)
 //Funcion principal
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[1024];
 	char		*r;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0 || fd > 1024)
 		return (NULL);
-	str = ft_read_buffer_to_n(fd, str);
-	if (!str)
+	str[fd] = ft_read_buffer_to_n(fd, str[fd]);
+	if (!str[fd])
 		return (NULL);
-	r = ft_read_line(str);
-	str = ft_remove_line(str);
+	r = ft_read_line(str[fd]);
+	str[fd] = ft_remove_line(str[fd]);
 	return (r);
 }
