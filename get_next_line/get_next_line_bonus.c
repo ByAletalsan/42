@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/21 07:44:15 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:45:39 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	static char	*str[4096];
 	char		*r;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0 || fd > 1024)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0 || fd > 4096)
 		return (NULL);
 	str[fd] = ft_read_buffer_to_n(fd, str[fd]);
 	if (!str[fd])
