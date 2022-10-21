@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/20 20:16:19 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:44:15 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ static char	*ft_remove_line(char *str)
 	return (r);
 }
 
-//Funcion principal
+//Funcion principal, 4096 es el limite de los descriptores (segun Gooogle)
 char	*get_next_line(int fd)
 {
-	static char	*str[1024];
+	static char	*str[4096];
 	char		*r;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0 || fd > 1024)
