@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:48 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/20 20:17:44 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/25 19:52:16 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
+	if (!s1 || !s2)
+		return (NULL);
 	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!r || !s1 || !s2)
+	if (!r)
 		return (NULL);
 	i = 0;
 	j = 0;

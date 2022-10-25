@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/21 07:45:39 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:08:45 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,23 @@ static char	*ft_remove_line(char *str)
 char	*get_next_line(int fd)
 {
 	static char	*str[4096];
+	int			i = 0;
 	char		*r;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0 || fd > 4096)
+	while (i < 2096)
+		str[i++] = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 4096)
 		return (NULL);
+	if (read(fd, 0, 0) < 0)
+	{
+		if (str[fd] != NULL)
+		{
+			free(str);
+			str[fd] = NULL;
+		}
+		return (NULL);
+	}
 	str[fd] = ft_read_buffer_to_n(fd, str[fd]);
-	if (!str[fd])
-		return (NULL);
 	r = ft_read_line(str[fd]);
 	str[fd] = ft_remove_line(str[fd]);
 	return (r);

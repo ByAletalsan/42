@@ -6,11 +6,12 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/20 20:17:38 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/25 20:00:43 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 //Los calloc no hacen falta con if ya que la propia funcion lo hace 
 //
@@ -31,8 +32,8 @@ static char	*ft_read_buffer_to_n(int fd, char *str)
 	int		read_char;
 
 	if (!str)
-		str = calloc(1, sizeof(char));
-	buff = calloc((BUFFER_SIZE + 1), sizeof(char));
+		str = ft_calloc(1, sizeof(char));
+	buff = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	read_char = 1;
 	while (read_char > 0)
 	{
@@ -62,7 +63,7 @@ static char	*ft_read_line(char *str)
 		return (NULL);
 	while (str[i] != '\0' && str[i] != '\n')
 		i++;
-	r = calloc((i + 2), sizeof(char));
+	r = ft_calloc((i + 2), sizeof(char));
 	i = 0;
 	while (str[i] != '\0' && str[i] != '\n')
 	{
@@ -89,7 +90,7 @@ static char	*ft_remove_line(char *str)
 		free(str);
 		return (NULL);
 	}
-	r = calloc((ft_strlen(str) - i + 1), sizeof(char));
+	r = ft_calloc((ft_strlen(str) - i + 1), sizeof(char));
 	i++;
 	j = 0;
 	while (str[i] != '\0')
@@ -101,14 +102,21 @@ static char	*ft_remove_line(char *str)
 //Funcion principal
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str = NULL;
 	char		*r;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	if (read(fd, 0, 0) < 0)
+	{
+		if (str != NULL)
+		{
+			free(str);
+			str = NULL;
+		}
+		return (NULL);
+	}
 	str = ft_read_buffer_to_n(fd, str);
-	if (!str)
-		return (NULL);
 	r = ft_read_line(str);
 	str = ft_remove_line(str);
 	return (r);
