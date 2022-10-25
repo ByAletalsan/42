@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:12:30 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 12:25:03 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:29:29 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int	ft_print_int(int n, t_bonus *b)
 		b->limit = ft_count_digit(n, b);
 	else if (n < 0)
 		b->limit += 1;
+	if ((b->mas || b->espacio) && n >= 0)
+		b->width -= 1;
 	r += ft_print_spaces_int(b, 0);
 	r += ft_putnbr(n, b);
 	r += ft_print_spaces_int(b, 1);

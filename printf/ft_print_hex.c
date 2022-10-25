@@ -6,12 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 11:13:48 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 21:24:09 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:44:08 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void	ft_print_hex(unsigned int n, char format)
 {
@@ -40,16 +39,18 @@ static void	ft_itemem(unsigned int n, char format)
 static int	ft_print_spaces_hex(t_bonus *b, int p)
 {
 	int	i;
+	int	r;
 
 	i = 0;
+	r = 0;
 	if (b->menos == 0 && p == 0)
 	{
 		while (i < (b->width - b->limit))
 		{
 			if (b->cero == 0 || b->punto == 1)
-				ft_print_char(' ');
+				r += ft_print_char(' ');
 			else if (b->almoadilla == 0)
-				ft_print_char('0');
+				r += ft_print_char('0');
 			i++;
 		}
 	}
@@ -57,11 +58,11 @@ static int	ft_print_spaces_hex(t_bonus *b, int p)
 	{
 		while (i < (b->width - b->limit))
 		{
-			ft_print_char(' ');
+			r += ft_print_char(' ');
 			i++;
 		}
 	}
-	return (i);
+	return (r);
 }
 
 int	ft_print_hexa(unsigned int n, char format, t_bonus *b)

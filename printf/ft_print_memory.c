@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 20:06:26 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 21:23:18 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:13:28 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_memlen_memory(unsigned long long n)
 
 	i = 0;
 	if (n == 0)
-		return (3);
+		return (1);
 	while (n != 0)
 	{
 		i++;
@@ -55,7 +55,7 @@ int	ft_print_memory(unsigned long long n, t_bonus *b)
 		b->limit = ft_memlen_memory(n);
 	r += ft_print_space_memory(b, n, 0);
 	if (n == 0)
-		r += write(1, "(nil)", 5);
+		r += write(1, "0x0", 3);
 	else
 	{
 		if (b->mas == 1)

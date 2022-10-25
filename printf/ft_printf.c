@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:20:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/16 21:41:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:55:19 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ static int	ft_print_arg(va_list arg, int option, t_bonus *b)
 {
 	int	r;
 
+	r = 0;
 	if (option == 8)
-		r = ft_print_char('%');
+		r = ft_print_string("%", b);
 	else if (option == 0)
 		r = ft_print_char_bonus(b, va_arg(arg, int));
 	else if (option == 1)
@@ -101,7 +102,7 @@ int	ft_printf(char const *s, ...)
 	va_start(arg, s);
 	bonus = (t_bonus *)malloc(sizeof(t_bonus));
 	if (!bonus)
-		return (0);
+		return (-1);
 	while (s[++i] != '\0')
 	{
 		if (s[i] == '%')
