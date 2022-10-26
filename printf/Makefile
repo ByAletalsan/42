@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 20:35:21 by atalaver          #+#    #+#              #
-#    Updated: 2022/10/16 22:54:30 by atalaver         ###   ########.fr        #
+#    Updated: 2022/10/26 09:21:06 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NAME	= libftprintf.a
 CC	= gcc
 FLAGS	= -Wall -Werror -Wextra
 RM	= rm -f
-LIB	= ar rc
+LIB	= ar rcs
 RL	= ranlib
 
 all: ${NAME}

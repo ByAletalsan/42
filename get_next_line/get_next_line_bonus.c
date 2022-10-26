@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/25 20:08:45 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:04:49 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static char	*ft_read_buffer_to_n(int fd, char *str)
 	int		read_char;
 
 	if (!str)
-		str = calloc(1, sizeof(char));
-	buff = calloc((BUFFER_SIZE + 1), sizeof(char));
+		str = ft_calloc(1, sizeof(char));
+	buff = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	read_char = 1;
 	while (read_char > 0)
 	{
@@ -62,7 +62,7 @@ static char	*ft_read_line(char *str)
 		return (NULL);
 	while (str[i] != '\0' && str[i] != '\n')
 		i++;
-	r = calloc((i + 2), sizeof(char));
+	r = ft_calloc((i + 2), sizeof(char));
 	i = 0;
 	while (str[i] != '\0' && str[i] != '\n')
 	{
@@ -89,7 +89,7 @@ static char	*ft_remove_line(char *str)
 		free(str);
 		return (NULL);
 	}
-	r = calloc((ft_strlen(str) - i + 1), sizeof(char));
+	r = ft_calloc((ft_strlen(str) - i + 1), sizeof(char));
 	i++;
 	j = 0;
 	while (str[i] != '\0')
@@ -102,18 +102,15 @@ static char	*ft_remove_line(char *str)
 char	*get_next_line(int fd)
 {
 	static char	*str[4096];
-	int			i = 0;
 	char		*r;
 
-	while (i < 2096)
-		str[i++] = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 4096)
 		return (NULL);
 	if (read(fd, 0, 0) < 0)
 	{
 		if (str[fd] != NULL)
 		{
-			free(str);
+			free(str[fd]);
 			str[fd] = NULL;
 		}
 		return (NULL);

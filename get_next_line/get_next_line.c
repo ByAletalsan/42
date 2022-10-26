@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/25 20:00:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:02:20 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static char	*ft_remove_line(char *str)
 //Funcion principal
 char	*get_next_line(int fd)
 {
-	static char	*str = NULL;
+	static char	*str;
 	char		*r;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
