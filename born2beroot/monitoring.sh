@@ -31,8 +31,8 @@ DISK_TOTAL=$(df -h --total --output=size | awk 'END { print $NF }')
 DISK_USE=$(df -h --total --output=used | awk 'END { print $NF }')
 DISK_PERCENT=$(df -h --total | awk ' END { print $(NF - 1) }')
 
-CPU_IDLE_INT=$((100 - $(mpstat | awk 'END { print $NF }' | cut -b 1-2)))
-CPU_IDLE_DEC=$((100 - $(mpstat | awk 'END { print $NF }' | cut -b 4-6)))
+CPU=$(mpstat | awk 'END { print $NF }' | tr , .)
+CPU_IDLE=$(echo "100 - $CPU" | bc)
 
 LAST_BOOT=$(who -b | awk '{ print $(NF - 1), $NF }')
 
@@ -52,7 +52,7 @@ echo "#CPU physical: $CPUPHY"
 echo "#vCPU: $CPUVIR"
 echo "#Memory Usage: $MEMORY_USE/$MEMORY_TOTAL MB ($MEMORY_PERCENT%)"
 echo "#Disk Usage: $DISK_USE/$DISK_TOTAL ($DISK_PERCENT)"
-echo "#CPU Load: $CPU_IDLE_INT.$CPU_IDLE_DEC%"
+echo "#CPU Load: $CPU_IDLE%"
 echo "#Last Boot: $LAST_BOOT"
 if test -n $LVM; then
 	echo "#LVM use: yes"
