@@ -14,6 +14,7 @@
 
 #Requisitos
 #sudo apt install net-tools
+#sudo apt install sysstat
 #Tener /var/log/sudo/sudo_logs
 
 ARCHITECTURE=$(uname -a)
