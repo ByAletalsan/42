@@ -62,8 +62,4 @@ fi
 echo "#Connexions TCP: $CONEXION ESTABLISHED"
 echo "#User Log: $USERS"
 echo "#Network: IP $IP ($MAC)"
-if test -e '/var/log/sudo/sudo_logs'; then
-	echo "#Sudo: $SUDO cmd"
-else
-	echo "#Sudo: No existe /var/log/sudo/sudo_logs"
-fi
+echo "#Sudo: $SUDO cmd"
