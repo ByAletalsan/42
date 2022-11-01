@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:36:24 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/01 19:32:53 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/01 20:28:52 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //Variable global par almacenar los datos que no se pueden en la funcion
 //No hace falta esta variable global si se ponen las variables como static
-t_data	datos;
+t_data	g_datos;
 
 //Vamos insertando de bit en bit en el caracter hasta obtener los 8
 //Solo insertamos los 1, los 0 simplemente seguimos deplazando al siguiente bit
@@ -22,13 +22,13 @@ void	ft_get_char(int n, siginfo_t *info, void *context)
 {
 	(void) context;
 	if (n == SIGUSR2)
-		datos.c |= 1 << datos.bit;
-	datos.bit++;
-	if (datos.bit == 8)
+		g_datos.c |= 1 << g_datos.bit;
+	g_datos.bit++;
+	if (g_datos.bit == 8)
 	{
-		ft_printf("%c", datos.c);
-		datos.c = 0;
-		datos.bit = 0;
+		ft_printf("%c", g_datos.c);
+		g_datos.c = 0;
+		g_datos.bit = 0;
 	}
 	kill(info->si_pid, SIGUSR1);
 }
@@ -50,8 +50,8 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	datos.bit = 0;
-	datos.c = 0;
+	g_datos.bit = 0;
+	g_datos.c = 0;
 	ft_printf("%d\n", getpid());
 	sa.sa_handler = SIG_DFL;
 	sa.sa_sigaction = ft_get_char;
