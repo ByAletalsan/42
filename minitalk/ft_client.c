@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:04:06 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/31 13:22:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:29:13 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Ej de desplazamiento: 1 << 0 = 0001; 1 << 1 = 0010; 1 << 2 = 0100;
 Ej de operacion: 1001 & 0001 = 0001 = 1; 1001 & 0010 = 0000 = 0;
 De esta forma nos centramos solo en el bit deseado
 */
-void	ft_send_char(char c, pid_t pid)
+static void	ft_send_char(char c, pid_t pid)
 {
 	int	bit;
 
@@ -30,13 +30,13 @@ void	ft_send_char(char c, pid_t pid)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(200);
+		pause();
 		bit++;
 	}
 }
 
 //Recorremos el string enviando caracter a caracter
-void	ft_send_string(char *s, pid_t pid)
+static void	ft_send_string(char *s, pid_t pid)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ void	ft_send_string(char *s, pid_t pid)
 }
 
 //Chequemos que los argumentos esten bien
-int	ft_check_arg(int argc, char **argv)
+static int	ft_check_arg(int argc, char **argv)
 {
 	int	i;
 
@@ -65,10 +65,16 @@ int	ft_check_arg(int argc, char **argv)
 	return (1);
 }
 
+static void	ft_handler(int n)
+{
+	(void)n;
+}
+
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
 
+	signal(SIGUSR1, ft_handler);
 	if (!ft_check_arg(argc, argv))
 	{
 		ft_printf("Error con los argumentos");

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:36:24 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/31 13:08:11 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:32:53 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ t_data	datos;
 
 //Vamos insertando de bit en bit en el caracter hasta obtener los 8
 //Solo insertamos los 1, los 0 simplemente seguimos deplazando al siguiente bit
-void	ft_get_char(int n)
+void	ft_get_char(int n, siginfo_t *info, void *context)
 {
+	(void) context;
 	if (n == SIGUSR2)
 		datos.c |= 1 << datos.bit;
 	datos.bit++;
@@ -29,6 +30,7 @@ void	ft_get_char(int n)
 		datos.c = 0;
 		datos.bit = 0;
 	}
+	kill(info->si_pid, SIGUSR1);
 }
 
 //El void es para que no nos de el error de no hacer nada con la n
@@ -46,11 +48,17 @@ para detener el programa de forma correcta.
 */
 int	main(void)
 {
+	struct sigaction	sa;
+
 	datos.bit = 0;
 	datos.c = 0;
 	ft_printf("%d\n", getpid());
-	signal(SIGUSR1, ft_get_char);
-	signal(SIGUSR2, ft_get_char);
+	sa.sa_handler = SIG_DFL;
+	sa.sa_sigaction = ft_get_char;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	signal(SIGINT, ft_exit);
 	signal(SIGTERM, ft_exit);
 	while (1)
