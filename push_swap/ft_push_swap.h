@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/07 13:41:36 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:15:33 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ typedef struct pila
 
 void	ft_logic(t_pila *a, t_pila *b);
 void	ft_order_two(t_pila *a);
-void	ft_order_three(t_pila *a, t_pila *b);
+void	ft_order_three(t_pila *a);
+void	ft_order_four(t_pila *a, t_pila *b);
 int		ft_find_low(t_pila *a);
 int		ft_n_rotate(t_pila *a, int n);
 int		ft_n_rev_rotate(t_pila *a, int n);
+void	ft_order_end(t_pila *a);
 //Check and utils
 int		ft_check_digit(int argc, char **argv);
 int		ft_check_limit(int argc, char **argv);

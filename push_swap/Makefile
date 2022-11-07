@@ -6,11 +6,11 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 20:35:21 by atalaver          #+#    #+#              #
-#    Updated: 2022/11/07 13:14:34 by atalaver         ###   ########.fr        #
+#    Updated: 2022/11/07 16:32:53 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES = ft_utils.c push_swap.c ft_movements.c ft_logic.c ft_order_to_four.c\
+SOURCES = ft_utils.c push_swap.c ft_movements.c ft_logic.c ft_order_to_five.c\
 ft_check_arg.c
 
 LIBFT = libft/libft.a

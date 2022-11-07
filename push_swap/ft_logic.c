@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 12:21:18 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/07 13:46:31 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:54:07 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_n_rotate(t_pila *a, int n)
 	int	i;
 
 	i = 0;
-	while (a->p[i] != n && i <= a->len / 2)
+	while (a->p[i] != n && i < a->len / 2)
 		i++;
 	if (a->p[i] == n)
 		return (i);
@@ -56,12 +56,33 @@ int	ft_find_low(t_pila *a)
 	return (n);
 }
 
+void	ft_order_end(t_pila *a)
+{
+	int	i;
+	int	low;
+	int	r;
+	int	rr;
 
+	i = 0;
+	low = ft_find_low(a);
+	r = ft_n_rotate(a, low);
+	rr = ft_n_rev_rotate(a, low);
+	while (i < r || i < rr)
+	{
+		if (r)
+			ft_rotate(a);
+		else
+			ft_rev_rotate(a);
+		i++;
+	}
+}
 
 void	ft_logic(t_pila *a, t_pila *b)
 {
 	if (a->len == 2)
 		ft_order_two(a);
 	if (a->len == 3)
-		ft_order_three(a, b);
+		ft_order_three(a);
+	if (a->len == 4)
+		ft_order_four(a, b);
 }
