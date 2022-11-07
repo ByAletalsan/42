@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/02 12:38:08 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:41:36 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@
 
 typedef struct pila
 {
-	int	*p;
-	int	len;
+	char	c;
+	int		*p;
+	int		len;
 }	t_pila;
 
 void	ft_logic(t_pila *a, t_pila *b);
+void	ft_order_two(t_pila *a);
+void	ft_order_three(t_pila *a, t_pila *b);
+int		ft_find_low(t_pila *a);
+int		ft_n_rotate(t_pila *a, int n);
+int		ft_n_rev_rotate(t_pila *a, int n);
 //Check and utils
 int		ft_check_digit(int argc, char **argv);
 int		ft_check_limit(int argc, char **argv);
 int		ft_check_rep(t_pila *a);
-t_pila	*ft_fill(int len, char **argv);
+t_pila	*ft_fill(int len, char **argv, char c);
 long	ft_atol(char *str);
 //Movements
 void	ft_rotate(t_pila *p);
@@ -38,5 +44,6 @@ int		ft_printf(char const *s, ...);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
+char	**ft_split(char const *s, char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:53 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/02 11:46:00 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:41:27 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,54 @@ long	ft_atol(char *str)
 	return (number * signo);
 }
 
-t_pila	*ft_fill(int len, char **argv)
+static int	ft_cont_num(int len, char **argv)
 {
 	int		i;
+	int		j;
+	char	**s;
+	int		l;
+
+	i = 1;
+	l = 0;
+	while (i < len)
+	{
+		j = 0;
+		s = ft_split((const char *)argv[i], ' ');
+		while (s[j] != NULL)
+		{
+			l++;
+			j++;
+		}
+		free(s);
+		i++;
+	}
+	return (l);
+}
+
+t_pila	*ft_fill(int len, char **argv, char c)
+{
+	int		i;
+	int		j;
+	int		w;
+	char	**s;
 	t_pila	*p;
 
-	i = 0;
 	p = (t_pila *)malloc(sizeof(t_pila));
 	if (!p)
 		return (NULL);
-	p->p = ft_calloc(len, sizeof(int));
-	p->len = len - 1;
-	while (i < p->len)
+	p->len = ft_cont_num(len, argv);
+	p->p = ft_calloc(p->len, sizeof(int));
+	i = 1;
+	w = 0;
+	while (i < len)
 	{
-		p->p[i] = ft_atoi(argv[i + 1]);
+		j = 0;
+		s = ft_split((const char *)argv[i], ' ');
+		while (s[j] != NULL)
+			p->p[w++] = ft_atoi(s[j++]);
+		free(s);
 		i++;
 	}
+	p->c = c;
 	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:47:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/02 13:02:28 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:41:13 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ static void	ft_free(t_pila *a, t_pila *b)
 
 static void	ft_print(t_pila *a, t_pila *b)
 {
-	for (int i = a->len - 1; i >= 0; i--)
-	{
-		ft_printf("%i	", a->p[i]);
-		if (i < b->len)
-			ft_printf("%i", b->p[i]);
-		ft_printf("\n");
-	}
-	ft_printf("--	--\n");
-	ft_printf("A	 B\n");
+	ft_printf("A: ");
+	for (int i = 0; i < a->len; i++)
+		ft_printf("%i ", a->p[i]);
+	ft_printf("\nB: ");
+	for (int i = 0; i < b->len; i++)
+		ft_printf("%i ", b->p[i]);
+	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -49,8 +47,8 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (1);
 	}
-	a = ft_fill(argc, argv);
-	b = ft_fill(argc, argv);
+	a = ft_fill(argc, argv, 'a');
+	b = ft_fill(argc, argv, 'b');
 	if (!a || !b)
 		return (1);
 	b->len = 0;

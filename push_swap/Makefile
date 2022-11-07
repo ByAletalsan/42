@@ -5,25 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/02 09:07:26 by atalaver          #+#    #+#              #
-#    Updated: 2022/11/02 10:21:52 by atalaver         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 20:35:21 by atalaver          #+#    #+#              #
-#    Updated: 2022/11/01 20:39:44 by atalaver         ###   ########.fr        #
+#    Updated: 2022/11/07 13:14:34 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES = ft_utils.c push_swap.c ft_movements.c
-OBJECTS = $(SOURCES:.c=.o)
+SOURCES = ft_utils.c push_swap.c ft_movements.c ft_logic.c ft_order_to_four.c\
+ft_check_arg.c
 
 LIBFT = libft/libft.a
 
@@ -34,22 +22,19 @@ all: push_swap
 
 bonus: push_swap
 
-push_swap: push_swap.o libft
-	$(CC) -o $@ $< $(LIBFT)
+push_swap: runlibft
+	$(CC) $(CFLAGS) -o $@ $(SOURCES) $(LIBFT)
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
-
-libft:
-	make -C libft
+runlibft:
+	make -C libft bonus
 
 clean:
-	rm -f $(OBJECTS)
-	make -C libft clean
+	$(MAKE) -C libft clean
 	
 fclean: clean
-	rm -f push_swap libft/libft.a
+	rm -f push_swap
+	$(MAKE) -C libft fclean
 
 re: fclean all
 
-.PHONY: all bonus libft clean fclean re
+.PHONY: all bonus clean fclean re

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 10:10:04 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/02 12:14:31 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/07 12:34:26 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,26 @@ int	ft_check_rep(t_pila *a)
 int	ft_check_limit(int argc, char **argv)
 {
 	int		i;
+	int		j;
+	char	**s;
 	long	n;
 
 	i = 1;
 	while (i < argc)
 	{
-		n = ft_atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
-			return (1);
+		j = 0;
+		s = ft_split((const char *)argv[i], ' ');
+		while (s[j] != NULL)
+		{
+			n = ft_atol(s[j]);
+			if (n > INT_MAX || n < INT_MIN)
+			{
+				free(s);
+				return (1);
+			}
+			j++;
+		}
+		free(s);
 		i++;
 	}
 	return (0);
@@ -50,24 +62,41 @@ int	ft_check_limit(int argc, char **argv)
 
 int	ft_check_digit(int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	end;
+	int		i;
+	int		j;
+	char	**s;
+	char	*p;
 
 	i = 1;
 	while (i < argc)
 	{
 		j = 0;
-		while (argv[i][j] == '-' || argv[i][j] == '+')
-				j++;
-		if (argv[i][j] == '\0')
-			return (1);
-		while (argv[i][j] != '\0')
+		s = ft_split((const char *)argv[i], ' ');
+		p = s[0];
+		while (s[j] != NULL)
 		{
-			if (!ft_isdigit(argv[i][j]))
+			while (*p == '-' || *p == '+')
+					p += 1;
+			if (*p == '\0')
+			{
+				free(s);
 				return (1);
-			j++;
+			}
+			while (*p != '\0')
+			{
+				if (!ft_isdigit(*p))
+				{
+					if (*p != ' ')
+					{
+						free(s);
+						return (1);
+					}
+				}
+				p += 1;
+			}
+			p = s[++j];
 		}
+		free(s);
 		i++;
 	}
 	return (0);
