@@ -6,11 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/26 10:04:49 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:11:26 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 //Los calloc no hacen falta con if ya que la propia funcion lo hace 
 //

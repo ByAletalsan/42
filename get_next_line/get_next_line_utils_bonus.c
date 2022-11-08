@@ -6,11 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:48 by atalaver          #+#    #+#             */
-/*   Updated: 2022/10/25 19:59:39 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:11:31 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 //Bzero y calloc para hacer las reservas de memoria
 static void	ft_bzero(void *s, int n)
