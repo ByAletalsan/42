@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 12:21:18 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/07 18:54:07 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:52:48 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	ft_order_end(t_pila *a)
 	low = ft_find_low(a);
 	r = ft_n_rotate(a, low);
 	rr = ft_n_rev_rotate(a, low);
+	if (r && rr)
+		rr = 0;
 	while (i < r || i < rr)
 	{
 		if (r)
@@ -85,4 +87,6 @@ void	ft_logic(t_pila *a, t_pila *b)
 		ft_order_three(a);
 	if (a->len == 4)
 		ft_order_four(a, b);
+	if (a->len == 5)
+		ft_order_five(a, b);
 }

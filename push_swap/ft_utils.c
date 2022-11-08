@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:53 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/07 13:41:27 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:55:01 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,47 @@ static int	ft_cont_num(int len, char **argv)
 		i++;
 	}
 	return (l);
+}
+
+int	ft_find_indice(t_pila *a, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->len)
+	{
+		if (a->p[i] == n)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int	ft_find_low_of_top(t_pila *a, int n)
+{
+	int	i;
+	int	j;
+	int	low;
+	int	n_low;
+
+	j = 0;
+	while (a->p[j] < n)
+		j++;
+	if (j == a->len)
+		return (a->len - 1);
+	low = a->p[j];
+	i = j;
+	n_low = n;
+	while (j < a->len)
+	{
+		if (a->p[j] < low && a->p[j] > n)
+		{
+			low = a->p[j];
+			i = j;
+		}
+		j++;
+	}
+	return (ft_return_find_low_of_top(a, n, i));
 }
 
 t_pila	*ft_fill(int len, char **argv, char c)
