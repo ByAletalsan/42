@@ -1,19 +1,19 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    tester.sh                                          :+:      :+:    :+:    #
+#    lfrasson_tester.sh                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/04 16:53:09 by lfrasson          #+#    #+#              #
-#    Updated: 2021/07/24 15:42:45 by anolivei         ###   ########.fr        #
+#    Updated: 2022/11/08 17:08:24 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
 
 NUM_TESTS=100
-PUSH_SWAP=./push_swap
+PUSH_SWAP=./../push_swap/push_swap
 CKER=1
 RET_CKER="is not working"
 
@@ -62,7 +62,7 @@ fi
 
 error()
 {
-	echo -en "${RESET}$1 => ${YELLOW} ./push_swap $2 => "
+	echo -en "${RESET}$1 => ${YELLOW} ./../push_swap/push_swap $2 => "
 	ARG="$2"
 	RET=`$PUSH_SWAP $ARG 2>&1`
 	if [ "$RET" != "Error" ];
@@ -75,7 +75,7 @@ error()
 
 do_noting()
 {
-	echo -en "${RESET}$1 => ${YELLOW} ./push_swap $2 => "
+	echo -en "${RESET}$1 => ${YELLOW} ./../push_swap/push_swap $2 => "
 	ARG="$2"
 	RET=`$PUSH_SWAP $ARG 2>&1`
 	if [ "$RET" != "" ];
@@ -88,7 +88,7 @@ do_noting()
 
 checker3()
 {
-	echo -en "${RESET}$1 => ${YELLOW} ./push_swap $2 => "
+	echo -en "${RESET}$1 => ${YELLOW} ./../push_swap/push_swap $2 => "
 	ARG="$2"
 	if (( $CKER == 1))
 	then
@@ -105,7 +105,7 @@ checker3()
 
 checker5()
 {
-	echo -en "${RESET}$1 => ${YELLOW} ./push_swap $2 => "
+	echo -en "${RESET}$1 => ${YELLOW} ./../push_swap/push_swap $2 => "
 	ARG="$2"
 	if (( $CKER == 1))
 	then

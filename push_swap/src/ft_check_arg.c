@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 10:10:04 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/07 12:34:26 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:45:32 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,30 @@ int	ft_check_limit(int argc, char **argv)
 	return (0);
 }
 
+static int	ft_check_digit_two(char *p, char **s)
+{
+	while (*p == '-' || *p == '+')
+		p += 1;
+	if (*p == '\0')
+	{
+		free(s);
+		return (1);
+	}
+	while (*p != '\0')
+	{
+		if (!ft_isdigit(*p))
+		{
+			if (*p != ' ')
+			{
+				free(s);
+				return (1);
+			}
+		}
+		p += 1;
+	}
+	return (0);
+}
+
 int	ft_check_digit(int argc, char **argv)
 {
 	int		i;
@@ -75,25 +99,8 @@ int	ft_check_digit(int argc, char **argv)
 		p = s[0];
 		while (s[j] != NULL)
 		{
-			while (*p == '-' || *p == '+')
-					p += 1;
-			if (*p == '\0')
-			{
-				free(s);
+			if (ft_check_digit_two(p, s))
 				return (1);
-			}
-			while (*p != '\0')
-			{
-				if (!ft_isdigit(*p))
-				{
-					if (*p != ' ')
-					{
-						free(s);
-						return (1);
-					}
-				}
-				p += 1;
-			}
 			p = s[++j];
 		}
 		free(s);

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:35:25 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 17:12:31 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:49:31 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,31 @@ static void	ft_copy_cost(t_cost *min, t_cost *c)
 	min->total = c->total;
 }
 
+static void	ft_find_cost(t_pila *a, t_pila *b, t_cost *c)
+{
+	int		i;
+	t_cost	*min;
+
+	i = 0;
+	min = ft_ini_cost();
+	while (i < b->len)
+	{
+		ft_cost(a, b, i, c);
+		if (c->total == 0)
+			break ;
+		if (c->total < min->total || i == 0)
+			ft_copy_cost(min, c);
+		i++;
+	}
+	ft_optimizer(min);
+	ft_run(min, a, b);
+	free(min);
+}
+
 void	ft_order(t_pila *a, t_pila *b)
 {
 	int		i;
 	t_cost	*c;
-	t_cost	*min;
 
 	if (ft_order_start(a))
 		return ;
@@ -77,20 +97,7 @@ void	ft_order(t_pila *a, t_pila *b)
 	c = ft_ini_cost();
 	while (b->len > 0)
 	{
-		i = 0;
-		min = ft_ini_cost();
-		while (i < b->len)
-		{
-			ft_cost(a, b, i, c);
-			if (c->total == 0)
-				break ;
-			if (c->total < min->total || i == 0)
-				ft_copy_cost(min, c);
-			i++;
-		}
-		ft_optimizer(min);
-		ft_run(min, a, b);
-		free(min);
+		ft_find_cost(a, b, c);
 	}
 	free(c);
 	ft_order_end(a);

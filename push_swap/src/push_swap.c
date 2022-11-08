@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:47:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 15:36:10 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:40:14 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,6 @@ static void	ft_free(t_pila *a, t_pila *b)
 	free(b);
 	b = NULL;
 }
-
-/*static void	ft_print(t_pila *a, t_pila *b)
-{
-	ft_printf("A: ");
-	for (int i = 0; i < a->len; i++)
-		ft_printf("%i ", a->p[i]);
-	ft_printf("\nB: ");
-	for (int i = 0; i < b->len; i++)
-		ft_printf("%i ", b->p[i]);
-	ft_printf("\n");
-}*/
 
 int	main(int argc, char **argv)
 {
@@ -58,7 +47,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_logic(a, b);
-	//ft_print(a, b);
 	ft_free(a, b);
 	return (0);
 }
