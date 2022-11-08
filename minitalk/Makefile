@@ -6,36 +6,50 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 20:35:21 by atalaver          #+#    #+#              #
-#    Updated: 2022/11/08 09:57:21 by atalaver         ###   ########.fr        #
+#    Updated: 2022/11/08 18:53:57 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME:=paco
 LIBFT = libft/libft.a
+SRC:=ft_client.c \
+	 ft_server.c
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+COMPILED_OBJS=$(shell find . -name '*.o')
+OBJ=$(SRC:.c=.o)
+IFLAGS=-I./libft/include -I./include
+LFLAGS=-L./libft
+LIBS=-lft
+CFLAGS=-Wall -Wextra -Werror
+CC=gcc
 
-all: server client
+all: $(NAME)
 
-bonus: server client
+$(NAME): server client
 
-server: $(LIBFT)
-	$(CC) $(CFLAGS) -o server ft_server.c $(LIBFT)
+server: $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(LFLAGS) ft_server.o -o server $(LIBS)
 
-client: $(LIBFT)
-	$(CC) $(CFLAGS) -o client ft_client.c $(LIBFT)
+client: $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(LFLAGS) ft_client.o -o client $(LIBS)
+
+%.o:%.c
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(LIBFT):
-	make -C libft bonus
+	$(MAKE) -C ./libft
+
+bonus: $(LIBFT) server client
 
 clean:
-	rm -f $(OBJECTS)
-	$(MAKE) -C libft clean
-	
+	$(MAKE) clean -C ./libft
+	rm -rf $(COMPILED_OBJS)
+
 fclean: clean
-	rm -f server client
-	$(MAKE) -C libft fclean
+	$(MAKE) fclean -C ./libft
+	rm -rf client
+	rm -rf server
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
