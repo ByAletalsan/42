@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 12:21:18 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 12:52:48 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:39:13 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,6 @@ void	ft_logic(t_pila *a, t_pila *b)
 		ft_order_four(a, b);
 	if (a->len == 5)
 		ft_order_five(a, b);
+	if (a->len > 5)
+		ft_order(a, b);
 }

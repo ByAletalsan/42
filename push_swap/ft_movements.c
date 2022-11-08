@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:23:48 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/07 13:43:03 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:57:55 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,28 @@ void	ft_push(t_pila *dest, t_pila *ori)
 		i++;
 	}
 	ft_printf("p%c\n", dest->c);
+}
+
+void	ft_rotate_both(t_pila *a, t_pila *b)
+{
+	int	aux;
+	int	i;
+
+	i = 0;
+	aux = a->p[0];
+	while (i < a->len - 1)
+	{
+		a->p[i] = a->p[i + 1];
+		i++;
+	}
+	a->p[a->len - 1] = aux;
+	i = 0;
+	aux = b->p[0];
+	while (i < b->len - 1)
+	{
+		b->p[i] = b->p[i + 1];
+		i++;
+	}
+	b->p[b->len - 1] = aux;
+	ft_printf("rr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 12:55:19 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:12:49 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,24 @@ typedef struct pila
 	int		len;
 }	t_pila;
 
+typedef struct cost
+{
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int	total;
+}	t_cost;
+
 void	ft_logic(t_pila *a, t_pila *b);
 void	ft_order_two(t_pila *a);
 void	ft_order_three(t_pila *a);
 void	ft_order_four(t_pila *a, t_pila *b);
 void	ft_order_five(t_pila *a, t_pila *b);
+void	ft_order(t_pila *a, t_pila *b);
+int		ft_order_start(t_pila *a);
 int		ft_find_low(t_pila *a);
 int		ft_n_rotate(t_pila *a, int n);
 int		ft_n_rev_rotate(t_pila *a, int n);
@@ -40,11 +53,15 @@ int		ft_check_limit(int argc, char **argv);
 int		ft_check_rep(t_pila *a);
 t_pila	*ft_fill(int len, char **argv, char c);
 long	ft_atol(char *str);
+t_cost	*ft_ini_cost(void);
+void	ft_cost(t_pila *a, t_pila *b, int i, t_cost *p);
 //Movements
 void	ft_rotate(t_pila *p);
 void	ft_rev_rotate(t_pila *p);
 void	ft_swap(t_pila *p);
 void	ft_push(t_pila *dest, t_pila *ori);
+void	ft_rotate_both(t_pila *a, t_pila *b);
+void	ft_rev_rotate_both(t_pila *a, t_pila *b);
 //Libft
 int		ft_printf(char const *s, ...);
 void	*ft_calloc(size_t nmemb, size_t size);
