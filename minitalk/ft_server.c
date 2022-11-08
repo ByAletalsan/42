@@ -6,11 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:36:24 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/01 20:28:52 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/06 14:43:02 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_server.h"
+#include "ft_make.h"
 
 //Variable global par almacenar los datos que no se pueden en la funcion
 //No hace falta esta variable global si se ponen las variables como static
@@ -56,7 +56,7 @@ int	main(void)
 	sa.sa_handler = SIG_DFL;
 	sa.sa_sigaction = ft_get_char;
 	sigemptyset(&sa.sa_mask);
-	sa.sa_flags = SA_SIGINFO;
+	sa.sa_flags = SA_SIGINFO | SA_NODEFER | SA_RESTART;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	signal(SIGINT, ft_exit);

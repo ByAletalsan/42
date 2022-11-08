@@ -6,11 +6,14 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:04:06 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/01 19:29:13 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:01:18 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_client.h"
+#include "ft_make.h"
+
+//Para checkear si hemos recibido la señal
+int	g_check;
 
 /*
 Vamos repasando bit a bit si es 1 o 0. 0 -> SIGUSR1 ; 1 -> SIGUSR2;
@@ -30,7 +33,9 @@ static void	ft_send_char(char c, pid_t pid)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		pause();
+		while (!g_check)
+			usleep(1);
+		g_check = 0;
 		bit++;
 	}
 }
@@ -68,12 +73,14 @@ static int	ft_check_arg(int argc, char **argv)
 static void	ft_handler(int n)
 {
 	(void)n;
+	g_check = 1;
 }
 
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
 
+	g_check = 0;
 	signal(SIGUSR1, ft_handler);
 	if (!ft_check_arg(argc, argv))
 	{
