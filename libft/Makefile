@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 14:43:01 by atalaver          #+#    #+#              #
-#    Updated: 2022/11/08 18:10:30 by atalaver         ###   ########.fr        #
+#    Updated: 2022/10/27 11:36:54 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,25 +35,21 @@ ft_print_memory.c ft_print_string.c ft_print_uint.c ft_printf.c\
 ft_struct_bonus.c
 PRINTFOBJS = ${PRINTFSRC:.c=.o}
 
-GET_NEXT_LINE = get_next_line/get_next_line_bonus.c\
-get_next_line/get_next_line_utils_bonus.c
-GET_NEXT_LINE_OBJS = ${GET_NEXT_LINE:.c=.o}
-
 INCLUDE = libft.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(PRINTFOBJS) $(GET_NEXT_LINE_OBJS) $(INCLUDE)
-	$(LIB) $(NAME) $(OBJ) $(PRINTFOBJS) $(GET_NEXT_LINE_OBJS)
+$(NAME): $(OBJ) $(PRINTFOBJS) $(INCLUDE)
+	$(LIB) $(NAME) $(OBJ) $(PRINTFOBJS)
 
-bonus: $(OBJ) $(BONUSOBJ) $(PRINTFOBJS) $(GET_NEXT_LINE_OBJS) $(INCLUDE)
-	$(LIB) $(NAME) $(BONUSOBJ) $(OBJ) $(PRINTFOBJS) $(GET_NEXT_LINE_OBJS)
+bonus: $(OBJ) $(BONUSOBJ) $(PRINTFOBJS) $(INCLUDE)
+	$(LIB) $(NAME) $(BONUSOBJ) $(OBJ) $(PRINTFOBJS)
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) $(OBJ) $(BONUSOBJ) $(PRINTFOBJS) $(GET_NEXT_LINE_OBJS)
+	$(RM) $(OBJ) $(BONUSOBJ) $(PRINTFOBJS)
 
 fclean: clean
 	$(RM) $(NAME)
