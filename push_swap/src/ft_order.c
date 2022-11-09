@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:35:25 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 17:49:31 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:47:22 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,11 @@ static void	ft_find_cost(t_pila *a, t_pila *b, t_cost *c)
 
 void	ft_order(t_pila *a, t_pila *b)
 {
-	int		i;
 	t_cost	*c;
 
 	if (ft_order_start(a))
 		return ;
-	i = a->len - 3;
-	while (--i >= 0)
-		ft_push(b, a);
-	ft_order_three(a);
+	ft_push_start(a, b);
 	c = ft_ini_cost();
 	while (b->len > 0)
 	{

@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 20:35:21 by atalaver          #+#    #+#              #
-#    Updated: 2022/11/09 12:17:47 by atalaver         ###   ########.fr        #
+#    Updated: 2022/11/09 12:48:36 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC:=src/push_swap.c \
 	 src/ft_order_to_five.c \
 	 src/ft_movements.c \
 	 src/ft_logic.c \
-	 src/ft_check_arg.c
+	 src/ft_check_arg.c \
+	 src/ft_push_start.c
 
 COMPILED_OBJS=$(shell find . -name '*.o')
 OBJ=$(SRC:.c=.o)

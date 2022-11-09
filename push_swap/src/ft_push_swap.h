@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 17:54:02 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:46:53 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_order_five(t_pila *a, t_pila *b);
 void	ft_order(t_pila *a, t_pila *b);
 int		ft_order_start(t_pila *a);
 int		ft_find_low(t_pila *a);
+void	ft_push_start(t_pila *a, t_pila *b);
 int		ft_n_rotate(t_pila *a, int n);
 int		ft_n_rev_rotate(t_pila *a, int n);
 void	ft_order_end(t_pila *a);
