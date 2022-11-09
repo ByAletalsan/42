@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:53 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 12:55:01 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:06:43 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	ft_find_low_of_top(t_pila *a, int n)
 	int	i;
 	int	j;
 	int	low;
-	int	n_low;
 
 	j = 0;
 	while (a->p[j] < n)
@@ -91,7 +90,6 @@ int	ft_find_low_of_top(t_pila *a, int n)
 		return (a->len - 1);
 	low = a->p[j];
 	i = j;
-	n_low = n;
 	while (j < a->len)
 	{
 		if (a->p[j] < low && a->p[j] > n)
