@@ -6,41 +6,44 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:56:56 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 19:27:08 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:54:05 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker_bonus.h"
 
-void	ft_logic_checker(t_pila *a, t_pila *b)
+int	ft_logic_checker(t_pila *a, t_pila *b)
 {
 	char	*s;
 
 	s = get_next_line(0);
 	while (s)
 	{
-		if (ft_strncmp(s, "sa", 2))
+		if (!ft_strncmp(s, "sa\n", 3))
 			ft_swap_bonus(a);
-		if (ft_strncmp(s, "sb", 2))
+		else if (!ft_strncmp(s, "sb\n", 3))
 			ft_swap_bonus(b);
-		if (ft_strncmp(s, "ra", 2))
+		else if (!ft_strncmp(s, "ra\n", 3))
 			ft_rotate_bonus(a);
-		if (ft_strncmp(s, "rb", 2))
+		else if (!ft_strncmp(s, "rb\n", 3))
 			ft_rotate_bonus(b);
-		if (ft_strncmp(s, "rra", 3))
+		else if (!ft_strncmp(s, "rra\n", 4))
 			ft_rev_rotate_bonus(a);
-		if (ft_strncmp(s, "rrb", 3))
+		else if (!ft_strncmp(s, "rrb\n", 4))
 			ft_rev_rotate_bonus(b);
-		if (ft_strncmp(s, "rr", 2))
+		else if (!ft_strncmp(s, "rr\n", 3))
 			ft_rotate_both_bonus(a, b);
-		if (ft_strncmp(s, "rrr", 3))
+		else if (!ft_strncmp(s, "rrr\n", 4))
 			ft_rev_rotate_both_bonus(a, b);
-		if (ft_strncmp(s, "pa", 2))
+		else if (!ft_strncmp(s, "pa\n", 3))
 			ft_push_bonus(a, b);
-		if (ft_strncmp(s, "pb", 2))
+		else if (!ft_strncmp(s, "pb\n", 3))
 			ft_push_bonus(b, a);
+		else
+			return (1);
 		s = get_next_line(0);
 	}
+	return (0);
 }
 
 void	ft_check_order(t_pila *a, t_pila *b)

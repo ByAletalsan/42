@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:53 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 18:18:36 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:02:38 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_BONUS_H
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFFER_SIZE 1024
 
 //Parte principal
 char	*get_next_line(int fd);

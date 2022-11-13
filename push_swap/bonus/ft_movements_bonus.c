@@ -6,13 +6,13 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:23:48 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 19:29:28 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:17:08 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker_bonus.h"
 
-void	ft_rotate(t_pila *p)
+void	ft_rotate_bonus(t_pila *p)
 {
 	int	aux;
 	int	i;
@@ -27,7 +27,7 @@ void	ft_rotate(t_pila *p)
 	p->p[p->len - 1] = aux;
 }
 
-void	ft_rev_rotate(t_pila *p)
+void	ft_rev_rotate_bonus(t_pila *p)
 {
 	int	aux;
 	int	i;
@@ -42,7 +42,7 @@ void	ft_rev_rotate(t_pila *p)
 	p->p[0] = aux;
 }
 
-void	ft_swap(t_pila *p)
+void	ft_swap_bonus(t_pila *p)
 {
 	int	aux;
 
@@ -51,7 +51,7 @@ void	ft_swap(t_pila *p)
 	p->p[1] = aux;
 }
 
-void	ft_push(t_pila *dest, t_pila *ori)
+void	ft_push_bonus(t_pila *dest, t_pila *ori)
 {
 	int	i;
 
@@ -72,7 +72,7 @@ void	ft_push(t_pila *dest, t_pila *ori)
 	}
 }
 
-void	ft_rotate_both(t_pila *a, t_pila *b)
+void	ft_rotate_both_bonus(t_pila *a, t_pila *b)
 {
 	int	aux;
 	int	i;

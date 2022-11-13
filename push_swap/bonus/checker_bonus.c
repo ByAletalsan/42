@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:37:26 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 19:13:00 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:45:23 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 static void	ft_free(t_pila *a, t_pila *b)
 {
-	free(a->p);
-	a->p = NULL;
 	free(a);
 	a = NULL;
-	free(b->p);
-	b->p = NULL;
 	free(b);
 	b = NULL;
 }
@@ -46,7 +42,11 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", STDERR);
 		return (1);
 	}
-	ft_logic_checker(a, b);
+	if (ft_logic_checker(a, b))
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
 	ft_check_order(a, b);
 	ft_free(a, b);
 	return (0);

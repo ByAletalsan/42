@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:29:28 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 19:27:27 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:44:54 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct pila
 }	t_pila;
 
 //Logic
-void	ft_logic_checker(t_pila *a, t_pila *b);
+int		ft_logic_checker(t_pila *a, t_pila *b);
 void	ft_check_order(t_pila *a, t_pila *b);
 //Check and utils
 int		ft_check_digit(int argc, char **argv);
