@@ -6,11 +6,12 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 20:35:21 by atalaver          #+#    #+#              #
-#    Updated: 2022/11/13 12:38:52 by atalaver         ###   ########.fr        #
+#    Updated: 2022/11/13 16:03:22 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME:=push_swap
+CHECK:=checker
 LIBFT = libft/libft.a
 MAIN:=src/push_swap.c
 SRC:=src/ft_utils.c \
@@ -49,7 +50,9 @@ $(NAME): $(LIBFT) $(OBJ) $(MAIN)
 %.o:%.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
-bonus: $(NAME) $(OBJBONUS) $(OBJNEXTLINE)
+bonus: $(NAME) $(CHECK)
+
+$(CHECK): $(OBJBONUS) $(OBJNEXTLINE)
 	$(CC) $(CFLAGS) $(LFLAGS) $(OBJ) $(OBJBONUS) $(OBJNEXTLINE) -o checker $(LIBS)
 
 $(LIBFT):

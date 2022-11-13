@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:37:26 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/13 12:45:23 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:09:18 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,27 @@
 
 static void	ft_free(t_pila *a, t_pila *b)
 {
+	free(a->p);
+	a->p = NULL;
 	free(a);
 	a = NULL;
+	free(b->p);
+	b->p = NULL;
 	free(b);
 	b = NULL;
+}
+
+static void	ft_run(t_pila *a, t_pila *b)
+{
+	if (ft_logic_checker(a, b))
+	{
+		ft_putstr_fd("Error\n", STDERR);
+		ft_free(a, b);
+		return ;
+	}
+	ft_check_order(a, b);
+	ft_free(a, b);
+	return ;
 }
 
 int	main(int argc, char **argv)
@@ -35,19 +52,13 @@ int	main(int argc, char **argv)
 	a = ft_fill(argc, argv, 'a');
 	b = ft_fill(argc, argv, 'b');
 	if (!a || !b)
-		return (1);
+		return (ft_free(a, b), 1);
 	b->len = 0;
 	if (ft_check_rep(a))
 	{
 		ft_putstr_fd("Error\n", STDERR);
-		return (1);
+		return (ft_free(a, b), 1);
 	}
-	if (ft_logic_checker(a, b))
-	{
-		ft_printf("Error\n");
-		return (0);
-	}
-	ft_check_order(a, b);
-	ft_free(a, b);
+	ft_run(a, b);
 	return (0);
 }

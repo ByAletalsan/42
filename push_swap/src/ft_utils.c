@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:53 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/09 12:06:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:50:49 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	ft_cont_num(int len, char **argv)
 			l++;
 			j++;
 		}
-		free(s);
+		ft_free_split(s);
 		i++;
 	}
 	return (l);
@@ -123,7 +123,7 @@ t_pila	*ft_fill(int len, char **argv, char c)
 		s = ft_split((const char *)argv[i], ' ');
 		while (s[j] != NULL)
 			p->p[w++] = ft_atoi(s[j++]);
-		free(s);
+		ft_free_split(s);
 		i++;
 	}
 	p->c = c;

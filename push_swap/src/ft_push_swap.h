@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:32:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/09 12:46:53 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:49:40 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		ft_find_indice(t_pila *a, int n);
 int		ft_check_digit(int argc, char **argv);
 int		ft_check_limit(int argc, char **argv);
 int		ft_check_rep(t_pila *a);
+void	ft_free_split(char **s);
 t_pila	*ft_fill(int len, char **argv, char c);
 long	ft_atol(char *str);
 t_cost	*ft_ini_cost(void);

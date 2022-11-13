@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 08:47:47 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 17:40:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:36:05 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	main(int argc, char **argv)
 	a = ft_fill(argc, argv, 'a');
 	b = ft_fill(argc, argv, 'b');
 	if (!a || !b)
-		return (1);
+		return (ft_free(a, b), 1);
 	b->len = 0;
 	if (ft_check_rep(a))
 	{
 		ft_printf("Error\n");
-		return (1);
+		return (ft_free(a, b), 1);
 	}
 	ft_logic(a, b);
 	ft_free(a, b);
