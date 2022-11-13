@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 09:10:45 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/08 18:11:44 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:47:54 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ static char	*ft_remove_line(char *str)
 	while (str[i] != '\0')
 		r[j++] = str[i++];
 	free(str);
+	if (r[0] == '\0')
+	{
+		free(r);
+		return (NULL);
+	}
 	return (r);
 }
 
