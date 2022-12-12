@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:26:12 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/22 13:17:23 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/11/23 12:40:09 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	char	*map;
+	t_mapa	map;
+	t_vars	vars;
 
 	if (argc != 2)
 	{
@@ -28,13 +29,17 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		exit(1);
 	}
-	ft_printf("%s\n", map);
-	if (ft_check_map(map))
+	//ft_printf("%s\n", map.mapa);
+	if (ft_check_map(map.mapa))
 	{
 		ft_printf("Error\n");
-		free(map);
+		free(map.mapa);
 		exit(1);
 	}
-	free(map);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, map.width * 64, map.height * 64, "./so_long");
+	ft_render_map(vars, map);
+	mlx_loop(vars.mlx);
+	free(map.mapa);
 	return (0);
 }
