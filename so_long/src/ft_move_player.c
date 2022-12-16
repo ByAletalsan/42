@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:05:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/16 19:23:40 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:35:02 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,17 @@ int	ft_move_right(t_game *game)
 		if (obj_colision && obj_colision->c == 'C')
 		{
 			game->score -= 1;
+			player->x += VEL;
 			ft_printf("Score:%i\n", game->score);
 			ft_rem_obj(game, obj_colision);
+		}
+		else if (obj_colision && obj_colision->c == 'E')
+		{
+			if (game->score <= 0)
+			{
+				mlx_destroy_window(game->vars.mlx, game->vars.win);
+				exit(1);
+			}
 		}
 	}
 	return (0);
@@ -93,8 +102,17 @@ int	ft_move_left(t_game *game)
 		if (obj_colision && obj_colision->c == 'C')
 		{
 			game->score -= 1;
+			player->x -= VEL;
 			ft_printf("Score:%i\n", game->score);
 			ft_rem_obj(game, obj_colision);
+		}
+		else if (obj_colision && obj_colision->c == 'E')
+		{
+			if (game->score <= 0)
+			{
+				mlx_destroy_window(game->vars.mlx, game->vars.win);
+				exit(1);
+			}
 		}
 	}
 	return (0);
@@ -114,8 +132,17 @@ int	ft_move_top(t_game *game)
 		if (obj_colision && obj_colision->c == 'C')
 		{
 			game->score -= 1;
+			player->y -= VEL;
 			ft_printf("Score:%i\n", game->score);
 			ft_rem_obj(game, obj_colision);
+		}
+		else if (obj_colision && obj_colision->c == 'E')
+		{
+			if (game->score <= 0)
+			{
+				mlx_destroy_window(game->vars.mlx, game->vars.win);
+				exit(1);
+			}
 		}
 	}
 	return (0);
@@ -135,8 +162,17 @@ int	ft_move_down(t_game *game)
 		if (obj_colision && obj_colision->c == 'C')
 		{
 			game->score -= 1;
+			player->y += VEL;
 			ft_printf("Score:%i\n", game->score);
 			ft_rem_obj(game, obj_colision);
+		}
+		else if (obj_colision && obj_colision->c == 'E')
+		{
+			if (game->score <= 0)
+			{
+				mlx_destroy_window(game->vars.mlx, game->vars.win);
+				exit(1);
+			}
 		}
 	}
 	return (0);

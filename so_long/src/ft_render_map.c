@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 09:40:13 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/16 19:21:52 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:58:14 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,6 @@ void	ft_render_map(t_game *game)
 {
 	ft_print_border(game);
 	ft_print_obj(game);
+	mlx_string_put(game->vars.mlx, game->vars.win, 5, 15, 0x00000000,
+		ft_strjoin("Score: ", ft_itoa(game->score)));
 }

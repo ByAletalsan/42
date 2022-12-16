@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:26:12 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/16 19:25:21 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/16 21:26:51 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ int	key_hook(int keycode, t_game *game)
 		if (ft_move_right(game))
 			exit(1);
 	}
-	else if (keycode == 97)
+	if (keycode == 97)
 	{
 		if (ft_move_left(game))
 			exit(1);
 	}
-	else if (keycode == 119)
+	if (keycode == 119)
 	{
 		if (ft_move_top(game))
 			exit(1);
 	}
-	else if (keycode == 115)
+	if (keycode == 115)
 	{
 		if (ft_move_down(game))
 			exit(1);
 	}
-	else if (keycode == 65307)
+	if (keycode == 65307)
 	{
 		ft_printf("Salimos!\n");
 		mlx_destroy_window(game->vars.mlx, game->vars.win);
@@ -43,15 +43,15 @@ int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
+//14.000 fps / 120 fps = 116
 int	animation(t_game *game)
 {
-	ft_render_map(game);
 	game->frame += 1;
-	if (game->frame == 1200)
-	{
-		//mlx_clear_window(game->vars.mlx, game->vars.win);
+	//ft_printf("Frame:%i\n", game->frame);
+	if (game->frame % 116 == 0)
+		ft_render_map(game);
+	if (game->frame == 14000)
 		game->frame = 0;
-	}
 	return (0);
 }
 
