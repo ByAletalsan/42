@@ -6,17 +6,20 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:27:08 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/23 12:20:02 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:14:55 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "mlx.h"
+# include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+
+# define VEL 8
 
 typedef struct s_vars
 {
@@ -44,19 +47,43 @@ typedef struct sprites
 	t_img	wall;
 	t_img	door[4]; //marco, fondo, puerta cerrada, puerta abierta
 	t_img	chest;
-	t_img	player; //21x50
+	t_img	player;
 }	t_sprites;
 
+typedef struct obj
+{
+	char	c;
+	int		x;
+	int		y;
+}	t_obj;
+
+typedef struct game
+{
+	t_vars		vars;
+	t_mapa		map;
+	t_sprites	spr;
+	t_list		*obj;
+	int			frame;
+	int			score;
+	int			steps;
+}	t_game;
+
+//Collision
+void	ft_rem_obj(t_game *game, t_obj *obj);
+//Player
+int		ft_move_right(t_game *game);
+int		ft_move_left(t_game *game);
+int		ft_move_top(t_game *game);
+int		ft_move_down(t_game *game);
 //Map
-t_mapa	ft_read_map(const char	*s);
+void	ft_read_map(const char	*s, t_game *game);
 int		ft_check_map(const char *s);
 int		ft_check_ber(const char *s);
 int		ft_check_limit(const char *s);
-void	ft_render_map(t_vars vars, t_mapa map);
-//Libft
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-int		ft_printf(char const *s, ...);
+void	ft_render_map(t_game *game);
+void	ft_load_sprites(t_game *game);
+void	ft_print_border(t_game *game);
+void	ft_print_obj(t_game *game);
 //GET_NEXT_LINE
 char	*get_next_line(int fd);
 
