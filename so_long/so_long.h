@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:27:08 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/20 19:20:50 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:36:58 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct sprites
 {
 	t_img	floor;
 	t_img	wall;
-	t_img	door[4]; //marco, fondo, puerta cerrada, puerta abierta
+	t_img	door[4];
 	t_img	chest;
 	t_img	player[4];
 }	t_sprites;
@@ -68,25 +68,22 @@ typedef struct game
 	int			steps;
 	int			direction;
 	int			pasos;
+	int			keys[4];
 }	t_game;
 
 //Collision
 void	ft_rem_obj(t_game *game, t_obj *obj);
 //Player
-int		ft_move_right(t_game *game);
-int		ft_move_left(t_game *game);
-int		ft_move_top(t_game *game);
-int		ft_move_down(t_game *game);
+void	ft_move(t_game *game, int x, int y);
 //Map
 void	ft_read_map(const char	*s, t_game *game);
 int		ft_check_map(t_game game);
 int		ft_check_ber(const char *s);
 int		ft_check_limit(t_mapa map);
 void	ft_render_map(t_game *game);
-void	ft_load_sprites(t_game *game);
-void	ft_free_sprites(t_game *game);
-void	ft_print_border(t_game *game);
-void	ft_print_obj(t_game *game);
+void	ft_load(t_game *game);
+int		ft_free_game(t_game *game);
+void	ft_free_obj(t_game *game);
 //GET_NEXT_LINE
 char	*get_next_line(int fd);
 

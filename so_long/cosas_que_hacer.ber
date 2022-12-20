@@ -1,0 +1,36 @@
+Cosas que hacer:
+	1. Mapas validos (Gestionar muchos players, gestionar minimo mapa).
+	2. Intentar gestionar que se encuentren los sprites y se añadan correctamente.
+	3. Intentar renderizar solo el player y el fonde de alrededor hacia donde va.
+		IDEAS: hacer funcion que segun x e y renderice el primer multiplo de 64 que
+		encuentre a la derecha e izquierda del player y el propio player.
+		No hace falta ver si es un cofre puesto que se elimina nada más moverse, por
+		lo que sería renderizar solo suelo y player.
+		Utilizar una variable MOVIENDO para indicar mientras se mueve y asi no renderizar
+		cuando este quieto.
+	4. Imprimir en pantalla mensajes (ganar, salir...).
+
+	BONUS:
+		1. Poner marcador en pantalla.
+		2. Poner enemigo.
+			1. Gestionar su uso en mapa.
+			2. Gestionar su uso como objeto.
+				IDEAS: poner lo del direccion en los propios objetos para que se
+				controlen independientes.
+			3. Hacer su animación de parado.
+				IDEAS: mismo sistema de renderizado que el player.
+				Que reproduzca animacion quieto, se mueva 1 casilla y repita.
+			4. Hacer su movimiento.
+		3. Gestionar muerte con enemigo.
+
+
+Texto pantala:
+	/*char	*text;
+	char	*s;
+
+	s = ft_itoa(game->steps);
+	text = ft_strjoin("Steps: ", s);
+	mlx_string_put(game->vars.mlx, game->vars.win, 5, 15, 0x00000000,
+		text);
+	free(text);
+	free(s);*/

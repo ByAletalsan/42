@@ -6,13 +6,13 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 09:40:13 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/19 19:51:21 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:38:05 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_print_border(t_game *game)
+static void	ft_print_border(t_game *game)
 {
 	int	i;
 	int	j;
@@ -41,7 +41,21 @@ void	ft_print_border(t_game *game)
 	}
 }
 
-void	ft_print_obj(t_game *game)
+static void	ft_print_door(t_game *game, t_obj *obj)
+{
+	mlx_put_image_to_window(game->vars.mlx, game->vars.win,
+		game->spr.door[1].img, obj->x, obj->y);
+	mlx_put_image_to_window(game->vars.mlx, game->vars.win,
+		game->spr.door[0].img, obj->x, obj->y);
+	if (game->score)
+		mlx_put_image_to_window(game->vars.mlx, game->vars.win,
+			game->spr.door[2].img, obj->x, obj->y);
+	else
+		mlx_put_image_to_window(game->vars.mlx, game->vars.win,
+			game->spr.door[3].img, obj->x, obj->y);
+}
+
+static void	ft_print_obj(t_game *game)
 {
 	t_list	*o;
 	t_obj	*obj;
@@ -60,18 +74,7 @@ void	ft_print_obj(t_game *game)
 			mlx_put_image_to_window(game->vars.mlx, game->vars.win,
 				game->spr.player[game->direction - 1].img, obj->x, obj->y);
 		else if (obj->c == 'E')
-		{
-			mlx_put_image_to_window(game->vars.mlx, game->vars.win,
-				game->spr.door[1].img, obj->x, obj->y);
-			mlx_put_image_to_window(game->vars.mlx, game->vars.win,
-				game->spr.door[0].img, obj->x, obj->y);
-			if (game->score)
-				mlx_put_image_to_window(game->vars.mlx, game->vars.win,
-					game->spr.door[2].img, obj->x, obj->y);
-			else
-				mlx_put_image_to_window(game->vars.mlx, game->vars.win,
-					game->spr.door[3].img, obj->x, obj->y);
-		}
+			ft_print_door(game, obj);
 		o = o->next;
 	}
 }
@@ -79,15 +82,6 @@ void	ft_print_obj(t_game *game)
 //Renderizamos el mapa con los sprites correspondientes
 void	ft_render_map(t_game *game)
 {
-	char	*text;
-	char	*s;
-
 	ft_print_border(game);
 	ft_print_obj(game);
-	s = ft_itoa(game->steps);
-	text = ft_strjoin("Steps: ", s);
-	mlx_string_put(game->vars.mlx, game->vars.win, 5, 15, 0x00000000,
-		text);
-	free(text);
-	free(s);
 }

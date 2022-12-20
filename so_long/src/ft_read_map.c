@@ -6,38 +6,11 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:06:19 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/20 19:15:05 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:56:03 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-//Cargo los sprites en un struct para tenerlos localizados
-void	ft_load_sprites(t_game *game)
-{
-	game->spr.floor.img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/grass.xpm",
-			&game->spr.floor.width, &game->spr.floor.height);
-	game->spr.wall.img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/wall.xpm",
-			&game->spr.wall.width, &game->spr.wall.height);
-	game->spr.door[0].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/door.xpm",
-			&game->spr.door[0].width, &game->spr.door[0].height);
-	game->spr.door[1].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/floor.xpm",
-			&game->spr.door[1].width, &game->spr.door[1].height);
-	game->spr.door[2].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/door_close.xpm",
-			&game->spr.door[1].width, &game->spr.door[1].height);
-	game->spr.door[3].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/door_open.xpm",
-			&game->spr.door[2].width, &game->spr.door[2].height);
-	game->spr.chest.img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/chest_close.xpm",
-			&game->spr.chest.width, &game->spr.chest.height);
-	game->spr.player[0].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_left.xpm",
-			&game->spr.player[0].width, &game->spr.player[0].height);
-	game->spr.player[1].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_top.xpm",
-			&game->spr.player[1].width, &game->spr.player[1].height);
-	game->spr.player[2].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_right.xpm",
-			&game->spr.player[0].width, &game->spr.player[0].height);
-	game->spr.player[3].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_down.xpm",
-			&game->spr.player[0].width, &game->spr.player[0].height);
-}
 
 //Calculamos el tamano del mapa
 static void	ft_size_map(t_mapa *map)
@@ -69,16 +42,20 @@ static void	ft_size_map(t_mapa *map)
 	map->height = height;
 }
 
-static t_obj	*ft_create_obj(int _x, int _y, char _c)
+static t_obj	*ft_create_obj(int _x, int _y, t_game *game)
 {
 	t_obj	*o;
+	char	c;
 
+	c = game->map.mapa[(_y * (game->map.width + 1)) + _x];
 	o = (t_obj *)malloc(sizeof(t_obj));
 	if (!o)
 		return (NULL);
-	o->x = _x;
-	o->y = _y;
-	o->c = _c;
+	o->x = _x * 64;
+	o->y = _y * 64;
+	o->c = c;
+	if (c == 'C')
+		game->score += 1;
 	return (o);
 }
 
@@ -86,14 +63,10 @@ static void	ft_fill_obj(t_game *game)
 {
 	int		i;
 	int		j;
-	t_obj	*o;
 	t_list	*l;
 
 	i = 1;
 	game->score = 0;
-	game->frame = 0;
-	game->steps = 0;
-	game->direction = 4;
 	while (i < game->map.height - 1)
 	{
 		j = 1;
@@ -101,18 +74,11 @@ static void	ft_fill_obj(t_game *game)
 		{
 			if (game->map.mapa[(i * (game->map.width + 1)) + j] != '0')
 			{
-				o = ft_create_obj(j, i,
-						game->map.mapa[(i * (game->map.width + 1)) + j]);
-				l = ft_lstnew(o);
+				l = ft_lstnew(ft_create_obj(j, i, game));
 				if (!ft_lstsize(game->obj))
-					
 					game->obj = l;
 				else
 					ft_lstadd_back(&game->obj, l);
-				o->x = j * 64;
-				o->y = i * 64;
-				if (o->c == 'C')
-					game->score += 1;
 			}
 			j++;
 		}
