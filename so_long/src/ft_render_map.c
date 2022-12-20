@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 09:40:13 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/16 20:58:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/19 19:51:21 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_print_obj(t_game *game)
 				game->spr.chest.img, obj->x, obj->y);
 		else if (obj->c == 'P')
 			mlx_put_image_to_window(game->vars.mlx, game->vars.win,
-				game->spr.player.img, obj->x, obj->y);
+				game->spr.player[game->direction - 1].img, obj->x, obj->y);
 		else if (obj->c == 'E')
 		{
 			mlx_put_image_to_window(game->vars.mlx, game->vars.win,
@@ -79,8 +79,15 @@ void	ft_print_obj(t_game *game)
 //Renderizamos el mapa con los sprites correspondientes
 void	ft_render_map(t_game *game)
 {
+	char	*text;
+	char	*s;
+
 	ft_print_border(game);
 	ft_print_obj(game);
+	s = ft_itoa(game->steps);
+	text = ft_strjoin("Steps: ", s);
 	mlx_string_put(game->vars.mlx, game->vars.win, 5, 15, 0x00000000,
-		ft_strjoin("Score: ", ft_itoa(game->score)));
+		text);
+	free(text);
+	free(s);
 }

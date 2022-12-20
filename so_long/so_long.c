@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:26:12 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/16 21:26:51 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:19:04 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,54 @@ int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == 100)
 	{
-		if (ft_move_right(game))
-			exit(1);
+		if (!game->pasos) //Derecha
+		{
+			if (game->direction != 3)
+				game->direction = 3;
+			else
+				game->pasos += 1;
+		}
 	}
-	if (keycode == 97)
+	else if (keycode == 97) //Izq
 	{
-		if (ft_move_left(game))
-			exit(1);
+		if (!game->pasos)
+		{
+			if (game->direction != 1)
+				game->direction = 1;
+			else
+				game->pasos += 1;
+		}
 	}
-	if (keycode == 119)
+	else if (keycode == 119) //Arri
 	{
-		if (ft_move_top(game))
-			exit(1);
+		if (!game->pasos)
+		{
+			if (game->direction != 2)
+				game->direction = 2;
+			else
+				game->pasos += 1;
+		}
 	}
-	if (keycode == 115)
+	else if (keycode == 115) //Abaj
 	{
-		if (ft_move_down(game))
-			exit(1);
+		if (!game->pasos)
+		{
+			if (game->direction != 4)
+				game->direction = 4;
+			else
+				game->pasos += 1;
+		}
 	}
-	if (keycode == 65307)
+	else if (keycode == 65307)
 	{
 		ft_printf("Salimos!\n");
+		free(game->map.mapa);
+		ft_free_sprites(game);
+		mlx_clear_window(game->vars.mlx, game->vars.win);
 		mlx_destroy_window(game->vars.mlx, game->vars.win);
-		exit(1);
+		mlx_destroy_display(game->vars.mlx);
+		free(game->vars.mlx);
+		exit(0);
 	}
 	return (0);
 }
@@ -47,9 +72,24 @@ int	key_hook(int keycode, t_game *game)
 int	animation(t_game *game)
 {
 	game->frame += 1;
-	//ft_printf("Frame:%i\n", game->frame);
 	if (game->frame % 116 == 0)
+	{
 		ft_render_map(game);
+		if (game->pasos)
+		{
+			if (game->direction == 3)
+				ft_move_right(game);
+			else if (game->direction == 1)
+				ft_move_left(game);
+			else if (game->direction == 2)
+				ft_move_top(game);
+			else if (game->direction == 4)
+				ft_move_down(game);
+			game->pasos += 1;
+			if (game->pasos == 33)
+				game->pasos = 0;
+		}
+	}
 	if (game->frame == 14000)
 		game->frame = 0;
 	return (0);
@@ -71,7 +111,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		exit(1);
 	}
-	if (ft_check_map(game.map.mapa))
+	if (ft_check_map(game))
 	{
 		ft_printf("Error\n");
 		free(game.map.mapa);

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:33:30 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/23 12:40:00 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:19:38 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_check_rectangular(const char *s)
 		len++;
 		i++;
 	}
-	if (len != width)
+	if (len != 0 && len != width)
 		return (1);
 	return (0);
 }
@@ -95,13 +95,13 @@ static int	ft_check_elem(const char *s)
 	return (0);
 }
 
-int	ft_check_map(const char *s)
+int	ft_check_map(t_game game)
 {
-	if (ft_check_rectangular(s))
+	if (ft_check_rectangular(game.map.mapa))
 		return (1);
-	if (ft_check_elem(s))
+	if (ft_check_elem(game.map.mapa))
 		return (1);
-	if (ft_check_limit(s))
+	if (ft_check_limit(game.map))
 		return (1);
 	return (0);
 }

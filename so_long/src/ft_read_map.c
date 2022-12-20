@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:06:19 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/16 19:21:19 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:15:05 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,14 @@ void	ft_load_sprites(t_game *game)
 			&game->spr.door[2].width, &game->spr.door[2].height);
 	game->spr.chest.img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/chest_close.xpm",
 			&game->spr.chest.width, &game->spr.chest.height);
-	game->spr.player.img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player.xpm",
-			&game->spr.player.width, &game->spr.player.height);
+	game->spr.player[0].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_left.xpm",
+			&game->spr.player[0].width, &game->spr.player[0].height);
+	game->spr.player[1].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_top.xpm",
+			&game->spr.player[1].width, &game->spr.player[1].height);
+	game->spr.player[2].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_right.xpm",
+			&game->spr.player[0].width, &game->spr.player[0].height);
+	game->spr.player[3].img = mlx_xpm_file_to_image(game->vars.mlx, "./spr/player/player_down.xpm",
+			&game->spr.player[0].width, &game->spr.player[0].height);
 }
 
 //Calculamos el tamano del mapa
@@ -38,6 +44,7 @@ static void	ft_size_map(t_mapa *map)
 {
 	int	i;
 	int	height;
+	int	count;
 
 	i = 0;
 	height = 0;
@@ -45,13 +52,21 @@ static void	ft_size_map(t_mapa *map)
 		i++;
 	map->width = i;
 	i = 0;
+	count = 0;
 	while (map->mapa[i] != '\0')
 	{
-		if (map->mapa[i] == '\n')
+		if (count && map->mapa[i] == '\n')
+		{
 			height++;
+			count = 0;
+		}
+		else
+			count++;
 		i++;
 	}
-	map->height = height + 1;
+	if (count)
+		height++;
+	map->height = height;
 }
 
 static t_obj	*ft_create_obj(int _x, int _y, char _c)
@@ -78,6 +93,7 @@ static void	ft_fill_obj(t_game *game)
 	game->score = 0;
 	game->frame = 0;
 	game->steps = 0;
+	game->direction = 4;
 	while (i < game->map.height - 1)
 	{
 		j = 1;
@@ -104,6 +120,15 @@ static void	ft_fill_obj(t_game *game)
 	}
 }
 
+static char	*ft_add_and_free(char *str, char *buff)
+{
+	char	*r;
+
+	r = ft_strjoin(str, buff);
+	free(str);
+	return (r);
+}
+
 //Leemos el mapa y lo guardamos con un struct sus datos
 void	ft_read_map(const char	*s, t_game *game)
 {
@@ -116,7 +141,8 @@ void	ft_read_map(const char	*s, t_game *game)
 	game->map.mapa[0] = '\0';
 	while (str)
 	{
-		game->map.mapa = ft_strjoin(game->map.mapa, str);
+		game->map.mapa = ft_add_and_free(game->map.mapa, str);
+		free(str);
 		str = get_next_line(f);
 	}
 	free(str);

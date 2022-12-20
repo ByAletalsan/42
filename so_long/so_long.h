@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:27:08 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/16 19:14:55 by atalaver         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:20:50 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-# define VEL 8
+# define VEL 2
 
 typedef struct s_vars
 {
@@ -47,7 +47,7 @@ typedef struct sprites
 	t_img	wall;
 	t_img	door[4]; //marco, fondo, puerta cerrada, puerta abierta
 	t_img	chest;
-	t_img	player;
+	t_img	player[4];
 }	t_sprites;
 
 typedef struct obj
@@ -66,6 +66,8 @@ typedef struct game
 	int			frame;
 	int			score;
 	int			steps;
+	int			direction;
+	int			pasos;
 }	t_game;
 
 //Collision
@@ -77,11 +79,12 @@ int		ft_move_top(t_game *game);
 int		ft_move_down(t_game *game);
 //Map
 void	ft_read_map(const char	*s, t_game *game);
-int		ft_check_map(const char *s);
+int		ft_check_map(t_game game);
 int		ft_check_ber(const char *s);
-int		ft_check_limit(const char *s);
+int		ft_check_limit(t_mapa map);
 void	ft_render_map(t_game *game);
 void	ft_load_sprites(t_game *game);
+void	ft_free_sprites(t_game *game);
 void	ft_print_border(t_game *game);
 void	ft_print_obj(t_game *game);
 //GET_NEXT_LINE
