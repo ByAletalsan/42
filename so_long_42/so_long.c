@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:26:12 by atalaver          #+#    #+#             */
-/*   Updated: 2023/01/14 11:54:46 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:12:46 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,10 @@ int	main(int argc, char **argv)
 	ft_load(&game);
 	mlx_hook(game.vars.win, 2, (1L << 0), key_hook, &game);
 	mlx_hook(game.vars.win, 3, (1L << 0), key_hook_up, &game);
-	//mlx_hook(game.vars.win, 17, (1L << 0), ft_free_game, &game);
+	mlx_hook(game.vars.win, 17, (1L << 0), ft_free_game, &game);
 	mlx_loop_hook(game.vars.mlx, animation, &game);
 	mlx_loop(game.vars.mlx);
-	mlx_terminate(game.mlx);
+	//mlx_terminate(game.vars.mlx);
+	system("leaks so_long");
 	return (0);
 }

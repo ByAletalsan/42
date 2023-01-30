@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:05:22 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/20 21:44:57 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/01/30 10:30:42 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void	ft_collision(t_obj *obj_colision, t_obj *player,
 		{
 			game->steps += 1;
 			ft_printf("Steps:%i\n", game->steps);
+			ft_printf("WIN!\n");
 			ft_free_game(game);
 		}
 	}

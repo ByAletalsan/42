@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:36:01 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/21 11:15:48 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:24:39 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,5 @@ int	ft_free_game(t_game *game)
 	ft_free_obj(game);
 	mlx_clear_window(game->vars.mlx, game->vars.win);
 	mlx_destroy_window(game->vars.mlx, game->vars.win);
-	free(game->vars.mlx);
 	exit(0);
 }
