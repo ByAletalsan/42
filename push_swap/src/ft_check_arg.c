@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 10:10:04 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/13 16:49:25 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:52:41 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int	ft_check_digit(int argc, char **argv)
 	{
 		j = 0;
 		s = ft_split((const char *)argv[i], ' ');
+		if (!s[0])
+			return (1);
 		p = s[0];
 		while (s[j] != NULL)
 		{
