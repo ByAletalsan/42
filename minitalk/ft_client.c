@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 09:04:06 by atalaver          #+#    #+#             */
-/*   Updated: 2022/11/06 15:01:18 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:35:40 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 	pid_t	pid;
 
 	g_check = 0;
+	signal(SIGUSR1, ft_handler);
 	signal(SIGUSR1, ft_handler);
 	if (!ft_check_arg(argc, argv))
 	{

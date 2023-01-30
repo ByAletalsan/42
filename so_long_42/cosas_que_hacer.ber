@@ -1,0 +1,28 @@
+Cosas que hacer:
+	1. Mapas validos (Gestionar muchos players, gestionar minimo mapa).
+	2. Imprimir en pantalla mensajes (ganar, salir...).
+
+	BONUS:
+		1. Poner marcador en pantalla.
+		2. Poner enemigo.
+			1. Gestionar su uso en mapa.
+			2. Gestionar su uso como objeto.
+				IDEAS: poner lo del direccion en los propios objetos para que se
+				controlen independientes.
+			3. Hacer su animación de parado.
+				IDEAS: mismo sistema de renderizado que el player.
+				Que reproduzca animacion quieto, se mueva 1 casilla y repita.
+			4. Hacer su movimiento.
+		3. Gestionar muerte con enemigo.
+
+
+Texto pantala:
+	/*char	*text;
+	char	*s;
+
+	s = ft_itoa(game->steps);
+	text = ft_strjoin("Steps: ", s);
+	mlx_string_put(game->vars.mlx, game->vars.win, 5, 15, 0x00000000,
+		text);
+	free(text);
+	free(s);*/
