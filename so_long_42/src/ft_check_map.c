@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:33:30 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/20 22:09:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:31:52 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,24 @@ static int	ft_check_rectangular(const char *s)
 
 static int	ft_fill_elem(int *elem, char c)
 {
-	if (c == '1')
+	if (c == 'C')
 		elem[0]++;
-	else if (c == 'C')
-		elem[1]++;
 	else if (c == 'E')
-		elem[2]++;
+		elem[1]++;
 	else if (c == 'P')
-		elem[3]++;
-	else if (c != '\n')
+		elem[2]++;
+	else if (c != '\n' && c != '0' && c != '1')
 		return (1);
 	return (0);
 }
 
 static int	ft_check_elem(const char *s)
 {
-	int	elem[4];
+	int	elem[3];
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 3)
 		elem[i++] = 0;
 	i = 0;
 	while (s[i] != '\0')
@@ -83,23 +81,45 @@ static int	ft_check_elem(const char *s)
 			return (1);
 		i++;
 	}
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < 3)
 	{
-		if (!elem[i])
-			return (1);
-		i++;
+		if (elem[i] != 1)
+		{
+			if (i > 0)
+				return (1);
+			if (i == 0 && elem[i] == 0)
+				return (1);
+		}
 	}
 	return (0);
 }
 
 int	ft_check_map(t_game game)
 {
+	t_obj	*player;
+	char	*map_cp;
+	int		i;
+
+	player = ft_find_player(game.obj);
+	i = 0;
 	if (ft_check_rectangular(game.map.mapa))
-		return (1);
+		return (ft_printf("Error\nMapa no rectangular\n"), 1);
 	if (ft_check_elem(game.map.mapa))
-		return (0);
+		return (ft_printf("Error\nMapa con elementos incorrectos\n"), 1);
 	if (ft_check_limit(game.map))
-		return (1);
+		return (ft_printf("Error\nMapa con diferentes longitudes de linea\n"), 1);
+	map_cp = ft_strdup(game.map.mapa);
+	if (ft_check_ruta(game, player->x / 64, player->y / 64, map_cp))
+		return (ft_printf("Error\nNo existe ruta a puerta\n"), 1);
+	while (i++ < game.score)
+	{
+		free(map_cp);
+		map_cp = NULL;
+		map_cp = ft_strdup(game.map.mapa);
+		if (ft_check_cofres(game, player->x / 64, player->y / 64, map_cp))
+			return (ft_printf("Error\nNo existe ruta a cofre\n"), 1);
+	}
+	free(map_cp);
 	return (0);
 }

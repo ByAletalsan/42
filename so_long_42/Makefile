@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 09:14:31 by atalaver          #+#    #+#              #
-#    Updated: 2022/12/21 12:40:11 by atalaver         ###   ########.fr        #
+#    Updated: 2023/01/30 19:25:52 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC:=so_long.c\
 	 src/ft_move_player.c\
 	 src/ft_utils.c\
 	 src/ft_render_map.c\
-	 src/ft_free.c
+	 src/ft_free.c\
+	 src/ft_check_ruta.c
 OBJ=$(SRC:.c=.o)
 NEXTLINE:=get_next_line/get_next_line_bonus.c \
 		  get_next_line/get_next_line_utils_bonus.c

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:27:08 by atalaver          #+#    #+#             */
-/*   Updated: 2022/12/21 17:37:58 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:50:09 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-# define VEL 4
+# define VEL 8
 
 typedef struct s_vars
 {
@@ -76,11 +76,15 @@ typedef struct game
 void	ft_rem_obj(t_game *game, t_obj *obj);
 //Player
 void	ft_move(t_game *game, int x, int y);
+t_obj	*ft_find_player(t_list *list);
+t_obj	*ft_can_move(t_list *list, int x, int y);
 //Map
 void	ft_read_map(const char	*s, t_game *game);
 int		ft_check_map(t_game game);
 int		ft_check_ber(const char *s);
 int		ft_check_limit(t_mapa map);
+int		ft_check_ruta(t_game game, int x, int y, char *map_cp);
+int		ft_check_cofres(t_game game, int x, int y, char *map_cp);
 void	ft_render_map(t_game *game);
 void	ft_load(t_game *game);
 int		ft_free_game(t_game *game);
@@ -97,5 +101,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+char	*ft_strdup(const char *s);
 
 #endif

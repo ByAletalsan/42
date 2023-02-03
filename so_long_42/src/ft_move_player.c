@@ -6,13 +6,13 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:05:22 by atalaver          #+#    #+#             */
-/*   Updated: 2023/01/30 10:30:42 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:13:25 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static t_obj	*ft_find_player(t_list *list)
+t_obj	*ft_find_player(t_list *list)
 {
 	t_obj	*obj;
 
@@ -26,7 +26,7 @@ static t_obj	*ft_find_player(t_list *list)
 	return (NULL);
 }
 
-static t_obj	*ft_can_move(t_list *list, int x, int y)
+t_obj	*ft_can_move(t_list *list, int x, int y)
 {
 	t_obj	*obj;
 

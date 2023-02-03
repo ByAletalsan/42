@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:26:12 by atalaver          #+#    #+#             */
-/*   Updated: 2023/01/30 16:12:46 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:50:06 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	animation(t_game *game)
 				ft_move(game, 0, 1);
 		}
 		game->pasos += 1;
-		if (game->pasos == 17 && game->move)
+		if (game->pasos == 9 && game->move)
 			game->pasos = 1;
-		if (game->pasos == 17)
+		if (game->pasos == 9)
 			game->pasos = 0;
 	}
 	if (game->frame == 14000)
@@ -98,7 +98,6 @@ static void	ft_map(t_game *game, char *s)
 	}
 	if (ft_check_map(*game))
 	{
-		ft_printf("Error\n");
 		free(game->map.mapa);
 		ft_free_obj(game);
 		exit(1);
@@ -125,7 +124,5 @@ int	main(int argc, char **argv)
 	mlx_hook(game.vars.win, 17, (1L << 0), ft_free_game, &game);
 	mlx_loop_hook(game.vars.mlx, animation, &game);
 	mlx_loop(game.vars.mlx);
-	//mlx_terminate(game.vars.mlx);
-	system("leaks so_long");
 	return (0);
 }
