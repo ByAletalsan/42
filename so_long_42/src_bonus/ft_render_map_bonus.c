@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render_map.c                                    :+:      :+:    :+:   */
+/*   ft_render_map_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 09:40:13 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 16:35:27 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:43:11 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	ft_print_border(t_game *game)
 {
@@ -73,6 +73,9 @@ static void	ft_print_obj(t_game *game)
 		else if (obj->c == 'P')
 			mlx_put_image_to_window(game->vars.mlx, game->vars.win,
 				game->spr.player[game->direction - 1].img, obj->x, obj->y);
+		else if (obj->c == 'X')
+			mlx_put_image_to_window(game->vars.mlx, game->vars.win,
+				game->spr.enemi[game->frame_enemi].img, obj->x, obj->y);
 		else if (obj->c == 'E')
 			ft_print_door(game, obj);
 		o = o->next;
@@ -82,6 +85,12 @@ static void	ft_print_obj(t_game *game)
 //Renderizamos el mapa con los sprites correspondientes
 void	ft_render_map(t_game *game)
 {
+	char	*steps;
+
 	ft_print_border(game);
 	ft_print_obj(game);
+	mlx_string_put(game->vars.mlx, game->vars.win, 20, 20, 0x000000, "Steps: ");
+	steps = ft_itoa(game->steps);
+	mlx_string_put(game->vars.mlx, game->vars.win, 70, 20, 0x000000, steps);
+	free(steps);
 }

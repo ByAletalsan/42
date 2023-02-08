@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_player.c                                   :+:      :+:    :+:   */
+/*   ft_move_player_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:05:22 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 19:57:22 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:46:17 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 t_obj	*ft_find_player(t_list *list)
 {
@@ -71,10 +71,7 @@ static void	ft_collision(t_obj *obj_colision, t_obj *player,
 		player->x += pos[0] * VEL;
 		player->y += pos[1] * VEL;
 		if (player->x % 64 == 0 && player->y % 64 == 0)
-		{
 			game->steps += 1;
-			ft_printf("Steps:%i\n", game->steps);
-		}
 		ft_rem_obj(game, obj_colision);
 	}
 	else if (obj_colision && obj_colision->c == 'E')
@@ -82,10 +79,14 @@ static void	ft_collision(t_obj *obj_colision, t_obj *player,
 		if (game->score <= 0)
 		{
 			game->steps += 1;
-			ft_printf("Steps:%i\n", game->steps);
 			ft_printf("WIN!\n");
 			ft_free_game(game);
 		}
+	}
+	else if (obj_colision && obj_colision->c == 'X')
+	{
+		ft_printf("GAME OVER!\n");
+		ft_free_game(game);
 	}
 }
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 21:16:13 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 16:35:34 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:16:08 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_check_limit(t_mapa map)
 {
@@ -38,31 +38,20 @@ int	ft_check_limit(t_mapa map)
 	return (0);
 }
 
-void	ft_rem_obj(t_game *game, t_obj *obj)
+static void	ft_load_enemi_spr(t_game *game)
 {
-	t_list	*list;
-	t_list	*ant;
-
-	list = game->obj;
-	ant = NULL;
-	while (list)
-	{
-		if (list->content == obj)
-		{
-			if (game->obj == list)
-				game->obj = list->next;
-			else
-			{
-				ant->next = list->next;
-				list->next = NULL;
-			}
-			free(list->content);
-			free(list);
-			break ;
-		}
-		ant = list;
-		list = list->next;
-	}
+	game->spr.enemi[0].img = mlx_xpm_file_to_image(game->vars.mlx,
+			"./spr/enemi/idle1.xpm", &game->spr.enemi[0].width,
+			&game->spr.enemi[0].height);
+	game->spr.enemi[1].img = mlx_xpm_file_to_image(game->vars.mlx,
+			"./spr/enemi/idle2.xpm", &game->spr.enemi[1].width,
+			&game->spr.enemi[1].height);
+	game->spr.enemi[2].img = mlx_xpm_file_to_image(game->vars.mlx,
+			"./spr/enemi/idle3.xpm", &game->spr.enemi[2].width,
+			&game->spr.enemi[2].height);
+	game->spr.enemi[3].img = mlx_xpm_file_to_image(game->vars.mlx,
+			"./spr/enemi/idle4.xpm", &game->spr.enemi[3].width,
+			&game->spr.enemi[3].height);
 }
 
 static void	ft_load_more_sprites(t_game *game)
@@ -108,6 +97,7 @@ void	ft_load(t_game *game)
 {
 	ft_load_sprites(game);
 	ft_load_more_sprites(game);
+	ft_load_enemi_spr(game);
 	game->frame = 0;
 	game->steps = 0;
 	game->direction = 4;
@@ -116,4 +106,5 @@ void	ft_load(t_game *game)
 	game->keys[1] = 13;
 	game->keys[2] = 2;
 	game->keys[3] = 1;
+	game->frame_enemi = 0;
 }

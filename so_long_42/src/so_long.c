@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:26:12 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/03 11:50:06 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:49:27 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,13 @@ int	animation(t_game *game)
 static void	ft_map(t_game *game, char *s)
 {
 	if (!ft_check_ber(s))
-		ft_read_map(s, game);
+	{
+		if (!ft_read_map(s, game))
+		{
+			ft_printf("Error\n");
+			exit(1);
+		}
+	}
 	else
 	{
 		ft_printf("Error\n");

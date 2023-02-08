@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   ft_check_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:33:30 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 16:34:51 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:35:59 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_check_ber(const char *s)
 {
@@ -61,7 +61,7 @@ static int	ft_fill_elem(int *elem, char c)
 		elem[1]++;
 	else if (c == 'P')
 		elem[2]++;
-	else if (c != '\n' && c != '0' && c != '1')
+	else if (c != '\n' && c != '0' && c != '1' && c != 'X')
 		return (1);
 	return (0);
 }

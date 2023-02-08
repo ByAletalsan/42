@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:27:08 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/03 11:50:09 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:38:59 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include "mlx/mlx.h"
-# include "libft/libft.h"
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
+# include "../mlx/mlx.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
 
-# define VEL 8
+# define VEL 4
 
 typedef struct s_vars
 {
@@ -48,6 +48,7 @@ typedef struct sprites
 	t_img	door[4];
 	t_img	chest;
 	t_img	player[4];
+	t_img	enemi[4];
 }	t_sprites;
 
 typedef struct obj
@@ -70,6 +71,7 @@ typedef struct game
 	int			pasos;
 	int			keys[4];
 	int			move;
+	int			frame_enemi;
 }	t_game;
 
 //Collision
@@ -79,7 +81,7 @@ void	ft_move(t_game *game, int x, int y);
 t_obj	*ft_find_player(t_list *list);
 t_obj	*ft_can_move(t_list *list, int x, int y);
 //Map
-void	ft_read_map(const char	*s, t_game *game);
+int		ft_read_map(const char	*s, t_game *game);
 int		ft_check_map(t_game game);
 int		ft_check_ber(const char *s);
 int		ft_check_limit(t_mapa map);

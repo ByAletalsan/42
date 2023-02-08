@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_map.c                                      :+:      :+:    :+:   */
+/*   ft_read_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:06:19 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 19:48:02 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:38:52 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 //Calculamos el tamano del mapa
 static void	ft_size_map(t_mapa *map)
