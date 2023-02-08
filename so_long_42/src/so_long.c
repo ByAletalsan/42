@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:26:12 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 19:49:27 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 21:02:03 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	animation(t_game *game)
 	int	i;
 
 	i = 0;
-	game->frame += 1;
 	ft_render_map(game);
 	if (game->pasos)
 	{
@@ -82,8 +81,6 @@ int	animation(t_game *game)
 		if (game->pasos == 9)
 			game->pasos = 0;
 	}
-	if (game->frame == 14000)
-		game->frame = 0;
 	return (0);
 }
 
@@ -93,13 +90,13 @@ static void	ft_map(t_game *game, char *s)
 	{
 		if (!ft_read_map(s, game))
 		{
-			ft_printf("Error\n");
+			ft_printf("Error\nNo existe el archivo\n");
 			exit(1);
 		}
 	}
 	else
 	{
-		ft_printf("Error\n");
+		ft_printf("Error\nFormato incorrecto\n");
 		exit(1);
 	}
 	if (ft_check_map(*game))

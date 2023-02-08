@@ -6,11 +6,24 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 09:40:13 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 16:43:11 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:28:06 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	ft_reset_frames(t_game *game)
+{
+	game->frame += 1;
+	if (game->frame == 20)
+	{
+		if (game->frame_enemi == 3)
+			game->frame_enemi = 0;
+		else
+			game->frame_enemi++;
+		game->frame = 0;
+	}
+}
 
 static void	ft_print_border(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:05:22 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 19:46:17 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:30:03 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,7 @@ void	ft_move(t_game *game, int x, int y)
 		player->x += x * VEL;
 		player->y += y * VEL;
 		if (player->x % 64 == 0 && player->y % 64 == 0)
-		{
 			game->steps += 1;
-			ft_printf("Steps:%i\n", game->steps);
-		}
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:27:08 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 19:38:59 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:24:43 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		ft_check_limit(t_mapa map);
 int		ft_check_ruta(t_game game, int x, int y, char *map_cp);
 int		ft_check_cofres(t_game game, int x, int y, char *map_cp);
 void	ft_render_map(t_game *game);
+void	ft_reset_frames(t_game *game);
 void	ft_load(t_game *game);
 int		ft_free_game(t_game *game);
 void	ft_free_obj(t_game *game);

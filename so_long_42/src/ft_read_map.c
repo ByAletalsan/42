@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:06:19 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 19:48:02 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 21:00:02 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	ft_read_map(const char	*s, t_game *game)
 	int		f;
 
 	f = open(s, O_RDONLY);
-	if (!f)
+	if (f < 0)
 		return (0);
 	str = get_next_line(f);
 	game->map.mapa = (char *)malloc(1);

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 09:40:13 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/08 16:35:27 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:39:30 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,7 @@ void	ft_render_map(t_game *game)
 {
 	ft_print_border(game);
 	ft_print_obj(game);
+	game->frame += 1;
+	if (game->frame == 14000)
+		game->frame = 0;
 }

@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 09:14:31 by atalaver          #+#    #+#              #
-#    Updated: 2023/02/08 16:37:25 by atalaver         ###   ########.fr        #
+#    Updated: 2023/02/08 20:54:04 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ bonus: $(LIBFT) $(OBJ_BONUS) $(OBJNEXTLINE) ml
 	$(CC) $(OBJ_BONUS) $(OBJNEXTLINE) -g -framework OpenGL -framework AppKit -o $(NAME) mlx/libmlx.a libft/libft.a
 
 ml:
-	make -C mlx
+	$(MAKE) -s -C ./mlx
 
 $(LIBFT):
 	$(MAKE) bonus -C ./libft
@@ -56,6 +56,7 @@ clean:
 	rm -rf $(OBJ)
 	rm -rf $(OBJ_BONUS)
 	rm -rf $(OBJNEXTLINE)
+	$(MAKE) clean -C ./mlx
 	$(MAKE) clean -C ./libft
 
 fclean: clean
