@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/02/05 17:02:16 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/04/09 16:14:45 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,44 @@ static void	ft_inv_arg(char *s)
 	exit(1);
 }
 
-static void	ft_free(int *tenedores, t_philo *philos)
+static void	ft_free(t_philo *philos, pthread_mutex_t *mutex,
+						t_dato datos)
 {
-	free(tenedores);
+	int	i;
+
 	free(philos);
+	i = 0;
+	while (i < datos.n_philos + 1)
+	{
+		pthread_mutex_destroy(&mutex[i]);
+		i++;
+	}
+	free(mutex);
 }
 
 int	main(int argc, char **argv)
 {
-	t_philo	*philos;
-	int		*tenedores;
-	t_dato	datos;
-	int		error;
+	t_philo			*philos;
+	t_dato			datos;
+	int				error;
+	pthread_mutex_t	*mutex;
 
 	if (argc != 5 && argc != 6)
 		ft_inv_arg(argv[0]);
 	ft_load_datos(&datos, argc, argv);
-	tenedores = ft_calloc(argc - 1, sizeof(int));
-	if (!tenedores)
-		return (printf("Error::Malloc tenedores\n"), 1);
-	philos = ft_create_philos(datos, tenedores);
+	mutex = ft_init_mutex(datos);
+	if (!mutex)
+		return (printf("Error::Create mutex\n"), 1);
+	philos = ft_create_philos(datos, mutex);
 	if (!philos)
 		return (printf("Error::Malloc philos\n"), 1);
 	error = ft_create_threads(philos);
 	if (error)
 		return (1);
-	error = ft_join_threads(philos);
-	if (error)
-		return (ft_free(tenedores, philos), 1);
-	ft_free(tenedores, philos);
+	//error = ft_join_threads(philos);
+	//if (error)
+	//	return (ft_free(philos, mutex, datos), 1);
+	ft_checking_philos(philos, datos);
+	ft_free(philos, mutex, datos);
 	return (0);
 }
