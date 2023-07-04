@@ -6,9 +6,12 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 07:34:21 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/02 07:42:39 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:44:59 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include "Contact.hpp"
 
@@ -29,3 +32,5 @@ class PhoneBook
 		const void          search();
         const int		    select_option(const std::string &s);
 };
+
+#endif

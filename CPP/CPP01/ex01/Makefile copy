@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/02 10:50:29 by atalaver          #+#    #+#              #
-#    Updated: 2023/07/03 12:34:28 by atalaver         ###   ########.fr        #
+#    Created: 2023/07/01 07:14:51 by atalaver          #+#    #+#              #
+#    Updated: 2023/07/03 12:34:21 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=tests
-SRC=tests.cpp Account.cpp
+NAME=main
+SRC=main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJ=$(SRC:.cpp=.o)
 CC=c++
 FLAGS=-Wall -Werror -Wextra

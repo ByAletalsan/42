@@ -6,9 +6,12 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 07:39:12 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/02 08:10:32 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:44:20 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -43,3 +46,5 @@ class Contact
 		void				reset_data();
 
 };
+
+#endif

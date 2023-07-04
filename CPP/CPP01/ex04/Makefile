@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/02 10:50:29 by atalaver          #+#    #+#              #
-#    Updated: 2023/07/03 12:34:28 by atalaver         ###   ########.fr        #
+#    Created: 2023/07/04 05:47:31 by atalaver          #+#    #+#              #
+#    Updated: 2023/07/04 07:10:26 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=tests
-SRC=tests.cpp Account.cpp
+NAME=main
+SRC=main.cpp Sed.cpp
 OBJ=$(SRC:.cpp=.o)
 CC=c++
 FLAGS=-Wall -Werror -Wextra

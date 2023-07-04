@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/02 10:50:29 by atalaver          #+#    #+#              #
-#    Updated: 2023/07/03 12:34:28 by atalaver         ###   ########.fr        #
+#    Created: 2023/07/04 07:11:01 by atalaver          #+#    #+#              #
+#    Updated: 2023/07/04 07:45:20 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=tests
-SRC=tests.cpp Account.cpp
+NAME=harlFilter
+SRC=main.cpp Harl.cpp
 OBJ=$(SRC:.cpp=.o)
 CC=c++
 FLAGS=-Wall -Werror -Wextra
