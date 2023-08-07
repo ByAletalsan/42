@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:24:36 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/01 19:06:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 11:26:26 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,6 @@ int	ft_load_datos(t_dato *datos, int argc, char **argv)
 	if (datos->n_philos == 0)
 		return (1);
 	datos->time_to_die = ft_atoi(argv[2]);
-	if (datos->n_philos == 1)
-	{
-		printf("0 1 has taken a fork\n");
-		usleep(datos->time_to_die * 1000);
-		printf("%d 1 died\n", datos->time_to_die);
-		return (1);
-	}
 	datos->time_to_eat = ft_atoi(argv[3]);
 	datos->time_to_sleep = ft_atoi(argv[4]);
 	datos->time_start = ft_real_time();

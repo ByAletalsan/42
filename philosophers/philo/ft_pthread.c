@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:27:37 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/01 15:44:30 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 11:26:19 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ static void	ft_eat_right(t_philo *me)
 {
 	pthread_mutex_lock(me->tenedor_right);
 	ft_print_action(me, ft_virtual_time(me->datos), "has taken a fork");
+	if (me->datos->n_philos == 1)
+	{
+		ft_msleep(me->datos, me->datos->time_to_die + 100);
+		return ;
+	}
 	pthread_mutex_lock(me->tenedor_left);
 	ft_print_action(me, ft_virtual_time(me->datos), "has taken a fork");
 	ft_print_action(me, ft_virtual_time(me->datos), "is eating");
