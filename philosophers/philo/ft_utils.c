@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:24:36 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 11:26:26 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:21:49 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_philo	*ft_create_philos(t_dato *datos)
 {
 	t_philo	*philos;
-	int		n_philos;
 	int		i;
 
 	philos = (t_philo *)ft_calloc(datos->n_philos + 1, sizeof(t_philo));
@@ -52,7 +51,11 @@ int	ft_load_datos(t_dato *datos, int argc, char **argv)
 	pthread_mutex_init(&datos->mutex_printf, NULL);
 	pthread_mutex_init(&datos->mutex_end, NULL);
 	if (argc == 6)
+	{
 		datos->times = ft_atoi(argv[5]);
+		if (datos->times == 0)
+			return (1);
+	}
 	else
 		datos->times = -1;
 	return (0);

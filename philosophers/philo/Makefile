@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 15:04:53 by atalaver          #+#    #+#              #
-#    Updated: 2023/08/07 18:12:46 by atalaver         ###   ########.fr        #
+#    Updated: 2023/08/07 20:31:54 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,17 @@ RS = main.c\
 	 ft_utils2.c\
 	 ft_pthread.c
 OBJ = $(RS:.c=.o)
+CC=gcc
+#DEBUG=-fsanitize=thread -g
+FLAGS=-Wall -Werror -Wextra -pthread
+
+.c.o:
+	${CC} ${FLAGS} ${DEBUG} -c $< ${<:.c.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc -Wall -Werror -Wextra $(OBJ) -o $(NAME) -pthread
+	$(CC) $(FLAGS) $(DEBUG) $(OBJ) -o $(NAME)
 
 clean:
 	rm -rf $(OBJ)

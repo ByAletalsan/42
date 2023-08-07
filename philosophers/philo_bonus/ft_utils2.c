@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:34:24 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/02 13:50:54 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:26:04 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_print_action(t_philo *philo, unsigned long time, char *s)
 	sem_post(philo->datos->sem_printf);
 }
 
-void	ft_msleep(t_dato *datos, unsigned long time)
+void	ft_msleep(unsigned long time)
 {
 	unsigned long	time_now;
 

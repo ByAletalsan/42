@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:34:24 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/01 15:44:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:15:41 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ int	ft_check_died(t_philo *philos, t_dato *datos, int *check_eats, int i)
 	{
 		ft_print_action(&philos[i], ft_virtual_time(philos[i].datos),
 			"died");
+		pthread_mutex_lock(&datos->mutex_end);
 		datos->end = 1;
+		pthread_mutex_unlock(&datos->mutex_end);
 		pthread_mutex_unlock(&philos[i].mutex_time_lunch);
 		return (1);
 	}

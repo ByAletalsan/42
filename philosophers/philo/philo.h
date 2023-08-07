@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:02:42 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/01 15:46:19 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:12:58 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 typedef struct datos
 {
 	int				n_philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
+	unsigned long	time_to_die;
+	unsigned long	time_to_eat;
+	unsigned long	time_to_sleep;
 	int				times;
-	int				end;
+	unsigned long	end;
 	unsigned long	time_start;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	mutex_printf;

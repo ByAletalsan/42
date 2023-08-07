@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:02:42 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 14:44:16 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:32:29 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@
 typedef struct datos
 {
 	int				n_philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
+	unsigned long	time_to_die;
+	unsigned long	time_to_eat;
+	unsigned long	time_to_sleep;
 	int				times;
 	int				end;
 	unsigned long	time_start;
 	sem_t			*forks;
 	sem_t			*sem_printf;
 	sem_t			*sem_stop;
+	sem_t			*sem_eat;
 }	t_dato;
 
 typedef struct philo
@@ -55,7 +56,7 @@ t_philo			*ft_create_philos(t_dato *datos);
 int				ft_load_datos(t_dato *datos, int argc, char **argv);
 unsigned long	ft_real_time(void);
 unsigned long	ft_virtual_time(t_dato *datos);
-void			ft_msleep(t_dato *datos, unsigned long time);
+void			ft_msleep(unsigned long time);
 void			ft_print_action(t_philo *philo, unsigned long time, char *s);
 //Libft
 void			*ft_calloc(size_t nmemb, size_t size);

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:24:36 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 14:47:49 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:32:46 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_philo	*ft_create_philos(t_dato *datos)
 {
 	t_philo	*philos;
-	int		n_philos;
 	int		i;
 
 	philos = (t_philo *)ft_calloc(datos->n_philos + 1, sizeof(t_philo));
@@ -49,8 +48,14 @@ int	ft_load_datos(t_dato *datos, int argc, char **argv)
 	datos->forks = sem_open("forks", O_CREAT, 0600, datos->n_philos);
 	sem_unlink("sem_stop");
 	datos->sem_stop = sem_open("sem_stop", O_CREAT, 0600, 1);
+	sem_unlink("sem_eat");
+	datos->sem_eat = sem_open("sem_eat", O_CREAT, 0600, 1);
 	if (argc == 6)
+	{
 		datos->times = ft_atoi(argv[5]);
+		if (datos->times == 0)
+			return (1);
+	}
 	else
 		datos->times = -1;
 	return (0);

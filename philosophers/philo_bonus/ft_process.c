@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:27:37 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 14:48:45 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:44:59 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ static void	ft_eat(t_philo *me)
 	ft_print_action(me, ft_virtual_time(me->datos), "has taken a fork");
 	if (me->datos->n_philos == 1)
 	{
-		ft_msleep(me->datos, me->datos->time_to_die + 100);
+		ft_msleep(me->datos->time_to_die + 100);
 		return ;
 	}
 	sem_wait(me->datos->forks);
 	ft_print_action(me, ft_virtual_time(me->datos), "has taken a fork");
 	ft_print_action(me, ft_virtual_time(me->datos), "is eating");
+	sem_wait(me->datos->sem_eat);
 	me->time_last_eat = ft_real_time();
 	me->n_eat++;
-	ft_msleep(me->datos, me->datos->time_to_eat);
+	sem_post(me->datos->sem_eat);
+	ft_msleep(me->datos->time_to_eat);
 	sem_post(me->datos->forks);
 	sem_post(me->datos->forks);
 }
@@ -43,7 +45,7 @@ void	*ft_vida(void *arg)
 	{
 		ft_eat(me);
 		ft_print_action(me, ft_virtual_time(me->datos), "is sleeping");
-		ft_msleep(me->datos, me->datos->time_to_sleep);
+		ft_msleep(me->datos->time_to_sleep);
 		ft_print_action(me, ft_virtual_time(me->datos), "is thinking");
 	}
 	return (NULL);
@@ -56,20 +58,23 @@ void	*ft_check_philo(void *arg)
 	me = (t_philo *)arg;
 	while (1)
 	{
+		sem_wait(me->datos->sem_eat);
 		if (ft_real_time() - me->time_last_eat > me->datos->time_to_die)
 		{
 			ft_print_action(me, ft_virtual_time(me->datos),
 				"died");
 			sem_post(me->datos->sem_stop);
+			sem_post(me->datos->sem_eat);
 			break ;
 		}
-		if (me->datos->times != -1
-			&& me->n_eat >= me->datos->times)
+		if (me->datos->times != -1 && me->n_eat >= me->datos->times)
 		{
 			sem_post(me->datos->forks);
 			sem_post(me->datos->forks);
+			sem_post(me->datos->sem_eat);
 			exit(0);
 		}
+		sem_post(me->datos->sem_eat);
 		usleep(10);
 	}
 	return (NULL);
