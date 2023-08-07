@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 15:04:53 by atalaver          #+#    #+#              #
-#    Updated: 2023/08/01 15:47:04 by atalaver         ###   ########.fr        #
+#    Updated: 2023/08/02 12:57:31 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RS = main.c\
 	 ft_libft.c\
 	 ft_utils.c\
 	 ft_utils2.c\
-	 ft_pthread.c
+	 ft_process.c
 OBJ = $(RS:.c=.o)
 
 all: $(NAME)

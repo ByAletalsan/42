@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/01 15:38:47 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:43:55 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,6 @@ static void	ft_inv_arg(char *s)
 	printf("%s <number_of_philosophers> <time_to_die> ", s);
 	printf("<time_to_eat> <time_to_eat> ");
 	printf("[number_of_times_each_philosopher_must_eat]\n");
-}
-
-pthread_mutex_t	*ft_init_mutex(t_dato datos)
-{
-	pthread_mutex_t	*mutex;
-	int				i;
-
-	mutex = ft_calloc(datos.n_philos + 1, sizeof(pthread_mutex_t));
-	if (!mutex)
-		return (NULL);
-	i = 0;
-	while (i < datos.n_philos + 1)
-	{
-		pthread_mutex_init(&mutex[i], NULL);
-		i++;
-	}
-	return (mutex);
 }
 
 static int	ft_check_arg(int argc, char **argv)
@@ -57,13 +40,12 @@ static void	ft_free(t_philo *philos, t_dato *datos)
 	i = 0;
 	while (i < datos->n_philos)
 	{
-		pthread_mutex_destroy(&philos[i].mutex_time_lunch);
-		pthread_mutex_destroy(&datos->forks[i]);
+		kill(philos[i].pid, SIGKILL);
 		i++;
 	}
-	pthread_mutex_destroy(&datos->mutex_printf);
-	pthread_mutex_destroy(&datos->mutex_end);
-	free(datos->forks);
+	sem_close(datos->sem_printf);
+	sem_close(datos->forks);
+	sem_close(datos->sem_stop);
 	free(philos);
 }
 
@@ -78,16 +60,12 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_load_datos(&datos, argc, argv))
 		return (1);
-	datos.forks = ft_init_mutex(datos);
-	if (!datos.forks)
-		return (printf("Error::Create mutex\n"), 1);
 	philos = ft_create_philos(&datos);
 	if (!philos)
 		return (printf("Error::Malloc philos\n"), 1);
-	if (ft_create_threads(philos, datos))
-		return (1);
-	ft_checking_philos(philos, &datos);
-	ft_join_threads(philos, &datos);
+	sem_wait(datos.sem_stop);
+	ft_create_process(philos, datos);
+	sem_wait(datos.sem_stop);
 	ft_free(philos, &datos);
 	return (0);
 }

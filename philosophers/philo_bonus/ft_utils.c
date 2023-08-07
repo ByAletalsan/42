@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:24:36 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/01 19:06:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:57:40 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ t_philo	*ft_create_philos(t_dato *datos)
 		philos[i - 1].n_eat = 0;
 		philos[i - 1].datos = datos;
 		philos[i - 1].time_last_eat = datos->time_start;
-		pthread_mutex_init(&philos[i - 1].mutex_time_lunch, NULL);
-		philos[i - 1].tenedor_right = &datos->forks[i];
-		if (i == 1)
-			philos[i - 1].tenedor_left = &datos->forks[datos->n_philos];
-		else
-			philos[i - 1].tenedor_left = &datos->forks[i - 1];
 		i++;
 	}
 	return (philos);
@@ -49,15 +43,20 @@ int	ft_load_datos(t_dato *datos, int argc, char **argv)
 	{
 		printf("0 1 has taken a fork\n");
 		usleep(datos->time_to_die * 1000);
-		printf("%d 1 died\n", datos->time_to_die);
-		return (1);
+		return (printf("%d 1 died\n", datos->time_to_die), 1);
 	}
 	datos->time_to_eat = ft_atoi(argv[3]);
 	datos->time_to_sleep = ft_atoi(argv[4]);
 	datos->time_start = ft_real_time();
-	datos->end = 0;
-	pthread_mutex_init(&datos->mutex_printf, NULL);
-	pthread_mutex_init(&datos->mutex_end, NULL);
+	datos->current_times = 0;
+	sem_unlink("sem_printf");
+	datos->sem_printf = sem_open("sem_printf", O_CREAT, 0600, 1);
+	sem_unlink("forks");
+	datos->forks = sem_open("forks", O_CREAT, 0600, datos->n_philos);
+	sem_unlink("sem_stop");
+	datos->sem_stop = sem_open("sem_stop", O_CREAT, 0600, 1);
+	sem_unlink("sem_check");
+	datos->sem_check = sem_open("sem_check", O_CREAT, 0600, 1);
 	if (argc == 6)
 		datos->times = ft_atoi(argv[5]);
 	else
@@ -76,14 +75,4 @@ unsigned long	ft_real_time(void)
 unsigned long	ft_virtual_time(t_dato *datos)
 {
 	return (ft_real_time() - datos->time_start);
-}
-
-int	ft_is_end(t_dato *datos)
-{
-	int	end;
-
-	pthread_mutex_lock(&datos->mutex_end);
-	end = datos->end;
-	pthread_mutex_unlock(&datos->mutex_end);
-	return (end);
 }
