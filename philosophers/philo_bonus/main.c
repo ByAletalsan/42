@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 19:54:40 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:51:14 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static void	ft_free(t_philo *philos, t_dato *datos)
 	sem_post(datos->sem_stop);
 	sem_close(datos->sem_stop);
 	sem_unlink("sem_stop");
+	sem_close(datos->sem_eat);
+	sem_unlink("sem_eat");
 	free(philos);
 }
 
