@@ -6,11 +6,11 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 15:04:53 by atalaver          #+#    #+#              #
-#    Updated: 2023/08/02 12:57:31 by atalaver         ###   ########.fr        #
+#    Updated: 2023/08/07 18:12:51 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME = philo_bonus
 
 RS = main.c\
 	 ft_libft.c\
@@ -29,3 +29,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

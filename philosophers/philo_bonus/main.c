@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/02 17:43:55 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:12:04 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_check_arg(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_is_number(argv[i]))
-			return (printf("ERROR::Arg not is a number!\n"), 1);
+			return (printf("ERROR::Arg invalid!\n"), 1);
 		i++;
 	}
 	return (0);
@@ -35,24 +35,39 @@ static int	ft_check_arg(int argc, char **argv)
 
 static void	ft_free(t_philo *philos, t_dato *datos)
 {
-	int	i;
+	datos->end = 1;
+	sem_close(datos->sem_printf);
+	sem_unlink("sem_printf");
+	sem_close(datos->forks);
+	sem_unlink("forks");
+	sem_post(datos->sem_stop);
+	sem_close(datos->sem_stop);
+	sem_unlink("sem_stop");
+	free(philos);
+}
 
+void	*ft_check_dead(void *data)
+{
+	t_philo			*philos;
+	int				i;
+
+	philos = (t_philo *)data;
 	i = 0;
-	while (i < datos->n_philos)
+	sem_wait(philos->datos->sem_stop);
+	while (i < philos->datos->n_philos && !philos->datos->end)
 	{
 		kill(philos[i].pid, SIGKILL);
 		i++;
 	}
-	sem_close(datos->sem_printf);
-	sem_close(datos->forks);
-	sem_close(datos->sem_stop);
-	free(philos);
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
 {
 	t_dato			datos;
 	t_philo			*philos;
+	pthread_t		pt;
+	int				i;
 
 	if (argc != 5 && argc != 6)
 		return (ft_inv_arg(argv[0]), 1);
@@ -65,7 +80,11 @@ int	main(int argc, char **argv)
 		return (printf("Error::Malloc philos\n"), 1);
 	sem_wait(datos.sem_stop);
 	ft_create_process(philos, datos);
-	sem_wait(datos.sem_stop);
+	pthread_create(&pt, NULL, ft_check_dead, philos);
+	pthread_detach(pt);
+	i = 0;
+	while (i++ < datos.n_philos)
+		waitpid(-1, NULL, 0);
 	ft_free(philos, &datos);
 	return (0);
 }

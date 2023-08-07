@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:02:42 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/02 17:54:24 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:44:16 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ typedef struct datos
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				times;
-	int				current_times;
+	int				end;
 	unsigned long	time_start;
 	sem_t			*forks;
 	sem_t			*sem_printf;
 	sem_t			*sem_stop;
-	sem_t			*sem_check;
 }	t_dato;
 
 typedef struct philo

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 11:29:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:10:20 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_check_arg(int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_is_number(argv[i]))
-			return (printf("ERROR::Arg not is a number!\n"), 1);
+			return (printf("ERROR::Arg invalid!\n"), 1);
 		i++;
 	}
 	return (0);
