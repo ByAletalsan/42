@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 20:51:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/09 16:41:56 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ static int	ft_check_arg(int argc, char **argv)
 	return (0);
 }
 
-static void	ft_free(t_philo *philos, t_dato *datos)
+static void	ft_free(t_dato *datos)
 {
-	datos->end = 1;
 	sem_close(datos->sem_printf);
 	sem_unlink("sem_printf");
 	sem_close(datos->forks);
@@ -45,7 +44,6 @@ static void	ft_free(t_philo *philos, t_dato *datos)
 	sem_unlink("sem_stop");
 	sem_close(datos->sem_eat);
 	sem_unlink("sem_eat");
-	free(philos);
 }
 
 void	*ft_check_dead(void *data)
@@ -56,12 +54,12 @@ void	*ft_check_dead(void *data)
 	philos = (t_philo *)data;
 	i = 0;
 	sem_wait(philos->datos->sem_stop);
-	while (i < philos->datos->n_philos && !philos->datos->end)
+	while (i < philos->datos->n_philos)
 	{
 		kill(philos[i].pid, SIGKILL);
 		i++;
 	}
-	return (NULL);
+	return (free(philos), NULL);
 }
 
 int	main(int argc, char **argv)
@@ -87,6 +85,6 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (i++ < datos.n_philos)
 		waitpid(-1, NULL, 0);
-	ft_free(philos, &datos);
+	ft_free(&datos);
 	return (0);
 }

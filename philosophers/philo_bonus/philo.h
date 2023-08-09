@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 15:02:42 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 20:32:29 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/09 16:39:52 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <signal.h>
+# include <sys/wait.h>
 
 typedef struct datos
 {
@@ -30,7 +31,6 @@ typedef struct datos
 	unsigned long	time_to_eat;
 	unsigned long	time_to_sleep;
 	int				times;
-	int				end;
 	unsigned long	time_start;
 	sem_t			*forks;
 	sem_t			*sem_printf;
