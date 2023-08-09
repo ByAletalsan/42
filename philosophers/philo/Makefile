@@ -19,7 +19,7 @@ RS = main.c\
 	 ft_pthread.c
 OBJ = $(RS:.c=.o)
 CC=gcc
-#DEBUG=-fsanitize=thread -g
+DEBUG=-fsanitize=thread -g
 FLAGS=-Wall -Werror -Wextra -pthread
 
 .c.o:
