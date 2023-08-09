@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:24:36 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/07 20:21:49 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/09 17:48:09 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ t_philo	*ft_create_philos(t_dato *datos)
 
 int	ft_load_datos(t_dato *datos, int argc, char **argv)
 {
+	datos->forks = NULL;
+	pthread_mutex_init(&datos->mutex_printf, NULL);
+	pthread_mutex_init(&datos->mutex_end, NULL);
 	datos->n_philos = ft_atoi(argv[1]);
 	if (datos->n_philos == 0)
 		return (1);
@@ -48,8 +51,6 @@ int	ft_load_datos(t_dato *datos, int argc, char **argv)
 	datos->time_to_sleep = ft_atoi(argv[4]);
 	datos->time_start = ft_real_time();
 	datos->end = 0;
-	pthread_mutex_init(&datos->mutex_printf, NULL);
-	pthread_mutex_init(&datos->mutex_end, NULL);
 	if (argc == 6)
 	{
 		datos->times = ft_atoi(argv[5]);

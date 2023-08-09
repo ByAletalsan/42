@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/09 17:20:12 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/09 17:40:45 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int	main(int argc, char **argv)
 	if (ft_check_arg(argc, argv))
 		return (1);
 	if (ft_load_datos(&datos, argc, argv))
-		return (1);
+		return (ft_free(&datos), 1);
 	philos = ft_create_philos(&datos);
 	if (!philos)
-		return (printf("Error::Malloc philos\n"), 1);
+		return (ft_free(&datos), printf("Error::Malloc philos\n"), 1);
 	sem_wait(datos.sem_stop);
 	ft_create_process(philos, datos);
 	pthread_create(&pt, NULL, ft_check_dead, philos);

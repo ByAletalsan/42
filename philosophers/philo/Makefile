@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 15:04:53 by atalaver          #+#    #+#              #
-#    Updated: 2023/08/09 16:43:29 by atalaver         ###   ########.fr        #
+#    Updated: 2023/08/09 17:49:53 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RS = main.c\
 	 ft_pthread.c
 OBJ = $(RS:.c=.o)
 CC=gcc
-DEBUG=-fsanitize=thread -g
+#DEBUG=-fsanitize=thread -g
 FLAGS=-Wall -Werror -Wextra -pthread
 
 .c.o:
