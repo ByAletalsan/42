@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:59:09 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/09 17:40:45 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:45:16 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*ft_check_dead(void *data)
 		kill(philos[i].pid, SIGKILL);
 		i++;
 	}
-	return (free(philos), NULL);
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 	if (ft_check_arg(argc, argv))
 		return (1);
 	if (ft_load_datos(&datos, argc, argv))
-		return (ft_free(&datos), 1);
+		return (1);
 	philos = ft_create_philos(&datos);
 	if (!philos)
 		return (ft_free(&datos), printf("Error::Malloc philos\n"), 1);
@@ -86,5 +86,6 @@ int	main(int argc, char **argv)
 	while (i++ < datos.n_philos)
 		waitpid(-1, NULL, 0);
 	ft_free(&datos);
+	free(philos);
 	return (0);
 }

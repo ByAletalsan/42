@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:24:36 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/09 16:40:02 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:45:09 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ int	ft_load_datos(t_dato *datos, int argc, char **argv)
 	datos->n_philos = ft_atoi(argv[1]);
 	if (datos->n_philos == 0)
 		return (1);
+	if (argc == 6)
+	{
+		datos->times = ft_atoi(argv[5]);
+		if (datos->times == 0)
+			return (1);
+	}
+	else
+		datos->times = -1;
 	datos->time_to_die = ft_atoi(argv[2]);
 	datos->time_to_eat = ft_atoi(argv[3]);
 	datos->time_to_sleep = ft_atoi(argv[4]);
@@ -49,14 +57,6 @@ int	ft_load_datos(t_dato *datos, int argc, char **argv)
 	datos->sem_stop = sem_open("sem_stop", O_CREAT, 0600, 1);
 	sem_unlink("sem_eat");
 	datos->sem_eat = sem_open("sem_eat", O_CREAT, 0600, 1);
-	if (argc == 6)
-	{
-		datos->times = ft_atoi(argv[5]);
-		if (datos->times == 0)
-			return (1);
-	}
-	else
-		datos->times = -1;
 	return (0);
 }
 
