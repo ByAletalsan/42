@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 07:39:12 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/03 12:44:20 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:35:09 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ class Contact
 		const std::string	&getFirstName();
 		const std::string	&getLastName();
 		const std::string	&getNickname();
+        const std::string	&getPhoneNumber();
+        const std::string	&getDarkestSecret();
 
 		//Tools
 		const void			print_contact();

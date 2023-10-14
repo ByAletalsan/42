@@ -6,7 +6,7 @@
 #    By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/05 05:43:09 by atalaver          #+#    #+#              #
-#    Updated: 2023/07/05 06:37:20 by atalaver         ###   ########.fr        #
+#    Updated: 2023/10/14 15:11:42 by atalaver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC=c++
 FLAGS=-Wall -Werror -Wextra
 VERSION=-std=c++98
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(FLAGS) $(VERSION) -c $< -o $@
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 07:34:21 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/03 12:44:59 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:34:23 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class PhoneBook
         int                 size;
 		const void          print_list();
         const std::string	print_with_len(const std::string &s);
+        void                print_contact(int n);
 
     public:
         PhoneBook();

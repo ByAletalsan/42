@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 07:18:42 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/01 07:30:53 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:07:35 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,12 @@ static int ft_strlen(char *s)
     return (i);
 }
 
-static char	ft_toupper(char c)
-{
-	return ((c >= 'a' && c <= 'z') ? c - 32 : c);
-}
-
 static void ft_megaphone(int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
     {
         for (int j = 0; j < ft_strlen(argv[i]); j++)
-            std::cout << ft_toupper(argv[i][j]);
+            std::cout << (char)std::toupper(argv[i][j]);
     }
 }
 

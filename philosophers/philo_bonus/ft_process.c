@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:27:37 by atalaver          #+#    #+#             */
-/*   Updated: 2023/08/09 17:15:07 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/09/11 20:57:36 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	*ft_check_philo(void *arg)
 			sem_post(me->datos->sem_stop);
 			break ;
 		}
-		if (me->datos->times != -1 && me->n_eat >= me->datos->times)
+		if (me->datos->times != -1 && me->n_eat > me->datos->times)
 		{
 			sem_post(me->datos->forks);
 			sem_post(me->datos->forks);

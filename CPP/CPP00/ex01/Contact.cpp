@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 07:52:05 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/02 08:10:53 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:37:53 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ const std::string	&Contact::getNickname()
 	return (this->nickname);
 }
 
-//Tools
-const void	Contact::print_contact()
+const std::string	&Contact::getPhoneNumber()
 {
-
-	std::cout << "First Name: " << this->first_name << std::endl;
-	std::cout << "Last Name: " << this->last_name << std::endl;
-	std::cout << "Nickname: " << this->nickname << std::endl;
-	std::cout << "Phone Number: " << this->phone_number << std::endl;
-	std::cout << "Darkest Secret: " << this->darkest_secret << std::endl;
+	return (this->phone_number);
 }
 
+const std::string	&Contact::getDarkestSecret()
+{
+	return (this->darkest_secret);
+}
+
+//Tools
 void	Contact::reset_data()
 {
 	std::cout << "RESETEAMOS" << std::endl;

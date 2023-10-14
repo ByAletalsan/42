@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 08:20:46 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/02 08:17:51 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:37:37 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ const void    PhoneBook::print_list()
 	std::cout << std::endl;
 }
 
+void	PhoneBook::print_contact(int n)
+{
+	std::cout << "First Name: " << this->contacts[n].getFirstName() << std::endl;
+	std::cout << "Last Name: " << this->contacts[n].getLastName() << std::endl;
+	std::cout << "Nickname: " << this->contacts[n].getNickname() << std::endl;
+	std::cout << "Phone Number: " << this->contacts[n].getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret: " << this->contacts[n].getDarkestSecret() << std::endl;
+}
+
 const void	PhoneBook::search()
 {
 	int	option;
@@ -90,7 +99,7 @@ const void	PhoneBook::search()
 		std::cout << "Invalid option!" << std::endl;
 		return ;
 	}
-	contacts[option].print_contact();
+	print_contact(option);
 	std::cin.ignore();
 }
 const void    PhoneBook::print_menu()
