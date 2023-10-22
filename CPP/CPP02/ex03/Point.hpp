@@ -18,15 +18,13 @@
 class Point
 {
     private:
-        // const Fixed  x;
-        // const Fixed  y;
-        Fixed   x;
-        Fixed   y;
+        const Fixed  x;
+        const Fixed  y;
 
     public:
         Point();
         Point( const Point &p );
-        Point( const Fixed &x, const Fixed &y );
+        Point( const float &x, const float &y );
         ~Point();
         Point& operator=( const Point &p );
 

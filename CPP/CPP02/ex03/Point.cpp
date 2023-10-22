@@ -12,27 +12,20 @@
 
 #include "Point.hpp"
 
-Point::Point()
+Point::Point() : x(Fixed(0)), y(Fixed(0))
 {
-    this->x.setRawBits(0);
-    this->y.setRawBits(0);
 }
 
-Point::Point( const Point &p )
+Point::Point( const Point &p ) : x(p.getX()), y(p.getY())
 {
-    this->x = p.getX();
-    this->y = p.getY();
 }
 
-Point::Point( const Fixed &x, const Fixed &y )
+Point::Point( const float &x, const float &y ) : x(Fixed(x)), y(Fixed(y))
 {
-    this->x = x;
-    this->y = y;
 }
 
 Point::~Point()
 {
-
 }
 
 std::ostream& operator<<( std::ostream &out, const Point &p )
@@ -49,8 +42,8 @@ Point& Point::operator=( const Point &p )
 {
     if (this != &p)
     {
-        this->x = p.getX();
-        this->y = p.getY();
+        (Fixed) this->x = p.getX();
+        (Fixed) this->y = p.getY();
     }
     return (*this);
 }

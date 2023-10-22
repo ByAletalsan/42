@@ -33,7 +33,7 @@ Fixed::Fixed( const int n )
 Fixed::Fixed( const float n )
 {
     std::cout << "Float constructor called" << std::endl;
-    this->number = std::roundf(n * (1 << this->bits));
+    this->number = roundf(n * (1 << this->bits));
 }
 
 Fixed::~Fixed()

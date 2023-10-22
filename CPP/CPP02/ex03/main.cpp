@@ -14,7 +14,7 @@
 
 int main( void )
 {
-    if ( bsp( Point(0, 0), Point(10, 30), Point(20, 0), Point(10, 15) ) )
+    if ( bsp( Point(), Point(10, 30), Point(20, 0), Point(10, 15) ) )
         std::cout << "IN" << std::endl;
     else
         std::cout << "OUT" << std::endl;
