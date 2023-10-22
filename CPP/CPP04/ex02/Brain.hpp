@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 06:57:37 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/09 07:29:42 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:53:11 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 class Brain
 {
+    private:
+        std::string ideas[100];
     public:
         Brain();
         Brain( const Brain &b );
         ~Brain();
 
         Brain& operator=( const Brain &b );
-
-        std::string ideas[100];
 };
 
 #endif

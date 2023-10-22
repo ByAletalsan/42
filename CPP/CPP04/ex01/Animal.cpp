@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 07:27:32 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/09 07:34:09 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:44:12 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,4 @@ const std::string &Animal::getType() const
 void Animal::makeSound() const
 {
     std::cout << "Sound of a Animal" << std::endl;
-}
-
-Brain* Animal::getBrain() const
-{
-    return (NULL);
 }

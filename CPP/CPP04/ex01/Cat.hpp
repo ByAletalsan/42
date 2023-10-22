@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:40:32 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/09 08:01:42 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:44:39 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ class Cat : public Animal
         ~Cat();
 
         Cat& operator=( const Cat &c );
-        Animal& operator=( Animal const &a );
 
         void makeSound() const;
-
-        Brain* getBrain() const;
 };
 
 #endif

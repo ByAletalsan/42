@@ -6,29 +6,28 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 07:24:01 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/09 08:16:09 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:03:31 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 #include <iostream>
 #include "Brain.hpp"
 
-class Animal
+class AAnimal
 {
     protected:
         std::string type;
 
     public:
-        virtual ~Animal();
+        virtual ~AAnimal();
 
-        virtual Animal& operator=( const Animal &a );
+        virtual AAnimal& operator=( const AAnimal &a );
 
         const std::string &getType() const;
-        virtual void makeSound() const;
-        virtual Brain* getBrain() const;
+        virtual void makeSound() const = 0;
 };
 
 #endif

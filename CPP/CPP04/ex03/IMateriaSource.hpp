@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/09 06:57:37 by atalaver          #+#    #+#             */
-/*   Updated: 2023/10/22 15:53:11 by atalaver         ###   ########.fr       */
+/*   Created: 2023/10/22 16:46:26 by atalaver          #+#    #+#             */
+/*   Updated: 2023/10/22 16:47:14 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
 
-#include <iostream>
+#include "AMateria.hpp"
 
-class Brain
+class IMateriaSource
 {
-    private:
-        std::string ideas[100];
-    public:
-        Brain();
-        Brain( const Brain &b );
-        ~Brain();
-
-        Brain& operator=( const Brain &b );
+	public:
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
 #endif

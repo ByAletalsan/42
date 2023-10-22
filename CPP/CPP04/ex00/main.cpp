@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:39:40 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/07 11:02:22 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:31:25 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int main(void)
 	const WrongAnimal* catWrong = new WrongCat();
 
 	std::cout << catWrong->getType() << std::endl;
-	metaWrong->makeSound();
 	catWrong->makeSound();
+	metaWrong->makeSound();
 	delete metaWrong;
 	delete catWrong;
 

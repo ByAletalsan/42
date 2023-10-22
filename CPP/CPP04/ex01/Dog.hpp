@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 07:34:53 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/09 07:59:48 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:48:10 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ class Dog : public Animal
         ~Dog();
 
         Dog& operator=( const Dog &d );
-        Animal& operator=( Animal const &a );
 
         void makeSound() const;
-
-        Brain* getBrain() const;
 };
 
 #endif

@@ -14,25 +14,31 @@
 
 WrongCat::WrongCat() : WrongAnimal()
 {
+    this->brain = new Brain();
     this->type = "WrongCat";
     std::cout << "Created a default WrongCat" << std::endl;
 }
 
 WrongCat::WrongCat( const WrongCat &c ) : WrongAnimal(c)
 {
+    this->brain = new Brain();
     this->type = c.type;
     std::cout << "Created by copy a WrongCat" << std::endl;
 }
 
 WrongCat::~WrongCat()
 {
+    delete this->brain;
     std::cout << "Destroyed WrongCat" << std::endl;
 }
 
 WrongCat& WrongCat::operator=( const WrongCat &c )
 {
     if (this != &c)
+    {
+        this->brain = new Brain( *c.brain );   
         this->type = c.type;
+    }
     std::cout << "Copy WrongCat (by = ) " << std::endl;
     return (*this);
 }

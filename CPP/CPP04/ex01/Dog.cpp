@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 07:37:05 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/09 08:01:05 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:48:43 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,8 @@ Dog& Dog::operator=( const Dog &d )
 {
     if (this != &d)
     {
-        *this->brain = *d.brain;
+        this->brain = new Brain( *d.brain );
         this->type = d.type;
-    }
-    std::cout << "Copy Dog (by = ) " << std::endl;
-    return (*this);
-}
-
-Animal& Dog::operator=( Animal const &a )
-{
-	if (this != &a)
-    {
-        *this->brain = *a.getBrain();
-        this->type = a.getType();
     }
     std::cout << "Copy Dog (by = ) " << std::endl;
     return (*this);
@@ -57,9 +46,4 @@ Animal& Dog::operator=( Animal const &a )
 void Dog::makeSound() const
 {
     std::cout << "Woof!" << std::endl;
-}
-
-Brain* Dog::getBrain() const
-{
-    return (this->brain);
 }

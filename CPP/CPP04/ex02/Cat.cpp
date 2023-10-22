@@ -6,20 +6,20 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:41:52 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/09 08:16:25 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:07:11 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : AAnimal()
 {
     this->brain = new Brain();
     this->type = "Cat";
     std::cout << "Created a default Cat" << std::endl;
 }
 
-Cat::Cat( const Cat &c )
+Cat::Cat( const Cat &c ) : AAnimal(c)
 {
     this->brain = new Brain( *c.brain );
     this->type = c.type;
@@ -36,19 +36,8 @@ Cat& Cat::operator=( const Cat &c )
 {
     if (this != &c)
     {
-        *(this->brain) = *(c.getBrain());   
+        this->brain = new Brain( *c.brain );   
         this->type = c.type;
-    }
-    std::cout << "Copy Cat (by = ) " << std::endl;
-    return (*this);
-}
-
-Animal& Cat::operator=( Animal const &a )
-{
-	if (this != &a)
-    {
-        *this->brain = *a.getBrain();
-        this->type = a.getType();
     }
     std::cout << "Copy Cat (by = ) " << std::endl;
     return (*this);
@@ -57,9 +46,4 @@ Animal& Cat::operator=( Animal const &a )
 void Cat::makeSound() const
 {
     std::cout << "Meow!" << std::endl;
-}
-
-Brain* Cat::getBrain() const
-{
-    return (this->brain);
 }
