@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 04:51:14 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/05 06:40:21 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:41:45 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define CLAPTRAP_HPP
 
 #include <iostream>
-
 
 class ClapTrap
 {

@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 07:45:43 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/05 08:09:26 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:10:19 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ class DiamondTrap : public FragTrap, public ScavTrap
 
         using   ScavTrap::attack;
         void    whoAmI( void );
+
+        //Print
+        void    print_stats( void );
 };
 
 #endif

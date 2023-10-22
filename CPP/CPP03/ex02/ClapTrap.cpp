@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 04:59:05 by atalaver          #+#    #+#             */
-/*   Updated: 2023/07/05 06:43:25 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/07/05 06:43:35 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void ClapTrap::beRepaired( unsigned int amount )
     {
         std::cout << "ClapTrap " << this->name << " repares " << amount << " healt!" << std::endl;
         this->energy_points--;
+	this->hit_points += amount;
     }
     else
         std::cout << "ClapTrap " << this->name << " without energy!" << std::endl;
