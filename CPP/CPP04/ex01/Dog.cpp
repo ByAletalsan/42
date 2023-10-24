@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 07:37:05 by atalaver          #+#    #+#             */
-/*   Updated: 2023/10/22 15:48:43 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:30:45 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ Dog& Dog::operator=( const Dog &d )
 {
     if (this != &d)
     {
-        this->brain = new Brain( *d.brain );
+        if (this->brain)
+            *this->brain = *d.brain;
+        else
+            this->brain = new Brain( *d.brain );
         this->type = d.type;
     }
     std::cout << "Copy Dog (by = ) " << std::endl;

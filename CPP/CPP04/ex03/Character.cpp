@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:39:04 by atalaver          #+#    #+#             */
-/*   Updated: 2023/10/22 18:26:48 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:43:36 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ Character& Character::operator=( const Character &c )
 	if (this != &c)
 	{
 		this->name = c.name;
+		for (int i = 0; i < 4; i++)
+			if (this->inventory[i])
+				delete this->inventory[i];
 		for (int i = 0; i < 4; i++)
 			this->inventory[i] = c.inventory[i]->clone();
 	}

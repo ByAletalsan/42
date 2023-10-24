@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:41:52 by atalaver          #+#    #+#             */
-/*   Updated: 2023/10/22 15:47:56 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:26:56 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ Cat& Cat::operator=( const Cat &c )
 {
     if (this != &c)
     {
-        this->brain = new Brain( *c.brain );   
+        if (this->brain)
+            *this->brain = *c.brain;
+        else
+            this->brain = new Brain( *c.brain );
         this->type = c.type;
     }
     std::cout << "Copy Cat (by = ) " << std::endl;

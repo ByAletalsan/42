@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:06:15 by atalaver          #+#    #+#             */
-/*   Updated: 2023/10/22 18:32:29 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:39:00 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ MateriaSource::~MateriaSource()
 
 MateriaSource &MateriaSource::operator=( const MateriaSource &m )
 {
+	for (int i = 0; i < 4; i++)
+		if (this->materias[i])
+			delete this->materias[i];
 	for (int i = 0; i < 4; i++)
 		this->materias[i] = m.materias[i]->clone();
 	std::cout << "Created (by =) MateriaSource!" << std::endl;

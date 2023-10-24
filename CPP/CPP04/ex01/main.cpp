@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:39:40 by atalaver          #+#    #+#             */
-/*   Updated: 2023/10/22 15:55:14 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:30:11 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int main(void)
     //...
 	std::cout << std::endl;
 	Dog basic;
+    Dog b;
+    b = basic;
 	{
 		Dog tmp = basic;
 	}
