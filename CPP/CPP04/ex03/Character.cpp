@@ -80,7 +80,7 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (this->inventory[idx])
+	if (idx >= 0 && idx < 4 && this->inventory[idx])
 	{
 		std::cout << "Character " << this->name << " dropped " << this->inventory[idx]->getType() << std::endl;
 		delete this->inventory[idx];
@@ -91,7 +91,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (this->inventory[idx])
+	if (idx >= 0 && idx < 4 && this->inventory[idx])
 	{
 		this->inventory[idx]->use(target);
 		std::cout << "Character " << this->name << " use " << this->inventory[idx]->getType() << std::endl;
