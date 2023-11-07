@@ -7,6 +7,7 @@ RUN	apk update && apk upgrade && apk add --no-cache \
 		redis				\
 		php7				\
 		php7-fpm			\
+		php7-opcache		\
 		php7-bcmath			\
 		php7-bz2 			\
 		php7-calendar		\
