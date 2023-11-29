@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario</title>
+</head>
+<body>
+	<h2>Formulario Cookies</h2>
+	<form method="POST" action="/cookies/save_cookies.py">
+		<label for="nombre_post">Nombre :</label>
+		<input type="text" id="nombre_post" name="nombre_post"><br><br>
+	
+		<label for="apellido_post">Apellido :</label>
+		<input type="text" id="apellido_post" name="apellido_post"><br><br>
+	
+		<label for="dir_post">Dir :</label>
+		<input type="text" id="dir_post" name="dir_post"><br><br>
+	
+		<input type="submit" name="submit" value="Guardar">
+	</form>
+	<br>
+	<hr>
+	<br>
+	<a href="cookies/show_cookies.py">VER COOKIES ACTUALES</a>
+</body>
+</html>

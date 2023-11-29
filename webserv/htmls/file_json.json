@@ -1,0 +1,10 @@
+{
+	"titulo": "El nombre del viento",
+	"autor": "Patrick Rothfuss",
+	"anio_publicacion": 2007,
+	"genero": ["Fantasía", "Aventura"],
+	"editorial": {
+		"nombre": "Daw Books",
+		"ubicacion": "Nueva York"
+	}
+}
