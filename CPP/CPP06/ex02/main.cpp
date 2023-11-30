@@ -6,7 +6,7 @@
 /*   By: atalaver <atalaver@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:22:04 by atalaver          #+#    #+#             */
-/*   Updated: 2023/11/30 18:43:17 by atalaver         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:44:14 by atalaver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ Base*	generate()
 
 void	identify(Base* p)
 {
-	if (dynamic_cast<A*>(p))
+	if (dynamic_cast<A*>(p) != NULL)
         std::cout << "A" << std::endl;
-    else if (dynamic_cast<B*>(p))
+    else if (dynamic_cast<B*>(p) != NULL)
         std::cout << "B" << std::endl;
-    else if (dynamic_cast<C*>(p))
+    else if (dynamic_cast<C*>(p) != NULL)
         std::cout << "C" << std::endl;
     else
         std::cout << "Couldn't identify any class!" << std::endl;
