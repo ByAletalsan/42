@@ -377,7 +377,7 @@ void	Response::autoindex( std::string ruta_act, std::string path, std::string ro
 			else
 				ruta = n_f;
 			struct stat		fileStat;
-			memset(&fileStat, 0, sizeof(fileStat));
+			//memset(&fileStat, 0, sizeof(fileStat));
 			stat(ruta.c_str(), &fileStat);
 			if (S_ISDIR(fileStat.st_mode) && entrada->d_type != DT_REG) // Es carpeta
 			{
