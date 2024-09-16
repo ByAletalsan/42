@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  nginx:
+    build: requirements/nginx/
+    container_name: nginx
+    ports:
+      - "${PORT}:443"
+    volumes:
+      - "./volumes/website:/var/www/html"
+    depends_on:
+      - django
+    networks:
+      - paleta_nt
+    restart: always
+
+  django:
+    build: requirements/django/
+    container_name: django
+    volumes:
+      - "./volumes/website:/var/www/html"
+    depends_on:
+      - postgresql
+      - redis
+    networks:
+      - paleta_nt
+    restart: always
+    env_file: .env
+
+  postgresql:
+    build: requirements/postgresql/
+    container_name: postgresql
+    volumes:
+      - "./volumes/postgresql:/var/lib/postgresql/data"
+    networks:
+      - paleta_nt
+    restart: always
+    env_file: .env
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    networks:
+      - paleta_nt
+    restart: always
+
+networks:
+  paleta_nt:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16

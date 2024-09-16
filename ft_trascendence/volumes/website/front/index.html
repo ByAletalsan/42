@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="icon" type="image/png" href="srcs/icon_pong3.png">
+  <title>Trascendence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <script src="chart.js"></script>
+
+
+</head>
+<body class="d-flex flex-column">
+	<video autoplay muted loop id="bg-video">
+		<source src="videos/squares.mp4" type="video/mp4">
+	</video>
+  <audio id="audioElement" src="audio/coin_drop.mp3"></audio>
+  <audio id="backgroundMusic" src="audio/rydeen.mp3" loop></audio>
+  <audio id="easterEgg" src="audio/codigo_lyoko.mp3"></audio>
+  <!--CONTENEDOR DE LA PÁGINA QUE SE MUESTRA-->
+	<div class="page-container">
+    <!--NAV BAR-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+            <nav class="navbar navbar-expand-lg" id="tm-nav">
+              <p class="navbar-brand" href="#" style="user-select: none;">PONGER</p>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-supported-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="bi bi-dpad-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-dpad-fill" viewBox="0 0 16 16" color="white">
+                    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v3a.5.5 0 0 1-.5.5h-3A1.5 1.5 0 0 0 0 6.5v3A1.5 1.5 0 0 0 1.5 11h3a.5.5 0 0 1 .5.5v3A1.5 1.5 0 0 0 6.5 16h3a1.5 1.5 0 0 0 1.5-1.5v-3a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 0 16 9.5v-3A1.5 1.5 0 0 0 14.5 5h-3a.5.5 0 0 1-.5-.5v-3A1.5 1.5 0 0 0 9.5 0zm1.288 2.34a.25.25 0 0 1 .424 0l.799 1.278A.25.25 0 0 1 8.799 4H7.201a.25.25 0 0 1-.212-.382l.799-1.279Zm0 11.32-.799-1.277A.25.25 0 0 1 7.201 12H8.8a.25.25 0 0 1 .212.383l-.799 1.278a.25.25 0 0 1-.424 0Zm-4.17-4.65-1.279-.798a.25.25 0 0 1 0-.424l1.279-.799A.25.25 0 0 1 4 7.201V8.8a.25.25 0 0 1-.382.212Zm10.043-.798-1.278.799A.25.25 0 0 1 12 8.799V7.2a.25.25 0 0 1 .383-.212l1.278.799a.25.25 0 0 1 0 .424Z"/>
+                  </svg>
+              </button>
+              <div class="collapse navbar-collapse zindex2" id="navbar-supported-content">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto" id="menu">
+                  <li class="nav-item selected">
+                    <p class="nav-link disabled" aria-current="page" style="cursor: pointer;" data-no="2" translate-key="nav_home">Home</p>
+                    <div class="circle"></div>
+                  </li>
+                  <li class="nav-item">
+                    <p class="nav-link disabled" data-no="3" style="cursor: pointer;" translate-key="nav_user">User</p>
+                    <div class="circle"></div>
+                  </li>
+                  <li class="nav-item">
+                    <p class="nav-link disabled" data-no="4" style="cursor: pointer;" translate-key="nav_game">Game</p>
+                    <div class="circle"></div>
+                  </li>
+                  <li class="nav-item">
+                    <p class="nav-link disabled" data-no="5" style="cursor: pointer;" translate-key="nav_stats">Stats</p>
+                    <div class="circle"></div>
+                  </li>
+                  <li class="nav-item">
+                    <p id="btnPlayStop" class="nav-link disabled" style="cursor: pointer;" translate-key="nav_unmute">UNMUTE</p>
+                    <div class="circle"></div>
+                  </li>
+                </ul>
+              </div>
+            </nav>       
+        </div>        
+      </div>
+    </div> 
+    <!--PÁGINAS QUE SE PUEDEN VISUALIZAR A LO LARGO DE LA WEB-->
+    <div class="container-fluid">
+      <ul class="cd-hero-slider mb-0 py-5">
+        <!--HOME INSERT COIN-->
+        <li class="pages" data-page-no="0" id="section0" style="display: none;">
+          <div class="page-width-1">
+            <div class="row d-flex fix_images">
+              <div class="col-md-8 ">
+                <img src="srcs/PONGER.png" alt="Image" class="img-fluid intro-img-2">
+              </div>
+              <div class="col-md-4 ">
+                <div class="d-flex justify-content-end insertCoin">
+                  <!-- <img src="images/klipartz.com.png" alt="Image" class="img-fluid intro-img-1"> -->
+                  <button id="coin" type="button" class="btn m-3 coinImage" style="background-image: url(srcs/klipartz.com.png);"></button>
+                  <img src="srcs/ranura_1.png" alt="Image" class="img-fluid intro-img-1 me-2">
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex fix_images">
+              <div class="col-md-8">
+                <div>
+                  <h2 class="mb-4 texto-naranja" translate-key="section_0_1">Welcome to Ponger</h2>
+                  <p class="mb-4" translate-key="section_0_2">
+                    You are in a world of violence where only your paddle can save you. <br><br>Fight against your friends
+                    and strangers in the battle arena. But be careful. Blood will be spilled as
+                    you delight in a state-of-the-art 3D environment.<br><br> Only the strongest survive. <br><br>
+                    Only the greatest become legends.</p><br>
+                  <h3 class="mb-4 texto-rojo" translate-key="section_0_3">WARNING!!</h3>
+                  <br>
+                  <p class="mb-0" translate-key="section_0_4">
+                    This game is highly addictive. We are not responsible for the health of your social life once you enter the wonderful world of PONG!! </p>
+                </div>
+              </div>              
+              <div class="col-md-4">
+                <div class="d-flex justify-content-center">
+                  <img src="srcs/einstein.png" alt="Image" class="img-fluid einstein_img">
+                </div>
+              </div>
+            </div>
+          </div>  
+        </li>
+        <!--HOME WITH CREDITS / LOGIN AND REGISTER-->
+        <li class="pages" data-page-no="1" style="display: none;" id="section1">
+          <div class="page-width-1">
+            <div class="row d-flex fix_images">
+              <div class="col-md-8 ">
+                <img src="srcs/PONGER.png" alt="Image" class="img-fluid intro-img-2">
+                <h2 class="mb-4 texto-naranja" translate-key="section_1_0">LOGIN OR REGISTER NOW !!</h2>
+              </div>
+              <!--LOGIN FORM-->
+              <div class="col-md-4" >
+                <form id="formLog" class="shadow-5-strong p-5">
+                  <!-- Email input -->
+                  <div class="mb-4" data-mdb-input-init>
+                    <label class="form-label" for="formLogNick" translate-key="section_1_1">Nickname</label>
+                    <input autocomplete="off" type="name" id="formLogNick" class="form-control border-color bg-transparent texto-naranja" placeholder="Enter Nickname" name="username"/>
+                  </div>
+    
+                  <!-- Password input -->
+                  <div class="mb-4" data-mdb-input-init>
+                    <label class="form-label" for="formLogPass" translate-key="section_1_2">Password</label>
+                    <input autocomplete="off" type="password" id="formLogPass" class="form-control border-color bg-transparent texto-naranja" placeholder="Enter Password" name="password"/>
+                  </div>
+    
+                  <!-- Submit button -->
+                  <button id="login"  data-action="normal" type="submit" class="btn btn-primary btn-block bg-transparent border-color texto-naranja" data-mdb-ripple-init translate-key="section_1_3">Login</button>
+                  <button id="login_42" data-action="42" type="submit" class="btn btn-primary btn-block bg-transparent border-color texto-naranja" data-mdb-ripple-init translate-key="section_1_4">Login with 42</button>
+                </form>
+                <button id="login_guest" data-action="42" type="submit" class="btn btn-primary btn-block bg-transparent border-color texto-aguamar" data-mdb-ripple-init style="margin-top: -20px;" translate-key="section_1_5">Login as Guest</button>
+              </div>
+            </div>
+            <div class="row d-flex fix_images">
+              <div class="col-md-8">
+                <div class="container">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <!--REGISTER FORM-->
+                          <div class="signup-form">
+                              <form id="formReg" action="" class="mt-5 p-4 bg-light shadow transparent-bg">
+                                  <h4 class="mb-5 texto-naranja" translate-key="section_1_6">Create Your Account</h4>
+                                  <div class="row">
+                                      <div class="mb-3 col-md-6">
+                                          <label translate-key="section_1_7" for="fname">Nickname</label><span class="text-danger">*</span>
+                                          <input id="fname" autocomplete="off" type="text" name="username" class="form-control border-color bg-transparent texto-naranja" placeholder="Enter Nickname">
+                                      </div>
+              
+                                      <div class="mb-3 col-md-6">
+                                          <label translate-key="section_1_8" for="femail">Email</label><span class="text-danger">*</span>
+                                          <input id="femail" autocomplete="off" type="email" name="email" class="form-control border-color bg-transparent texto-naranja" placeholder="Enter Email">
+                                      </div>
+              
+                                      <div class="mb-3 col-md-12">
+                                          <label translate-key="section_1_9" for="fpass">Password</label><span class="text-danger">*</span>
+                                          <input id="fpass" autocomplete="off" type="password" name="password1" class="form-control border-color bg-transparent texto-naranja" placeholder="Enter Password">
+                                      </div>
+                                      <div class="mb-3 col-md-12">
+                                          <label translate-key="section_1_10" for="fpass2">Confirm Password</label><span class="text-danger">*</span>
+                                          <input id="fpass2" autocomplete="off" type="password" name="password2" class="form-control border-color bg-transparent texto-naranja" placeholder="Confirm Password">
+                                      </div>
+                                      <div class="col-md-12">
+                                        <span id="term_cond" style="cursor: pointer; text-decoration: underline;" translate-key="section_1_11">Accept Terms and Conditions</span><input id="ckTerms" type="checkbox" class="btn btn-primary bg-transparent border-color texto-naranja" style="margin-left: 15px;">
+                                      </div>
+                                      <div class="col-md-12">
+                                         <button id="btnReg" type="submit" class="btn btn-primary float-end bg-transparent border-color texto-naranja" translate-key="section_1_12">Signup Now</button>
+                                      </div>
+                                  </div>
+                              </form>
+                              <p class="text-center mt-3 text-secondary" translate-key="section_1_13">If you have account, Please Login Now</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex justify-content-center">
+                  <img src="srcs/einstein2.png" alt="Image" class="img-fluid einstein_img">
+                </div>
+              </div>
+            </div>
+          </div>  
+        
+        </li>
+        <!--HOME USER-->
+        <li class="pages" data-page-no="2" style="display: none;" class="px-3" id="section2">
+          <div class="page-width-1">
+            <div class="row d-flex fix_images" style="margin-bottom: 50px;">
+              <div class="col-md-8 ">
+                <img src="srcs/PONGER.png" alt="Image" class="img-fluid intro-img-2">
+              </div>
+              <div class="col-md-4">
+                <div class="fix_photo">
+                  <div style="margin-bottom: 50px;">
+                    <img src="portaits/darwing_perfil.jpg" alt="Image" class="img-fluid avatar" style="width: 10em; height: 10em; overflow: hidden; border-radius: 50%;"> <!--style="width: 100%; height: 100%; object-fit: cover;"-->
+                  </div>
+                  <div class="d-flex align-items-center mt-3">
+                    <h1 class="m-0" style="width: 100%;">
+                      <span class="NickName" style="text-align: center; width: 100%;">DARWIN</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex fix_images align-content-center justify-content-center">
+              <div class="col-md-12 d-flex flex-column align-content-center justify-content-center" style="text-align: justify; font-size: 20px;">
+                <span class="texto-naranja" style="font-size: 25px;" translate-key="section_2_0">Dive into the classic Pong challenge reimagined for the modern era!</span>
+                <br>
+                <p translate-key="section_2_1">PONGER invites you to compete in exciting matches against players from around the world or against a challenging artificial intelligence. Master unique powers and discover the most important scientists throughout history. Whether you're looking for a quick solo match or an intense online showdown, our platform is the ultimate battleground.</p>
+                <span class="texto-rojo" style="font-size: 18px;" translate-key="section_2_2">Are you ready to accept the challenge?</span>
+                <br>
+              </div>
+              <div class="row" style="margin-top: 50px;">
+                <div class="col-md-6">
+                  <img src="srcs/juego.png" style="width: 100%; border: 2px solid black;">
+                </div>
+                <div class="col-md-6" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                  <span class="texto-naranja" style="font-size: 25px;" translate-key="section_2_3">Instrucciones</span>
+                  <br>
+                  <div><span style="font-size: 20px; color:white;"><- -> </span><span class="texto-aguamar" translate-key="section_2_4">Movimiento</span></div>
+                  <br>
+                  <div><span style="font-size: 20px; color:white;">W S </span><span class="texto-aguamar" translate-key="section_2_5">Movimiento P2</span></div>
+                  <br>
+                  <div><span style="font-size: 20px; color:white;" translate-key="section_2_6">Espacio </span><span class="texto-aguamar" translate-key="section_2_7">Hechizo </span><span style="font-size: 15px;" class="texto-aguamar" translate-key="section_2_8">(Debe estar la pelota en tu campo)</span></div>
+                </div>
+              </div>
+            </div>          
+          </div>
+        </li>
+        <!--EDIT USER-->
+        <li class="pages" data-page-no="3" style="display: none;" id="section3">
+          <div class="page-width-1">
+            <div class="row d-flex fix_images">
+              <div class="col-md-8 ">
+                <img src="srcs/PONGER.png" alt="Image" class="img-fluid intro-img-2">
+                <div id="selectCharacter" class="d-flex">
+                  <h2 class="m-2 text-start" translate-key="section_3_0" style="margin-right: 20px;">SELECT CHARACTER:</h2>
+                  <h3  class="m-2 text-start texto-naranja" id="charSelected">DARWIN</h3>
+                </div>
+                <div id="SelectCharacter" class="d-flex">
+                  <div class="btn-group">
+                    <div class="btn-group-vertical p-2">
+                      <button id="btnCh0" type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/darwing_perfil.jpg);"></button>
+                      <button id="btnCh1" type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/Marie-Curie.png);"></button>
+                      <button id="btnCh2"type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/stephen-hawking.png);"></button>
+                    </div>
+                    <div class="btn-group">
+                      <div class="btn-group-vertical p-2">
+                        <button id="btnCh3" type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/newton.jpg);"></button>
+                        <button id="btnCh4"type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/einstein.jpeg);"></button>
+                        <button id="btnCh5"type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/pithagoras.jpg);"></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <img id="charAnim" src="gif/charles-darwin.gif" alt="Image">
+                  </div>
+                </div>
+                <div style="text-align: left;" id="infoAvatar">
+                  <h2 class="mb-4 texto-naranja">Character Profile</h2>
+                  <p id="homeCharInfo" class="mb-4">
+                    <span class="texto-naranja" translate-key="section_3_1">FULL NAME: </span><span id="nameChar">Charles Robert Darwin</span>
+                    <br>
+                    <span class="texto-naranja" translate-key="section_3_2">DATE OF BIRTH: </span><span id="bornDateChar">February 12, 1809</span>
+                    <br>
+                    <span class="texto-naranja" translate-key="section_3_3">PLACE OF BIRTH: </span><span id="bornCityChar">Shrewsbury, England</span>
+                    <br>
+                    <span class="texto-naranja" translate-key="section_3_4">STORY:</span><br>
+                    <span id="storyChar">Don't underestimate this old man. He has tremendous resistance to poisons and diseases.
+                      His passion for bugs and animals led him to participate in the epic expedition of the
+                      HMS Beagle around the earth. During the voyage, he was bitten by an empresaurio
+                      while eating together on an island. After a feverish period, he woke up genetically
+                      evolved, with superhuman capabilities and a theory of the species that would revolutionize
+                      the scientific community. Since then, he adapts to any situation and is capable of
+                      playing PONGER with his feet.</span>
+                  </p><br>
+                </div>
+              </div>
+              <div class="col-md-4" >
+               
+                <div class="d-flex justify-content-between fix_photo mt-5" style="margin-bottom: 40px;">
+                  <div style="width: 10em; height: 10em; overflow: hidden; border-radius: 50%;">
+                    <img class="img-fluid avatar" src="" alt="Image" style="width: 100%; height: 100%; object-fit: cover;"> <!--style="width: 100%; height: 100%; object-fit: cover;"--> 
+                  </div>
+                  <!-- <form name="imgForm" action="http://127.0.0.1:8000/upload_image/" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="image" accept="image/*" required>
+                    <button type="submit">Upload</button>
+                  </form> -->
+                  <!-- <a href="./update_avatar.html" class="upload-image bg-transparent border-color texto-naranja p-2 m-2">Upload Image</a> -->
+                  <button type="button" id="btnChangePhoto" class="btn bg-transparent border-color texto-naranja p-2 m-2" data-mdb-ripple-init translate-key="section_3_5">Change Photo</button>
+                </div>
+                <input class="mt-3" type="file" id="photoInput" accept=".jpg, .jpeg, .png" style="width: 90%;"/>
+
+                <div class="d-flex justify-content-between mt-5">
+                  <h3 class="m-2 text-start">
+                  <span translate-key="section_3_6">NICKNAME:</span>
+                  </h3>
+                  <h4 class="m-2 text-start">
+                  <span class="texto-naranja NickName">DARWIN</span>
+                  </h4>
+                </div>
+                <div class="d-flex row">
+                  <form id="nickForm" class="m-3">
+                    <input type="text" autocomplete="off" id="newNickName" class="form-control border-color bg-transparent texto-naranja" placeholder="Write a new Nickname">
+                    <button type="submit" class="btn float-end bg-transparent border-color texto-naranja" translate-key="section_3_7">Change Nickname</button>
+                  </form>
+                </div>
+                <div class="d-flex justify-content-between mt-5">
+                  <h3 class="m-2 text-start">
+                    <span translate-key="section_3_8">E-MAIL:</span>
+                  </h3>
+                </div>
+                <h4 class="m-2">
+                  <span class="Email texto-naranja ">evolutivo@pleistoceno.com</span>
+                </h4>
+                <div class="d-flex row">
+                  <form id="emailForm" class="m-3">
+                    <input type="email" id="newEmail" autocomplete="off" class="form-control border-color bg-transparent texto-naranja" placeholder="Write a new Email">
+                    <button type="submit" class="btn float-end bg-transparent border-color texto-naranja" translate-key="section_3_9">Change Email</button>
+                  </form>
+                </div>
+                <div class="d-flex justify-content-between mt-5">
+                  <h3 class="m-2 text-start">
+                    <span translate-key="section_3_10">PASSWORD:</span>
+                  </h3>
+                </div>
+                <div class="d-flex row" style="margin-bottom: 40px;">
+                  <form id="passForm" class="m-3">
+                    <input type="password" id="newPass" autocomplete="off" class="form-control border-color bg-transparent texto-naranja" placeholder="Write a new Password">
+                    <button type="submit" class="btn float-end bg-transparent border-color texto-naranja" translate-key="section_3_11">Change Password</button>
+                  </form>
+                </div>
+                <div class="d-flex row">
+                  <button id="btnLogOut" type="button" class="btn m-3 float-end bg-transparent border-color texto-naranja" translate-key="section_3_12">LOG OUT</button>
+                  <button id="btnDownloadInfoUser" type="button" class="btn m-3 float-end bg-transparent border-color texto-aguamar" translate-key="section_3_13">DOWNLOAD INFO USER</button>
+                  <button id="btnDeleteAccount" type="button" class="btn m-3 float-end bg-transparent border-color texto-rojo" translate-key="section_3_14">DELETE ACCOUNT</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- GAMES -->
+        <li class="pages" data-page-no="4" style="display: none;" id="section4">
+          <div id="1v1" style="display: none;">
+            <div class="row d-flex">
+              <div class="col-12 m-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <span translate-key="section_4_1v1_0">Player 1:</span>
+                  </div>
+                  <div id="score" class="col-md-6">
+                    <span class="m-3" style="font-size: 2em;" translate-key="section_4_1v1_1">SCORE:</span>
+                  </div>
+                  <div class="col-md-3">
+                    <span translate-key="section_4_1v1_2">Player 2:</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 m-3">
+                <div class="row">
+                  <div id="nickPlayer1" class="col-md-3">
+                    <span id="nickP1" style="font-size: 2em;" class="texto-naranja">PEPE</span>
+                  </div>
+                  <div id="score" class="col-md-6 texto-naranja">
+                    <span id="scoreP1" class="m-3" style="font-size: 2em;">0</span>
+                    <span id="scoreP2" class="m-3" style="font-size: 2em;">0</span>
+                  </div>
+                  <div id="nickPlayer2" class="col-md-3">
+                    <span id="nickP2" style="font-size: 2em;" class="texto-naranja">EPEP</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 m-3">
+                <div class="row">
+                  <div id="nickPlayer1" class="col-md-3">
+                    <span id="powerUpP1" style="font-size: 1em;" class="texto-verde" translate-key="section_4_1v1_3">SPELL!</span>
+                  </div>
+                  <div id="score" class="col-md-6 texto-naranja">
+                  </div>
+                  <div id="nickPlayer2" class="col-md-3">
+                    <span id="powerUpP2" style="font-size: 1em;" class="texto-verde" translate-key="section_4_1v1_4">SPELL!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex mt-5 mb-5" style="min-height: 500px;">
+              <div class="col-md-12"> 
+                <div class="row">
+                  <div class="col-md-3">
+                    <img id="charPlayer1" src="gif/charles-darwin.gif" alt="Image" class="img-fluid einstein_img">
+                  </div>
+                  <div id="game" class="col-md-6" style="padding: 0; max-height: 100vh; min-height: 400px; min-width: 400px;"></div>
+                  <div class="col-md-3">
+                    <img id="charPlayer2" src="gif/flop/hawking.gif" alt="Image" class="img-fluid einstein_img">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="homegame" style="display: none;">
+              <div id="SelectGame" class="d-flex row">
+                <div class="btn-group d-flex align-content-center justify-content-center">
+                  <div class="btn-group p-2">
+                    <button id="btnIA" type="button" class="btn m-3 float-end border-color texto-naranja" >IA</button>
+                    <button id="btnIAs" type="button" class="btn m-3 float-end border-color texto-naranja" translate-key="section_4_home_0">IA Spell</button>
+                    <button id="btn1v1" type="button" class="btn m-3 float-end border-color texto-naranja" >1v1</button>
+                    <button id="btn1v1s" type="button" class="btn m-3 float-end border-color texto-naranja" translate-key="section_4_home_1">1v1 Spell</button>
+                    <button id="btnT" type="button" class="btn m-3 float-end border-color texto-naranja" translate-key="section_4_home_2">Tournament</button>
+                    <button id="btnTs" type="button" class="btn m-3 float-end border-color texto-naranja" translate-key="section_4_home_3">Tournament Spell</button>
+                    <button id="btn1v1k" type="button" class="btn m-3 float-end border-color texto-naranja" translate-key="section_4_home_4">1v1 Local</button>
+                    <button id="btnT1v1k" type="button" class="btn m-3 float-end border-color texto-naranja" translate-key="section_4_home_4.1">Tournament 1v1 Local</button>
+                  </div>
+              </div>
+              <div id="SelectPower">
+                <div class="btn-group">
+                  <div class="btn-group p-2">
+                    <div id="SelectCharacter" class="d-flex">
+                      <div class="btn-group">
+                          <button id="btnCh0Game" type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/darwing_perfil.jpg);"></button>
+                          <button id="btnCh1Game" type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/Marie-Curie.png);"></button>
+                          <button id="btnCh2Game"type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/stephen-hawking.png);"></button>
+                          <button id="btnCh3Game" type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/newton.jpg);"></button>
+                          <button id="btnCh4Game"type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/einstein.jpeg);"></button>
+                          <button id="btnCh5Game"type="button" class="btn m-3 btnWithImage" style="background-image: url(portaits/pithagoras.jpg);"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row col-12 d-flex align-content-center justify-content-center" style="height: 400px;">
+                <div class="col-3">
+                  <img id="charAnimHome" src="gif/charles-darwin.gif" alt="" style="width: 80%; margin-left: 30%;">
+                </div>
+                <div class="col-3 d-flex flex-column align-content-center justify-content-center">
+                  <p id="scientist_text_game">DARWIN: <span style="color:red;">EVOLUCION</span><br>Darwin consigue lo que quiere, la evolucion en la pala te la pone más grande y dura.</p>
+                </div>
+              </div>
+              <div class="col-12 d-flex flex-column align-content-center justify-content-center">
+                <div style="display: flex; flex-direction: column; align-items: center; ">
+                  <input type="text" id="nick_tour" style="display: none; width: 400px;" placeholder="NICK TOURNAMENT" autocomplete="off">
+                  <p style="margin-top: 30px; display: none;" id="in_queue" translate-key="section_4_home_5">IN QUEUE...</p>
+                </div>
+                <div id="PlayGame" class="d-flex row align-content-end justify-content-center">
+                  <button id="btnPlay" type="button" class="btn m-3 float-end bg-transparent border-color texto-naranja" style="width: 500px;" translate-key="section_4_home_6">PLAY</button>
+                  <button id="btnCancelQueue" type="button" class="btn m-3 float-end bg-transparent border-color texto-rojo" style="width: 300px; display: none;" translate-key="section_4_home_7">CANCEL QUEUE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tournament" style="display: none;">
+            <div>
+              <div class="row d-flex align-content-center justify-content-center" style="height: 400px;">
+                <div class="col-4">
+                  <img id="imgMatchP1" src="gif/charles-darwin.gif" alt="player1">
+                </div>
+                <div class="col-4 d-flex flex-column align-content-between justify-content-evenly">
+                  <h1 id="nickMatchP1" style="width: 100%; text-align: start;">Ale1</h1>
+                  <h1 class="texto-naranja" style="font-size: 100px;">VS</h1>
+                  <h1 id="nickMatchP2"style="width: 100%; text-align: end;">Ale2</h1>
+                </div>
+                <div class="col-4">
+                  <img id="imgMatchP2" src="gif/einstein.gif" alt="player2">
+                </div>
+            </div>
+            <div>
+              <div class="row d-flex align-content-center justify-content-center" style="height: 300px;">
+                <div class="col-3 flex-column align-content-between justify-content-evenly">
+                  <h1 id="player1S1" style="border: 5px solid white; margin-bottom: 30px;">Ale1</h1>
+                  <h1 id="player2S1" style="border: 5px solid white;">Ale2</h1>
+                </div>
+                <div class="col-1 flex-column align-content-center justify-content-center">
+                  <h1 class="texto-naranja" style="font-size: 80px;">></h1>
+                </div>
+                <div class="col-4 flex-column align-content-between justify-content-evenly" style="max-width:400px;">
+                  <h1 id="player1F" style="width: 100%; text-align: start; margin-bottom: 30px;">...</h1>
+                  <h1 id="player2F" style="width: 100%; text-align: end;">...</h1>
+                </div>
+                <div class="col-1 flex-column align-content-center justify-content-center">
+                  <h1 class="texto-naranja" style="font-size: 80px;"><</h1>
+                </div>
+                <div class="col-3 flex-column align-content-between justify-content-evenly">
+                  <h1 id="player1S2" style="border: 5px solid white; margin-bottom: 30px;">Dario1</h1>
+                  <h1 id="player2S2" style="border: 5px solid white;">Dario2</h1>
+                </div>
+            </div>
+          </div>
+        </li>
+        
+
+
+        <li class="pages homegame" data-page-no="4" style="display: none;" id="section4">
+          
+        </li>  
+
+
+        <li class="pages" data-page-no="5" style="display: none;" id="section5">
+          <div class="container mt-5">
+            <div class="d-flex align-content-center justify-content-center" style="margin-bottom: 50px;">
+              <img id="imagen_friend" src="" class="avatar" alt="" style="margin-right: 10%; max-width: 150px; border-radius: 50%;">
+              <h1 id="infoUser" class="d-flex flex-column align-content-center justify-content-evenly">DARWIN STATS</h1>
+            </div>
+            <table id="tableStats" class="table texto-naranja p-5">
+                <thead>
+                    <tr>
+                        <th translate-key="section_5_0">Games Played</th>
+                        <th translate-key="section_5_1">Games Won</th>
+                        <th translate-key="section_5_2">Lost Games</th>
+                        <th translate-key="section_5_3">Win Rate</th>
+                        <th translate-key="section_5_4">Tournaments Played</th>
+                        <th translate-key="section_5_5">Tournaments Won</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>0</th>
+                    <th>0</th>
+                    <th>0</th>
+                    <th>0%</th>
+                    <th>0</th>
+                    <th>0</th>
+                </tr>
+                </tbody>
+            </table>
+            <div id="grafico" class="d-flex align-content-center justify-content-center" style="width: 100%;">
+            </div>
+            <br>
+            <br>
+            <h1 translate-key="section_5_14">GAMES PLAYED</h1>
+            <br>
+            <table id="tableGames" class="table texto-naranja p-5">
+              <thead>
+                  <tr>
+                      <th translate-key="section_5_6">WINNER</th>
+                      <th translate-key="section_5_7">LOSER</th>
+                      <th translate-key="section_5_8">GAME MODE</th>
+                      <th translate-key="section_5_9">SCORE</th>
+                      <th translate-key="section_5_10">DATE</th>
+                  </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+          </table>
+          <br>
+          <br>
+            <div>
+              <div style="display: flex; align-items: center; justify-content: center;">
+              <h1 translate-key="section_5_11">LIST OF FRIENDS</h1>
+              <button class="refresh-button p-5 bg-transparent border-0" id="btnRefreshLista">
+                <!-- ICONOS -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="purple" class="bi bi-bootstrap-reboot" viewBox="0 0 16 16">
+                  <path d="M1.161 8a6.84 6.84 0 1 0 6.842-6.84.58.58 0 1 1 0-1.16 8 8 0 1 1-6.556 3.412l-.663-.577a.58.58 0 0 1 .227-.997l2.52-.69a.58.58 0 0 1 .728.633l-.332 2.592a.58.58 0 0 1-.956.364l-.643-.56A6.8 6.8 0 0 0 1.16 8z"/>
+                  <path d="M6.641 11.671V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352zm0-3.75V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324z"/>
+                </svg>
+              </button>
+              </div>
+              <ul class="fs-2" id="friendListFull">
+                <li class="mb-2">FRIEND 1</li>
+                <li class="mb-2">FRIEND 2</li>
+                <li class="mb-2">FRIEND 3</li>
+                <!-- ... más elementos ... -->
+              </ul>
+            </div>
+            <div class="d-flex row">
+              <form id="friendForm" class="m-3">
+                <input type="text" autocomplete="off" id="friendName" class="form-control border-color bg-transparent texto-naranja" placeholder="Nickname of your friend">
+                <button type="submit" id="addFriend" class="btn float-end bg-transparent border-color texto-naranja" translate-key="section_5_12">ADD FRIEND</button>
+                <button type="submit" id="removeFriend" class="btn float-end bg-transparent border-color texto-naranja" translate-key="section_5_13">REMOVE FRIEND</button>
+            </form>            
+            </div>
+        </div>
+        </li>
+        <li class="pages" data-no="6" style="display: none;" id="section6">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h1 class="texto-naranja" translate-key="section_6_0">Terms and Conditions</h1>
+                <br>
+                <p style="text-align: justify;" translate-key="section_6_1">Welcome to our online gaming platform. By accessing and using our services, you agree to the following terms and conditions. Please read them carefully.</p>
+                <br><br>
+                <p style="text-align: justify;" translate-key="section_6_2">1. Account Registration: To enjoy the full gaming experience, users must create an account by providing a nickname, email address, password, and an icon. This information is used to personalize your experience and facilitate community interactions.</p>
+                <br><br>
+                <p style="text-align: justify;" translate-key="section_6_3">2. Data Use and Privacy: We value your privacy and are committed to protecting your personal data. The information we collect, including your game history and statistics, is used to enhance your gaming experience, provide customer support, and improve our services. For detailed information on how we use and protect your data, please refer to our Privacy Policy.</p>
+                <br><br>
+                <p style="text-align: justify;" translate-key="section_6_4">3. User Content: Users are responsible for the content they share on the platform, including text, images, and any other materials. Inappropriate or offensive content is strictly prohibited and may result in account termination.</p>
+                <br><br>
+                <p style="text-align: justify;" translate-key="section_6_5">4. Account Termination: Users have the right to terminate their accounts at any time. Upon termination, all personal data associated with the account will be deleted in accordance with our Privacy Policy.</p>
+                <br><br>
+                <p style="text-align: justify;" translate-key="section_6_6">5. Changes to Terms and Conditions: We reserve the right to modify these terms and conditions at any time. Users will be notified of any significant changes and continued use of the service will constitute acceptance of the new terms.</p>
+                <br><br>
+                <p style="text-align: justify;" translate-key="section_6_7">By creating an account and using our services, you confirm that you have read, understood, and agreed to these terms and conditions.</p>
+                <br>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--FOOTER-->
+    <div class="container-fluid">
+      <footer class="footer row mx-auto tm-footer texto-aguamar">
+        <div class="col-md-5 px-0">
+          Copyright 2024 51% Company Limited. All rights reserved.
+        </div>
+        <div class="col-md-5 px-0 tm-footer-right">
+          Designed by <a rel="sponsored" href="https://www.zappa.com/#/" target="_blank" class="tm-link-white">ZappaTeam</a> and <a rel="sponsored" href="https://youtu.be/oq9HlVE86OA?si=IOLlBdTw8bVAbQij" target="_blank" class="tm-link-white">ElNano</a>
+        </div>
+        <div class="col-md-2 px-0">
+          <p id="select_idioma" style="cursor: pointer;">English</p>
+          <div class="texto-naranja" id="lista_idiomas" style="display: none;">
+            <p style="cursor: pointer;">English</p>
+            <p style="cursor: pointer;">Español</p>
+            <p style="cursor: pointer;">Català</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js" type="module"></script>
+</body>
+</html>
+
+

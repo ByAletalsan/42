@@ -1,0 +1,385 @@
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+/* #game {
+    max-height: 100px;
+   } */
+
+
+/* .einstein_img2 {
+    width: 1em;
+    
+} */
+
+.footer {
+    flex-shrink: 0;
+    font-size: 15px;
+    padding-bottom: 10px;
+} 
+
+html, body {
+    height: 100%;
+}
+
+.puntoVerde, .puntoTransparente {
+    width: 30px; /* Tamaño del punto */
+    height: 30px; /* Tamaño del punto */
+    border-radius: 50%; /* Hace el punto circular */
+  }
+  
+  .puntoVerde {
+    background-color: greenyellow; /* Color verde para el punto verde */
+  }
+  
+  .puntoTransparente {
+    background-color: transparent; /* Hace el punto transparente */
+    border: 2px solid greenyellow; /* Opcional: añade un borde para visualizar el punto transparente */
+  }
+
+body {
+    min-height: 400px;
+    /* height: 100vh; */
+    text-align: center;
+    font-family: 'Press Start 2P', sans-serif;
+	font-size: 25px;
+    color: greenyellow;
+    opacity: 1;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+
+
+#bg-video {
+    position: fixed; /* Fija el video en su posición */
+    top: 0;
+    left: 0;
+    min-width: 100%; /* Opcional: cubrir toda la pantalla */
+    min-height: 100%; /* Opcional: cubrir toda la pantalla */
+    z-index: -1; /* Lo coloca detrás del contenido */
+}
+
+#audioElement {
+    display: none;
+}
+
+#backgroundMusic {
+    display: none;
+}
+
+.btn:hover {
+    border: 2px solid rgb(25, 144, 171);
+}
+
+.btn2 {
+    background-image:url('https://icons.iconarchive.com/icons/custom-icon-design/flatastic-1/256/add-1-icon.png');
+    background-repeat:no-repeat;
+    height:60px;
+    width:70px;
+    background-size: 50px 50px;
+    background-position:center;
+}
+
+.refresh-button {
+    padding: 5px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: border 0.3s, fill 0.3s; /* Agrega una transición suave para un efecto más agradable */
+  }
+
+  .refresh-button:hover svg {
+    fill: rgb(198, 127, 207); /* Cambia el color de llenado al pasar el ratón por encima */
+  }
+
+.btnWithImage {
+    width: 120px !important;
+    height: 120px !important; 
+    background-size: cover !important; 
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    cursor: pointer !important; 
+    overflow: hidden !important;
+    border-radius: 50% !important;
+  }
+
+  .flipped-image {
+    display: block;
+    transform: scale(0.2);
+  }
+
+  .coinImage {
+    width: 120px !important; 
+    height: auto !important;
+    background-size: cover !important;
+  }
+
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+.texto-rojo {
+    color: red !important;
+}
+
+.texto-verde {
+    color: green !important;
+}
+
+.texto-naranja {
+    color: rgb(255, 156, 7) !important;
+} 
+
+.texto-aguamar {
+    color:aquamarine !important;
+}
+
+.transparent-text {
+    color:transparent !important;
+}
+
+.border-color {
+    border: 2px solid greenyellow;
+}
+
+.bg-aguamar {
+    background-color: aquamarine !important;
+}
+
+.bg-naranja {
+    background-color: rgb(255, 156, 7) !important;
+}
+
+.transparent-bg {
+    background-color: transparent !important;
+}
+
+.cd-hero-slider {
+    font-size: 15px;
+    padding: 10px 0;
+}
+
+.cd-hero-slider li { 
+    list-style: none;
+}
+
+.container-fluid {
+    max-width: 1860px;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.navbar-brand{
+    font-size: 35px;
+    color: rgb(10, 233, 189);
+    opacity: 1;
+
+}
+
+.navbar-brand:hover {
+    color: rgb(171, 210, 198);
+
+}
+
+.nav-link {
+
+    color: rgb(255, 0, 0);
+    opacity: 1;
+
+}
+
+.nav-link:hover {
+
+    color:   rgb(255, 156, 7);
+    opacity: 1;
+
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover {
+    color:purple;
+}
+
+.circle {
+    position: absolute;
+    left: calc(50% - 10px);
+    bottom: -10px;
+    width: 20px;
+    height: 20px; 
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.nav-link:hover+ .circle {
+    background-color: rgb(171, 210, 198);
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: rgb(255, 156, 7);
+  }
+
+
+.page-width-1 {
+    max-width: 100%;
+}
+
+
+.intro-img-1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 2em;
+    max-block-size: 9em;
+}
+
+.zindex2 {
+    z-index: 2;
+}
+
+
+.intro-img-2 {
+    margin-bottom: 1em;
+    margin-right: 1em;
+    max-block-size: 15em;
+    z-index: 1;
+}
+
+.einstein_img {
+
+    width: 100%;
+    height: auto;
+}
+
+
+.tm-border-bottom {
+
+    padding-bottom: 1em;
+}
+
+.tm-border-left {
+
+    padding-left: 1em;
+}
+
+.tm-border-right {
+
+    padding-right: 1em;
+}
+
+.tm-border-top {
+
+    padding-top: 1em;
+}
+
+.intro-left {
+    margin-right: 3em;
+    padding: 2em 3em;
+    max-width: 60%;
+}
+
+.intro-right {
+    margin-left: 1em;
+    padding: 3em 2em;
+    max-width: 40%;
+}
+
+.almost-friends {
+    color: rgb(122, 127, 133); /* Cambia el color a tu preferencia */
+}
+
+
+@media (min-width: 992px)
+{
+    .navbar-expand-lg .navbar-collapse {
+        justify-content: flex-end;
+    }
+
+    .fix_images {
+        flex-direction: row;
+
+    }
+}
+
+@media (max-width: 1400px)
+{
+    .fix_photo {
+        flex-direction: column;
+        
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .navbar .navbar-nav .nav-item .nav-link {
+        padding: 15px 45px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .navbar .navbar-nav .nav-item .nav-link {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        margin-top: 0;
+    }
+
+    .navbar {
+        position: relative;
+    }
+    
+    .navbar-collapse {
+        position: absolute;
+        top: 63px;
+        right: 0;
+        background: rgba(66, 9, 189, 0.896);
+        border-radius: 5px;
+    }
+
+    .navbar .navbar-nav .nav-item {
+        margin-bottom: 20px;
+    }
+
+    .fix_images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fix_images .col-md-4 {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 834px) {
+    
+
+}
+
+@media (max-width: 767px) {
+    
+}
+
+@media (max-width: 600px) {
+    
+}
+
+@media (max-width: 450px) {
+
+}
+

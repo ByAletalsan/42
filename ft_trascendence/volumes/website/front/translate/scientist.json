@@ -1,0 +1,206 @@
+{
+    "English": {
+        "btnCh0": {
+            "charAnim": "gif/charles-darwin.gif",
+            "charAnimHome": "gif/charles-darwin.gif",
+            "selectChar": "DARWIN",
+            "nameChar": "Charles Robert Darwin",
+            "bornDateChar": "February 12, 1809",
+            "bornCityChar": "Shrewsbury, England",
+            "storyChar": "Don't underestimate this old man. He has tremendous resistance to poisons and diseases. His passion for bugs and animals led him to participate in the epic HMS Beagle expedition around the earth. During the voyage, he was bitten by an empresaurio while eating together on an island. After a feverish period, he woke up genetically evolved, with superhuman capabilities and a theory of species that would revolutionize the scientific community. Since then, he adapts to any situation and is capable of playing PONGER with his feet.",
+            "spellName": "Evolution",
+            "spellDesc": "Darwin evolves into a superior being, increasing his speed and strength for a while."
+        },
+        "btnCh1": {
+            "charAnim": "gif/curie.gif",
+            "charAnimHome": "gif/curie.gif",
+            "selectChar": "CURIE",
+            "nameChar": "Marie Curie",
+            "bornDateChar": "November 7, 1867",
+            "bornCityChar": "Warsaw, Poland",
+            "storyChar": "Marie Curie possesses an extraordinary resistance to radiation, a testament to her groundbreaking work with radium and polonium. Her passion for science and insatiable curiosity led her to win two Nobel Prizes in different scientific fields. Once, while conducting experiments in her makeshift laboratory, she was exposed to a mysterious form of energy. After a period of intense illness, she emerged with unparalleled intellectual prowess and the ability to see beyond the visible spectrum. Her discoveries not only revolutionized the field of physics and chemistry but also granted her the ability to make things invisible with her mind. Since then, she adapts swiftly to any scientific challenge and is capable of solving complex equations with a glance.",
+            "spellName": "Invisibility",
+            "spellDesc": "Radiation was not visible to humans until Marie Curie arrived. With her discoveries, she is able to use radiation to make the ball invisible for a while."
+        },
+        "btnCh2": {
+            "charAnim": "gif/hawking.gif",
+            "charAnimHome": "gif/hawking.gif",
+            "selectChar": "HAWKING",
+            "nameChar": "Stephen Hawking",
+            "bornDateChar": "January 8, 1942",
+            "bornCityChar": "Oxford, England",
+            "storyChar": "Stephen Hawking (or king Joaquin) possesses an unparalleled understanding of the cosmos, a testament to his groundbreaking theories on black holes and the nature of the universe. His passion for unraveling the mysteries of space-time led him to defy the constraints of his physical condition, transcending the ordinary limits of human achievement. Once, while delving into the depths of quantum gravity, he encountered a singularity within his own mind. After a period of profound reflection, he emerged with a newfound ability to perceive the fabric of the cosmos in ways no one else could.",
+            "spellName": "Black Hole",
+            "spellDesc": "With his discoveries about black holes, Hawking is able to use his power to teleport the ball to another place on the court."
+        },
+        "btnCh3": {
+            "charAnim": "gif/newton.gif",
+            "charAnimHome": "gif/newton.gif",
+            "selectChar": "NEWTON",
+            "nameChar": "Sir Isaac Newton",
+            "bornDateChar": "December 25, 1642",
+            "bornCityChar": "Woolsthorpe, Lincolnshire, England",
+            "storyChar": "Newton, while sitting beneath an apple tree in contemplative solitude, he was struck not just by an apple but by a bolt of cosmic energy, an event shrouded in mystery and legend. After a period of intense meditation and physical transformation, he emerged with an acute sensitivity to the fundamental forces of the universe. His discoveries did not just lay the groundwork for classical mechanics but also imbued him with the ability to manipulate gravitational fields and spectral light with his thoughts and maybe throw apples at his opponents.",
+            "spellName": "Stun",
+            "spellDesc": "To Isaac Newton, gravity was not the only thing that came to mind when the apple fell. Now he will use the ability to throw apples at his opponents to immobilize them for a while"
+        },
+        "btnCh4": {
+            "charAnim": "gif/einstein.gif",
+            "charAnimHome": "gif/einstein.gif",
+            "selectChar": "EINSTEIN",
+            "nameChar": "Albert Einstein",
+            "bornDateChar": "March 14, 1879",
+            "bornCityChar": "Ulm, Kingdom of Württemberg, German Empire",
+            "storyChar": "Don't underestimate this mastermind of relativity. His theories reshaped our understanding of time and space, sparking a revolution in modern physics. One night, lost in thought experiments, he tapped into a hidden dimension of reality. Emerging with a deeper cosmic connection, his breakthroughs didn't just redefine physics—they gave him a unique perception of the universe's fabric. Now, he navigates the complexities of the cosmos with ease, bending reality with his profound insights. With this extraordinary ability, he effortlessly tackles scientific mysteries, getting close to the speed of light",
+            "spellName": "Velocity",
+            "spellDesc": "Einstein, with his knowledge about space-time and relativity, is able to increase the speed of the ball for a while."
+        },
+        "btnCh5": {
+            "charAnim": "gif/pitagoras.gif",
+            "charAnimHome": "gif/pitagoras.gif",
+            "selectChar": "PYTHAGORAS",
+            "nameChar": "Pythagoras",
+            "bornDateChar": "Around 570 BCE",
+            "bornCityChar": "Samos, Ancient Greece",
+            "storyChar": "Pythagoras' discovery of the fundamental relationship between the sides of a right triangle ignited a mathematical revolution, laying the groundwork for geometry. One day, deep in meditation on the harmony of the universe, Pythagoras uncovered a hidden order in the cosmos, expressed through numbers. This revelation not only advanced mathematics but also granted him an extraordinary ability to perceive the mathematical patterns underlying nature. With this knowledge, he could predict natural phenomena and manipulate elements through the power of numerical harmony.",
+            "spellName": "Triangulate",
+            "spellDesc": "Pythagoras, with his theorem and knowledge in the world of mathematics, is able to redirect the ball to a different trajectory."
+        }
+    },
+    "Español": {
+        "btnCh0": {
+            "charAnim": "gif/charles-darwin.gif",
+            "charAnimHome": "gif/charles-darwin.gif",
+            "selectChar": "DARWIN",
+            "nameChar": "Charles Robert Darwin",
+            "bornDateChar": "12 de febrero de 1809",
+            "bornCityChar": "Shrewsbury, Inglaterra",
+            "storyChar": "No subestimes a este anciano. Posee una tremenda resistencia a venenos y enfermedades. Su pasión por los insectos y animales le llevó a participar en la épica expedición del HMS Beagle alrededor de la tierra. Durante el viaje, fue mordido por un empresaurio mientras comían juntos en una isla. Tras un período febril, despertó genéticamente evolucionado, con capacidades superhumanas y una teoría de las especies que revolucionaría la comunidad científica. Desde entonces, se adapta a cualquier situación y es capaz de jugar PONGER con los pies.",
+            "spellName": "Evolución",
+            "spellDesc": "Darwin evoluciona a un ser superior, aumentando su velocidad y fuerza por un tiempo."
+        },
+        "btnCh1": {
+            "charAnim": "gif/curie.gif",
+            "charAnimHome": "gif/curie.gif",
+            "selectChar": "CURIE",
+            "nameChar": "Marie Curie",
+            "bornDateChar": "7 de noviembre de 1867",
+            "bornCityChar": "Varsovia, Polonia",
+            "storyChar": "Marie Curie posee una extraordinaria resistencia a la radiación, un testimonio de su trabajo pionero con el radio y el polonio. Su pasión por la ciencia y curiosidad insaciable la llevaron a ganar dos premios Nobel en diferentes campos científicos. Una vez, mientras realizaba experimentos en su laboratorio improvisado, fue expuesta a una misteriosa forma de energía. Tras un período de intensa enfermedad, emergió con un poder intelectual sin igual y la capacidad de ver más allá del espectro visible. Sus descubrimientos no solo revolucionaron el campo de la física y la química, sino que también le otorgaron la capacidad de hacer cosas invisibles con su mente. Desde entonces, se adapta rápidamente a cualquier desafío científico y es capaz de resolver ecuaciones complejas de un vistazo.",
+            "spellName": "Invisibilidad",
+            "spellDesc": "La radiación no era visible para los humanos hasta que llegó Marie Curie. Con sus descubrimientos, es capaz de usar la radiación para hacer invisible la pelota por un tiempo."
+        },
+        "btnCh2": {
+            "charAnim": "gif/hawking.gif",
+            "charAnimHome": "gif/hawking.gif",
+            "selectChar": "HAWKING",
+            "nameChar": "Stephen Hawking",
+            "bornDateChar": "8 de enero de 1942",
+            "bornCityChar": "Oxford, Inglaterra",
+            "storyChar": "Stephen Hawking posee un entendimiento sin igual del cosmos, un testimonio de sus teorías revolucionarias sobre agujeros negros y la naturaleza del universo. Su pasión por desentrañar los misterios del espacio-tiempo lo llevó a desafiar las limitaciones de su condición física, trascendiendo los límites ordinarios del logro humano. Una vez, mientras profundizaba en los misterios de la gravedad cuántica, encontró una singularidad dentro de su propia mente. Tras un período de profunda reflexión, emergió con una nueva capacidad para percibir la trama del cosmos de maneras que nadie más podría.",
+            "spellName": "Agujero Negro",
+            "spellDesc": "Con sus descubrimientos sobre los agujeros negros, Hawking es capaz de usar su poder para teleportar la pelota a otro lugar de la cancha."
+        },
+        "btnCh3": {
+            "charAnim": "gif/newton.gif",
+            "charAnimHome": "gif/newton.gif",
+            "selectChar": "NEWTON",
+            "nameChar": "Sir Isaac Newton",
+            "bornDateChar": "25 de diciembre de 1642",
+            "bornCityChar": "Woolsthorpe, Lincolnshire, Inglaterra",
+            "storyChar": "Newton, mientras estaba sentado bajo un árbol de manzanas en soledad contemplativa, fue golpeado no solo por una manzana sino por un rayo de energía cósmica, un evento envuelto en misterio y leyenda. Tras un período de intensa meditación y transformación física, emergió con una aguda sensibilidad a las fuerzas fundamentales del universo. Sus descubrimientos no solo sentaron las bases de la mecánica clásica, sino que también lo dotaron de la capacidad de manipular campos gravitacionales y luz espectral con sus pensamientos y tal vez lanzar manzanas a sus oponentes.",
+            "spellName": "Aturdimiento",
+            "spellDesc": "Para Isaac Newton, la gravedad no fue lo único que vino a la mente cuando cayó la manzana. Ahora usará la habilidad de lanzar manzanas a sus oponentes para inmovilizarlos por un tiempo."
+        },
+        "btnCh4": {
+            "charAnim": "gif/einstein.gif",
+            "charAnimHome": "gif/einstein.gif",
+            "selectChar": "EINSTEIN",
+            "nameChar": "Albert Einstein",
+            "bornDateChar": "14 de marzo de 1879",
+            "bornCityChar": "Ulm, Reino de Württemberg, Imperio Alemán",
+            "storyChar": "No subestimes a este genio de la relatividad. Sus teorías reformaron nuestra comprensión del tiempo y el espacio, provocando una revolución en la física moderna. Una noche, perdido en experimentos mentales, tocó una dimensión oculta de la realidad. Emergiendo con una conexión cósmica más profunda, sus avances no solo redefinieron la física, sino que le dieron una percepción única de la trama del universo. Ahora, navega las complejidades del cosmos con facilidad, doblando la realidad con sus profundos conocimientos. Con esta extraordinaria habilidad, aborda sin esfuerzo los misterios científicos, acercándose a la velocidad de la luz",
+            "spellName": "Velocidad",
+            "spellDesc": "Einstein, con sus conocimientos sobre el espacio-tiempo y la relatividad, es capaz de aumentar la velocidad de la pelota por un tiempo."
+        },
+        "btnCh5": {
+            "charAnim": "gif/pitagoras.gif",
+            "charAnimHome": "gif/pitagoras.gif",
+            "selectChar": "PITÁGORAS",
+            "nameChar": "Pitágoras",
+            "bornDateChar": "Alrededor del 570 a.C.",
+            "bornCityChar": "Samos, Grecia Antigua",
+            "storyChar": "El descubrimiento de Pitágoras de la relación fundamental entre los lados de un triángulo rectángulo encendió una revolución matemática, sentando las bases de la geometría. Un día, profundamente meditando sobre la armonía del universo, Pitágoras descubrió un orden oculto en el cosmos, expresado a través de los números. Esta revelación no solo avanzó las matemáticas sino que también le otorgó una capacidad extraordinaria para percibir los patrones matemáticos que subyacen a la naturaleza. Con este conocimiento, podía predecir fenómenos naturales y manipular elementos a través del poder de la armonía numérica.",
+            "spellName": "Triangular",
+            "spellDesc": "Pitágoras, con su teorema y conocimientos en el mundo de las matemáticas, es capaz de redirigir la trayectoria de la pelota."
+        }
+    },
+    "Català": {
+        "btnCh0": {
+            "charAnim": "gif/charles-darwin.gif",
+            "charAnimHome": "gif/charles-darwin.gif",
+            "selectChar": "DARWIN",
+            "nameChar": "Charles Robert Darwin",
+            "bornDateChar": "12 de febrer de 1809",
+            "bornCityChar": "Shrewsbury, Anglaterra",
+            "storyChar": "No subestimis aquest vell. Té una resistència tremenda als verins i malalties. La seva passió per els insectes i animals el va portar a participar en l'èpica expedició del HMS Beagle al voltant de la terra. Durant el viatge, va ser mossegat per un empresauri mentre menjaven junts en una illa. Després d'un període febril, es va despertar genèticament evolucionat, amb capacitats superhumanes i una teoria de les espècies que revolucionaria la comunitat científica. Des de llavors, s'adapta a qualsevol situació i és capaç de jugar a PONGER amb els peus.",
+            "spellName": "Evolució",
+            "spellDesc": "Darwin evoluciona a un ésser superior, augmentant la seva velocitat i força per un temps."
+        },
+        "btnCh1": {
+            "charAnim": "gif/curie.gif",
+            "charAnimHome": "gif/curie.gif",
+            "selectChar": "CURIE",
+            "nameChar": "Marie Curie",
+            "bornDateChar": "7 de novembre de 1867",
+            "bornCityChar": "Varsòvia, Polònia",
+            "storyChar": "Marie Curie posseeix una resistència extraordinària a la radiació, un testimoni del seu treball pioner amb el radi i el poloni. La seva passió per la ciència i curiositat insaciable la va portar a guanyar dos premis Nobel en diferents camps científics. Una vegada, mentre realitzava experiments al seu laboratori improvisat, va estar exposada a una misteriosa forma d'energia. Després d'un període d'intensa malaltia, va emergir amb una habilitat intel·lectual sense igual i la capacitat de veure més enllà de l'espectre visible. Les seves descobertes no només van revolucionar el camp de la física i la química, sinó que també li van atorgar la capacitat de fer coses invisibles amb la seva ment. Des de llavors, s'adapta ràpidament a qualsevol desafiament científic i és capaç de resoldre equacions complexes d'una ullada.",
+            "spellName": "Invisibilitat",
+            "spellDesc": "La radiació no era visible per als humans fins que va arribar Marie Curie. Amb les seves descobertes, és capaç de fer servir la radiació per fer invisible la pilota per un temps."
+        },
+        "btnCh2": {
+            "charAnim": "gif/hawking.gif",
+            "charAnimHome": "gif/hawking.gif",
+            "selectChar": "HAWKING",
+            "nameChar": "Stephen Hawking",
+            "bornDateChar": "8 de gener de 1942",
+            "bornCityChar": "Oxford, Anglaterra",
+            "storyChar": "Stephen Hawking posseeix un entendiment sense igual del cosmos, un testimoni de les seves teories revolucionàries sobre forats negres i la naturalesa de l'univers. La seva passió per desentranyar els misteris de l'espai-temps el va portar a desafiar les limitacions de la seva condició física, transcendent les limitacions ordinàries del logro humà. Una vegada, mentre s'endinsava en les profunditats de la gravetat quàntica, va trobar una singularitat dins de la seva pròpia ment. Després d'un període de profunda reflexió, va emergir amb una nova capacitat per percebre la trama del cosmos de maneres que ningú més podria.",
+            "spellName": "Forat Negre",
+            "spellDesc": "Amb els seus descobriments sobre els forats negres, Hawking és capaç de fer servir el seu poder per teleportar la pilota a un altre lloc de la pista."
+        },
+        "btnCh3": {
+            "charAnim": "gif/newton.gif",
+            "charAnimHome": "gif/newton.gif",
+            "selectChar": "NEWTON",
+            "nameChar": "Sir Isaac Newton",
+            "bornDateChar": "25 de desembre de 1642",
+            "bornCityChar": "Woolsthorpe, Lincolnshire, Anglaterra",
+            "storyChar": "Newton, mentre estava assegut sota un arbre de pomes en solitud contemplativa, va ser colpejat no només per una poma sinó per un raig d'energia còsmica, un esdeveniment envoltat de misteri i llegenda. Després d'un període d'intensa meditació i transformació física, va emergir amb una sensibilitat aguda a les forces fonamentals de l'univers. Les seves descobertes no només van sentar les bases de la mecànica clàssica, sinó que també el van dotar de la capacitat de manipular camps gravitacionals i llum espectral amb els seus pensaments i potser llançar pomes als seus oponents.",
+            "spellName": "Atordiment",
+            "spellDesc": "Per a Isaac Newton, la gravetat no va ser l'únic que va venir al cap quan va caure la poma. Ara usarà l'habilitat de llançar pomes als seus oponents per immobilitzar-los per un temps."
+        },
+        "btnCh4": {
+            "charAnim": "gif/einstein.gif",
+            "charAnimHome": "gif/einstein.gif",
+            "selectChar": "EINSTEIN",
+            "nameChar": "Albert Einstein",
+            "bornDateChar": "14 de març de 1879",
+            "bornCityChar": "Ulm, Regne de Württemberg, Imperi Alemany",
+            "storyChar": "No subestimis aquest geni de la relativitat. Les seves teories van reformar la nostra comprensió del temps i l'espai, provocant una revolució en la física moderna. Una nit, perdut en experiments mentals, va tocar una dimensió oculta de la realitat. Emergint amb una connexió còsmica més profunda, els seus avenços no només van redefinir la física, sinó que li van donar una percepció única de la trama de l'univers. Ara, navega les complexitats del cosmos amb facilitat, doblegant la realitat amb els seus profunds coneixements. Amb aquesta habilitat extraordinària, aborda sense esforç els misteris científics, acostant-se a la velocitat de la llum",
+            "spellName": "Velocitat",
+            "spellDesc": "Einstein, amb els seus coneixements sobre l'espai-temps i la relativitat, és capaç d'augmentar la velocitat de la pilota per un temps."
+        },
+        "btnCh5": {
+            "charAnim": "gif/pitagoras.gif",
+            "charAnimHome": "gif/pitagoras.gif",
+            "selectChar": "PITÀGORES",
+            "nameChar": "Pitàgores",
+            "bornDateChar": "Cap al 570 aC",
+            "bornCityChar": "Samos, Grècia Antiga",
+            "storyChar": "La descoberta de Pitàgores de la relació fonamental entre els costats d'un triangle rectangle va encendre una revolució matemàtica, sentant les bases de la geometria. Un dia, profundament meditant sobre l'harmonia de l'univers, Pitàgores va descobrir un ordre ocult en el cosmos, expressat a través dels nombres. Aquesta revelació no només va avançar les matemàtiques sinó que també li va atorgar una capacitat extraordinària per percebre els patrons matemàtics que subjauen a la naturalesa. Amb aquest coneixement, podia predir fenòmens naturals i manipular elements a través del poder de l'harmonia numèrica.",
+            "spellName": "Triangular",
+            "spellDesc": "Pitàgores, amb el seu teorema i coneixements en el món de les matemàtiques, és capaç de redirigir la trajectòria de la pilota."
+        }
+    }
+}
